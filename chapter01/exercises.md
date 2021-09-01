@@ -20,3 +20,13 @@ Keeping in mind both alpha equivalence and how multiple heads are nested, choose
   c. λmnp.mn
 **answer**: b
 
+## Chapter Exercises
+
+### Combinators
+Determine if each of the following are combinators or not.
+
+1. λx.xxx (True)
+2. λxy.zx (False)
+3. λxyz.xy(zx) (True)
+4. λxyz.xy(zxy) (True)
+5. λxy.xy(zxy) (False)
