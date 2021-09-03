@@ -10,6 +10,29 @@ Given what we know about the precedence of (\*), (+), and (^), how can we parent
 2. (^) 10 \$ 1 + 1
    (^) 10 \$ (1 + 1)
    (\$) operator has precedence 0 and is right associative, therefore (1 + 1) is evaluated first.
-3. 2 ^ 2 _ 4 ^ 5 + 1
-   (2 ^ 2) _ (4 ^ 5) + 1
+3. 2 ^ 2 \* 4 ^ 5 + 1
+   (2 ^ 2) \* (4 ^ 5) + 1
    (\^) has precedence 8 while (\*) has precedence 7 and (+) has precedence 6
+
+## Equivalent expressions
+
+Which of the following pairs of expressions will return the same result when evaluated?
+
+1. 1 + 1
+   2
+   **True**
+2. 10 ^ 2
+   10 + 9 \* 10
+   **True**
+3. 400 - 37
+   (-) 37 400
+   **False**
+   (-) is not commutative.
+4. 100 `div` 3
+   100 / 3
+   **False**
+   `div` is integral division (truncated towards zero), while (/) is fractional division.
+5. 2 \* 5 + 18
+   2 \* (5 + 18)
+   **False**
+   (\*) has precedence 7 while (+) has precedence 6. Parenthesization is changing the precedence.
