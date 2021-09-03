@@ -36,3 +36,29 @@ Which of the following pairs of expressions will return the same result when eva
    2 \* (5 + 18)
    **False**
    (\*) has precedence 7 while (+) has precedence 6. Parenthesization is changing the precedence.
+
+## Fun with functions
+
+The following code is written in a source file. Remember that order of the code is unimportant in source files, since the compiler loads the source file into memory and then executes the code. But it is important in REPL. Change it so that it evaluates correctly in REPL.
+
+```haskell
+z = 7
+x = y ^ 2
+waxOn = x * 5
+y = z + 8
+```
+
+```REPL
+> z = 7
+> y = z + 8
+> x = y ^ 2
+> waxOn = x * 5
+```
+
+**waxOn = 1125**
+
+1. Now, evaluate the following expression:
+   a. `10 + waxOn` -> `10 + 1125` = `1135`
+   b. `(+10) waxOn` -> `1125 + 10` = `1135`
+   c. `(-) 15 waxOn` -> `15 - 1125` = `-1110`
+   d. `(-) waxOn 15` -> `1125 - 15` = `1110`
