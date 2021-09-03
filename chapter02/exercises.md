@@ -55,10 +55,33 @@ y = z + 8
 > waxOn = x * 5
 ```
 
-**waxOn = 1125**
+_waxOn = 1125_
 
 1. Now, evaluate the following expression:
    a. `10 + waxOn` -> `10 + 1125` = `1135`
    b. `(+10) waxOn` -> `1125 + 10` = `1135`
    c. `(-) 15 waxOn` -> `15 - 1125` = `-1110`
    d. `(-) waxOn 15` -> `1125 - 15` = `1110`
+
+2. Enter the following function in the REPL while `waxOn` is still in session:
+   `tripple x = x * 3`
+
+3. Reason about what happens when you enter the following expression in the REPL. Then enter it and check your understanding.
+   `triple waxOn`
+   _waxOn = 3375_
+
+4. Rewrite waxOn as an expression with a `where` clause in your source file. Load it into your REPL and make sure it works as expected.
+
+```haskell
+waxOn = x * 5
+  where x = y ^ 2
+        y = z + 8
+        z = 7
+```
+
+5. To the same source file where you have `waxOn` add the `triple` function. Load the file and into REPL and evaluate `triple waxOn`. Make sure it has the same answer as before.
+
+6. Now, without changing what you've done so far in the file, add a new function called `waxOff` that looks like this:
+   `waxOff x = triple x`
+   Reload and evaluate `waxOff waxOn`. The result should be the same as before.
+   [Source for Fun with functions](exercise.files/waxOn.with.where.clause.hs)
