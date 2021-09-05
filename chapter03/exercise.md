@@ -90,3 +90,5 @@ Since _r_ is now defined in the local scope of _area_, it can access _d_ which i
    [Solution file](./exercise.files/buildingFunctions4.hs)
 5. Using the `take` and `drop` functions write a function called `rvrs` that takes the string "Curry is awesome" and returns the string "awesome is Curry".
    [Solution file](./exercise.files/buildingFunctions5.hs)
+6. Add the `rvrs` function to a module named `Reverse`
+   [Solution file](./exercise.files/buildingFunctions5.hs)
