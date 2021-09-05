@@ -84,3 +84,5 @@ Since _r_ is now defined in the local scope of _area_, it can access _d_ which i
 
 2. Now, take each of the above and rewrite it in a source file as a general function that could take different string inputs as arguments but retain the same behavior.
    [Solution file](./exercise.files/buildingFunctions2.hs)
+3. Write a function of type `String -> Char` which returns the third character in a `String`.
+   [Solution file](./exercise.files/buildingFunctions3.hs)
