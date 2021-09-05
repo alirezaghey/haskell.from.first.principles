@@ -86,3 +86,5 @@ Since _r_ is now defined in the local scope of _area_, it can access _d_ which i
    [Solution file](./exercise.files/buildingFunctions2.hs)
 3. Write a function of type `String -> Char` which returns the third character in a `String`.
    [Solution file](./exercise.files/buildingFunctions3.hs)
+4. Now change that function so the string operated on is always the same and the variable represents the number of the letter you want to return.
+   [Solution file](./exercise.files/buildingFunctions4.hs)
