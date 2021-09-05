@@ -71,3 +71,16 @@ Since _r_ is now defined in the local scope of _area_, it can access _d_ which i
    c. `10 * head [1, 2, 3]` => `10`
    d. `(take 3 "Julie") ++ (tail "yes")` => `Jules`
    e. `concat [tail [1, 2, 3], tail [4, 5, 6], tail [7, 8, 9]]` => `[2, 3, 5, 6, 8, 9]`
+
+## Building functions
+
+1. Given the list-manipulation functions mentioned in this chapter, write functions that take the following inputs and return the expected outputs.
+   a. Given "Curry is awesome", return "Curry is awesome!"
+   `concat ["Curry is awesome", "!"]` or `"Curry is awesome" ++ "!"`
+   b. Given "Curry is awesome!", return "y".
+   `drop 4 (take 5 "Curry is awesome!")` or `"Curry is awesome!" !! 4`
+   c. Given "Curry is awesome!", return "awesome!".
+   `drop 9 "Curry is awesome!"`
+
+2. Now, take each of the above and rewrite it in a source file as a general function that could take different string inputs as arguments but retain the same behavior.
+   [Solution file](./exercise.files/buildingFunctions2.hs)
