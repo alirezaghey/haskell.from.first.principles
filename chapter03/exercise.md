@@ -88,3 +88,5 @@ Since _r_ is now defined in the local scope of _area_, it can access _d_ which i
    [Solution file](./exercise.files/buildingFunctions3.hs)
 4. Now change that function so the string operated on is always the same and the variable represents the number of the letter you want to return.
    [Solution file](./exercise.files/buildingFunctions4.hs)
+5. Using the `take` and `drop` functions write a function called `rvrs` that takes the string "Curry is awesome" and returns the string "awesome is Curry".
+   [Solution file](./exercise.files/buildingFunctions5.hs)
