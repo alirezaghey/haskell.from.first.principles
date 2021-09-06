@@ -71,3 +71,26 @@ allAwesome = [awesome, also]
    <br> **Answer:** `2`
    <br>d. `length (coancat allAwesome)`
    <br> **Answer:** `5`
+3. Given what we know about numeric types and the type signature of `length`, look at these two expressions. One works and one returns an error. Determine which will return an error and why.
+
+```REPL
+Presule> 6 / 3
+-- and
+Predule> 6 / length [1, 2, 3]
+```
+
+**Answer:** `6 / length [1, 2, 3]` returns an error. Reason is that `(/) :: Fractional a => a -> a -> a` means that both arguments to `/` must be `Fractional` values, but `length` returns an `Int` value. We could demonstrate that by forcing a number value to be an `Int`: `1 / 2 :: Int`, throws the same error.
+
+4. How can you fix the broken code from the preceding exercise using a different division function/operator?
+   <br> **Answer:** `div 6 $ length [1, 2, 3]`
+
+5. What is the type of the expression 2 + 3 == 5? What would we expect as a result?
+   <br> **Answer:** `Bool` is the type and we can expect it to evaluate to `True`.
+6. What is the type of the expected value of the following?
+
+```REPL
+Prelude> x = 5
+Prelude> x + 3 == 5
+```
+
+**Answer:** `Bool` is the type and we can expect it to evaluate to `False`.
