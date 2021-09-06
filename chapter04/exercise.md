@@ -28,3 +28,20 @@ Wrapping the lines in `:{` and `:}` allows you to write multi-line code in the R
 
 5. Enter all of the above -- datatype (including the `deriving Show` bit), your corrected type signature, and the corrected function into a source file. Load it and run it in GHCi to make sure you got it right.
    <br> [Solution file](./exercise.files/moodswing.hs)
+
+## Find the Mistakes
+
+The following liens of code may have mistakes. Fix them!
+
+1. `not True && true`
+   <br> **Answer:** `not True && True`
+   <br>_Note:_ Keep in mind that while the results would be the same, this expression is not exactly the same as `not (True && True)`. Named functions have higher precedence than operators. Thus, `not True && False` is `False` while `not (True && False)` is `True`.
+2. `not (x = 6)`
+   <br> **Answer:** `not (x == 6)`, provided that `x` is in scope.
+3. `(1 \* 2) > 5`
+   <br> **Answer:** This is correct
+4. `[Merry] > [Happy]`
+   <br> **Answer:** `["Merry"] > ["Happy"]` unless `Merry` and `Happy` are variables in scope.
+5. `[1, 2, 3] ++ "look at me!"`
+   <br> **Answer:** `"1, 2, 3 " ++ "look at me!"`
+   <br> _Note:_ The infix operator `++` has the type `[a] -> [a] -> [a]`. This means that the elements of the two lists must be of the same type.
