@@ -94,3 +94,20 @@ Prelude> x + 3 == 5
 ```
 
 **Answer:** `Bool` is the type and we can expect it to evaluate to `False`.
+
+7. Below are some bits of code. Which will work? Why or why not? If they will work, what value would these reduce to?
+
+`Prelude> length allAwesome == 2`
+<br> **Answer:** This will work and evaluate to `True`. Since `length` has precedence over `==` the expression is equivalent to: `length [awesome, also] $ == 2 -> 2 == 2 -> True`.
+
+`Prelude> length [1, 'a', 3, 'b']`
+<br> **Answer:** This won't work. Lists must contain elements of the same type. There are `Char`s and `Int`s in the list.
+
+`Prelude> length allAwesome + length awesome`
+<br> **Answer:** This will work and evaluate to `5`. Since `length` has precedence over `+` the expression is equivalent to: `(length allAwesome) + (length awesome) -> (length [awesome, also]) + (length ["Papuchon", "curry", ":)"]) -> 2 + 3 -> 5`.
+
+`Prelude> (8 == 8) && ('b' < 'a')`
+<br> **Answer:** This will work and evaluate to `False`. `(True) && (False) -> False`
+
+`Prelude> (8 == 8) && 9`
+<br> **Answer:** This won't work. The `&&` operator has type `Bool -> Bool -> Bool` while the right hand side is an `Int`.
