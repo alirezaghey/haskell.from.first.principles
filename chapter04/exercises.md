@@ -45,3 +45,29 @@ The following liens of code may have mistakes. Fix them!
 5. `[1, 2, 3] ++ "look at me!"`
    <br> **Answer:** `"1, 2, 3 " ++ "look at me!"`
    <br> _Note:_ The infix operator `++` has the type `[a] -> [a] -> [a]`. This means that the elements of the two lists must be of the same type.
+
+# Chapter Exercises
+
+## Unnamed Section
+
+**For the following exercises, you need to have the following 3 variables in scope:**
+
+```haskell
+awesome = ["Papuchon", "curry", ":)"]
+also = ["Quake", "The Simons"]
+allAwesome = [awesome, also]
+```
+
+`length` is a function that takes a list and returns a result that tells how many items are in the list:
+
+1. Given the definition of `length` above, what is the type signature?
+   <br>**Answer:** `length :: [a] -> Integer`
+2. What are the results of the following expressions?
+   <br>a. `length [1, 2, 3, 4, 5]`
+   <br> **Answer:** `5`
+   <br>b. `length [(1, 2), (2, 3), (3, 4)]`
+   <br> **Answer:** `3`
+   <br>c. `length allAwesome`
+   <br> **Answer:** `2`
+   <br>d. `length (coancat allAwesome)`
+   <br> **Answer:** `5`
