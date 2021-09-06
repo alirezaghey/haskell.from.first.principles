@@ -111,3 +111,24 @@ Prelude> x + 3 == 5
 
 `Prelude> (8 == 8) && 9`
 <br> **Answer:** This won't work. The `&&` operator has type `Bool -> Bool -> Bool` while the right hand side is an `Int`.
+
+8.  Write a function that tells you whether or not a given String is a palindrome. Here you'll want to use a function called `reverse`. A built-in function that does what it sounds like.
+
+```haskell
+isPalindrome :: (Eq a) => [a] -> Bool
+isPalindrome x = x == reverse x
+```
+
+9. Write a function to return the absolute value of a number using if-then-else.
+
+```haskell
+myAbs :: Integer -> Integer
+myAbs x = if x < 0 then -x else x
+```
+
+10. Fill in the definition of the following function, using `fst` and `snd`:
+
+```haskell
+f :: (a, b) -> (c, d) -> ((b, d), (a, c))
+f x y = ((snd x, snd y), (fst x, fst y))
+```
