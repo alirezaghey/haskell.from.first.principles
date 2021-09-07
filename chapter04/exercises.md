@@ -179,3 +179,22 @@ Problems with this code:
 myId :: a -> a
 myId x = x
 ```
+
+3. When fixed, this function will return 1 from the value (1, 2)
+
+```haskell
+f (a b) = A
+```
+
+There are two approaches to solve this:
+
+- Using the built-in `fst` function
+- Using pattern matching
+
+```haskell
+f :: (a, b) -> a
+f x = fst x
+--or
+f :: (a, b) -> a
+f (a, b) = a
+```
