@@ -198,3 +198,32 @@ f x = fst x
 f :: (a, b) -> a
 f (a, b) = a
 ```
+
+## Math the function names to their types
+
+1. Which of the following types is the type of `show`?
+   <br>a. `show a => a -> String`
+   <br>b. `Show a -> a -> String`
+   <br>c. `Show a => a -> String`
+   <br> **Answer:** c
+
+2. Which of the following types is the type of `(==)`?
+   <br>a. `a -> a -> Bool`
+   <br>b. `Eq a => a -> a -> Bool`
+   <br>c. `Eq a -> a -> a -> Bool`
+   <br>d. `Eq a => A -> Bool`
+   <br> **Answer:** b
+
+3. Which of the following types is the type of `fst`?
+   <br>a. `(a, b) -> a`
+   <br>b. `b-> a`
+   <br>c. `(a, b) -> b`
+   <br> **Answer:** a
+
+4. Which of the following types is the type of `(+)`?
+   <br>a. `(+) :: Num a -> a -> a -> Bool`
+   <br>b. `(+) :: Num a => a -> a -> Bool`
+   <br>c. `(+) :: num a => a -> a -> a`
+   <br>d. `(+) :: Num a => a -> a -> a`
+   <br>f. `(+) :: a -> a -> a`
+   <br> **Answer:** d
