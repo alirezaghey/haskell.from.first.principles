@@ -133,3 +133,13 @@ Note that because the type variables `a` and `b` are different, the compiler _mu
 All you can do with a parametrically polymorphic value is pass or not pass it to some other expression. Prove that to yourself with these small demonstrations.
 
 1. Given the type `a -> a`, which is the type for `id`, attempt to make a function that terminates successfully that does something other than returning the same value. This is impossible, but you should try it anyway.
+2. We can get a more comfortable appreciate of parametricity by looking at `a -> a -> a`. This hypothetical function `a -> a -> a` has two-and only two-implementations. Write both possible versions of `a -> a -> a`. After doing so, try to violate the constraints of parametrically polymorphic values we outlined above.
+
+**Answer:**
+
+```haskell
+f :: a -> a -> a
+f x y = x
+-- or
+f x y = y
+```
