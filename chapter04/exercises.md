@@ -227,9 +227,3 @@ f (a, b) = a
    <br>d. `(+) :: Num a => a -> a -> a`
    <br>f. `(+) :: a -> a -> a`
    <br> **Answer:** d
-
-## Parametricity
-
-All you can do with a parametrically polymorphic value is pass or not pass it to some other expression. Prove that to yourself with these small demonstrations.
-
-1. Given the type `a -> a`, which is the type for `id`, attempt to make a function that terminates successfully that does something other than returning the same value. This is impossible, but you should try it anyway.
