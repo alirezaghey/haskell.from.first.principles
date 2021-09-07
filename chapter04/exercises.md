@@ -161,3 +161,21 @@ f xs = x w 1
 f xs = w `x` 1
   where w = length xs
 ```
+
+2. This is supposed to be the identity function, `id`.
+
+```haskell
+\X = x
+```
+
+Problems with this code:
+
+- Either this is supposed to be a lambda function, in wich case we have to use an `->` instead of `=` and also make the function parameter lower case
+- Or it is supposed to be a named function like `id`. In that case we don't use `\`, the function must have a name and `X` must be lower case.
+
+```haskell
+\x -> x
+-- or
+myId :: a -> a
+myId x = x
+```
