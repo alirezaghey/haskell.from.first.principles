@@ -110,3 +110,12 @@ Note that because the type variables `a` and `b` are different, the compiler _mu
    <br> e. `Ord a => a`
    <br> f. `Num a => a`
    <br> **Answer:** d
+
+8. If the type of `kessel` is `(Ord a, Num b) => a -> b -> a`, then the type of `kessel 1 (2 :: Integer)` is:
+   <br> a. `(Num a, Ord a) => a`
+   <br> b. `Int`
+   <br> c. `a`
+   <br> d. `Num a => a`
+   <br> e. `Ord a => a`
+   <br> f. `Integer`
+   <br> **Answer:** a
