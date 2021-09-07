@@ -18,3 +18,26 @@ Below you'll find a list of several standard functions we've talked about previo
    <br>e. `_ :: Ord a => a -> a -> Bool`
 
 **Answers:** (a, c), (b, d), (c, b), (d, a), (e, e)
+
+## Manual currying and un-currying
+
+Load [curry_uncurry_anon.hs](./exercise.files/curry_uncurry_anon.hs) into GHCi and check that all the functions return the same result given equal input.
+
+```REPL
+Prelude> curriedFunction 10 True
+815
+Prelude> curriedFunction 20 False
+31357
+Prelude> uncurriedFunction (10, True)
+815
+Prelude> uncurriedFunction (20, False)
+3157
+Prelude> anonymous 10 True
+815
+Prelude> anonymous 20 False
+3157
+Prelude> anonNested 10 True
+815
+Prelude> anonNested 20 False
+3157
+```
