@@ -93,3 +93,11 @@ Note that because the type variables `a` and `b` are different, the compiler _mu
    <br> d. `b`
    <br> e. `Eq b => b -> [Char]`
    <br>**Answer:** a
+
+6. If the type of `jackal` is `(Ord a, Eq b) => a -> b -> a` then the type of `jackal "keyboard"` is:
+   <br> a. `b`
+   <br> b. `Eq b => b`
+   <br> c. `[Char]`
+   <br> d. `b -> [Char]`
+   <br> e. `Eq b => b -> [Char]`
+   <br> **Answer:** e
