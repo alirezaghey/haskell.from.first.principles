@@ -127,3 +127,9 @@ Note that because the type variables `a` and `b` are different, the compiler _mu
    <br> d. `(Num a, Ord a) => a`
    <br> e. `a`
    <br> **Answer:** c
+
+## Parametricity
+
+All you can do with a parametrically polymorphic value is pass or not pass it to some other expression. Prove that to yourself with these small demonstrations.
+
+1. Given the type `a -> a`, which is the type for `id`, attempt to make a function that terminates successfully that does something other than returning the same value. This is impossible, but you should try it anyway.
