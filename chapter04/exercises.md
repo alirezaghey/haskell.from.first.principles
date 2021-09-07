@@ -132,3 +132,32 @@ myAbs x = if x < 0 then -x else x
 f :: (a, b) -> (c, d) -> ((b, d), (a, c))
 f x y = ((snd x, snd y), (fst x, fst y))
 ```
+
+## Correcting syntax
+
+In the following examples, you'll be shown syntactically incorrect code. Type it in and try to correct it in your text editor, validating it with GHC or GHCi.
+
+1. Here, we want a function that adds 1 to the length of a string argument and returns that result.
+
+```haskell
+x = (+)
+F xs =  w 'x' 1
+  where w = length xs
+```
+
+Problems with this code:
+
+- `x` represents the prefix add operator `(+)`. It can't be put into single quotes which makes it a `Char` and also must precede both its arguments. Alternatively, we can put `x` in backticks
+  \``x`\` instead of single quotes which renders the prefix operator to an infix.
+- `F` is supposed to be a function. Functions in Haskell can't start with a capital letter.
+
+Correct code:
+
+```haskell
+x = (+)
+f xs = x w 1
+  where w = length xs
+-- or
+f xs = w `x` 1
+  where w = length xs
+```
