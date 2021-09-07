@@ -41,3 +41,47 @@ Prelude> anonNested 10 True
 Prelude> anonNested 20 False
 3157
 ```
+
+## Type Arguments
+
+Given a function and its type, tell us what type results from applying some or all of the arguments.
+
+You can check your work in the REPL:
+
+```REPL
+Prelude> let f :: a -> a -> a -> a; f = undefined
+Prelude> let x :: Char; x = undefined
+Prelude> :t f x
+```
+
+It turns out that you can check the types of things that aren't implemented yet, so long as you give GHCi an `undefined` to bind the signature to.
+
+1. If the type of `f` is `a -> a -> a -> a`, and the type of `x` is `Char` then the type of `f x` is:
+   <br> a. `Char -> Char -> Char`
+   <br> b. `x -> x -> x -> x`
+   <br> c. `a -> a -> a`
+   <br> d. `a -> a -> a -> Char`
+   <br>**Answer:** a
+
+2. If the type of `g` is `a -> b -> c -> b`, then the type of `g` is `a -> b -> c -> b`, then the type of `g 0 'c' "woot"` is:
+   <br> a. `String`
+   <br> b. `Char -> String`
+   <br> c. `Int`
+   <br> d. `Char`
+   <br>**Answer:** d
+
+3. If the type of `h` is `(Num a, Num b) => a -> b -> b`, then the type of `h 1.0 2` is:
+   <br> a. `Double`
+   <br> b. `Integer`
+   <br> c. `Integral b => b`
+   <br> d. `Num b => b`
+   <br> **Answer:** d
+
+Note that because the type variables `a` and `b` are different, the compiler _must_ assume that the types could be different.
+
+4. If the type of `h` is `(Num a, Num b) => a -> b -> b`, then the type of `h 1 (5.5 :: Double)` is:
+   <br> a. `Integer`
+   <br> b. `Fractional b => b`
+   <br> c. `Double`
+   <br> d. `Num b => b`
+   <br> **Answer:** c
