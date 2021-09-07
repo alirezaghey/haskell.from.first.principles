@@ -143,3 +143,14 @@ f x y = x
 -- or
 f x y = y
 ```
+
+3. Implement `a -> b -> b`. How many implementations can it have? Does the behavior change when the types of `a` and `b` change?
+
+**Answer:**
+
+```haskell
+f :: a -> b -> a
+f x y = y
+```
+
+This is the only possible implementation. The behavior does not change when the types of `a` and/or `b` change.
