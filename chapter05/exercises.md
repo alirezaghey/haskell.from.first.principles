@@ -101,3 +101,12 @@ Note that because the type variables `a` and `b` are different, the compiler _mu
    <br> d. `b -> [Char]`
    <br> e. `Eq b => b -> [Char]`
    <br> **Answer:** e
+
+7. If the type of `kessel` is `(Ord a, Num b) => a -> b -> a` then the type of `kessel 1 2` is:
+   <br> a. `Integer`
+   <br> b. `Int`
+   <br> c. `a`
+   <br> d. `(Num a, Ord a) => a`
+   <br> e. `Ord a => a`
+   <br> f. `Num a => a`
+   <br> **Answer:** d
