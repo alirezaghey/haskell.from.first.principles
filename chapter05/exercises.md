@@ -421,6 +421,5 @@ f :: f -> g -> C
 --  [0]  [1]  [2]
 ```
 
-- ([0]), ?
-- ([1]), fully polymorphic
+- ([0], [1]), fully polymorphic
 - ([2]), concrete type constructor
