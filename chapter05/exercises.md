@@ -640,3 +640,7 @@ where x = "Singin"
 ```
 
 **Answer:** Solution file: [./exercise.files/sing.hs](exercise.files/sing.hs)
+
+2. Now that it's fixed, make a minor change and make it sing the other song. If you're lucky, you'll end up with both songs stuck in your head!
+
+**Answer:** Solution file: [./exercise.files/sing.hs](exercise.files/sing2.hs)
