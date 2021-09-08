@@ -691,3 +691,23 @@ g (b, w) = (b, f w)
 The idea is to only fill in what we've marked with `???`.
 
 _Not all terms will always be used in the intended solution for a problem._
+
+1.
+
+```haskell
+f :: Int -> String
+f = undefined
+
+g :: String -> Char
+g = undefined
+
+h :: Int -> Char
+h = ???
+```
+
+**Answer:**
+
+```haskell
+h :: Int -> Char
+h i = g f i
+```
