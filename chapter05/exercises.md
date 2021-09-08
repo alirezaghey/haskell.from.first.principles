@@ -738,3 +738,30 @@ e a = w q a
 -- but syntax-wise the first solution is also correct
 -- this is also valid for the previous problem
 ```
+
+3.
+
+```haskell
+data X
+data Y
+data Z
+
+xz :: X -> Z
+xz = undefined
+
+yz :: Y -> Z
+yz = undefined
+
+xform :: (X, Y) -> (Z, Z)
+xform = ???
+```
+
+**Answer:**
+
+```haskell
+xform :: (X, Y) -> (Z, Z)
+xform x y = (xz x, yz y)
+-- we could also write 'xform x y = (yz y, xz x)'
+-- this may evaluate to something else depending on implementation
+-- but type-wise it is correct
+```
