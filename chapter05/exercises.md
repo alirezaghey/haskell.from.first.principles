@@ -644,3 +644,19 @@ where x = "Singin"
 2. Now that it's fixed, make a minor change and make it sing the other song. If you're lucky, you'll end up with both songs stuck in your head!
 
 **Answer:** Solution file: [./exercise.files/sing.hs](exercise.files/sing2.hs)
+
+3.
+
+```haskell
+module Arith3Broken where
+
+main :: IO ()
+Main = do
+   print 1 + 2
+   putStrLn 10
+   print (negate -1)
+   print ((+) 0 blah)
+   where blah = negate 1
+```
+
+**Answer:** Solution file: [./exercise.files/arith3broken_fixed.hs](exercise.files/arith3broken_fixed.hs)
