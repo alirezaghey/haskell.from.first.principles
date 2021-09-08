@@ -377,3 +377,50 @@ a = 12 + b
 b = 10000 * c
 c = 1
 ```
+
+## Type variable or specific type constructor?
+
+You will be shown a type declaration, and you should categorize each type. The choices are a fully polymorphic type variable, constrained polymorphic type variable, or concrete type constructor.
+
+1.
+
+```haskell
+f :: Num a => a -> b -> Int -> Int
+--           [0]  [1]   [2]    [3]
+```
+
+- ([0]), constrained polymorphic `Num`
+- ([1]), fully polymorphic
+- ([2],[3]), concrete type constructor
+
+2.
+
+```haskell
+f :: zed -> Zed -> Blah
+--   [0]    [1]    [2]
+```
+
+- ([0]), fully polymorphic
+- ([1], [2]), concrete type constructor
+
+3.
+
+```haskell
+f :: Enum b => a -> b -> C
+--            [0]  [1]  [2]
+```
+
+- ([0]), fully polymorphic
+- ([1]), constrained polymorphic `Enum`
+- ([2]), concrete type constructor
+
+4.
+
+```haskell
+f :: f -> g -> C
+--  [0]  [1]  [2]
+```
+
+- ([0]), ?
+- ([1]), fully polymorphic
+- ([2]), concrete type constructor
