@@ -468,3 +468,153 @@ functionS (x, y) = y
 functionS :: (a, b) -> b
 functionS (x, y) = y
 ```
+
+## Given a type, write the function
+
+You will be shown a type and a function that needs to be written. Use the information the type provides to determine what the function should do. We'll also tell you how many ways there are to write a function. Syntactically different but semantically equivalent implementations are not counted as being different. For example, writing a function one way then rewriting the semantically identical function but using anonymous lambda syntax does not count as two implementations.
+
+To make things a little easier, we'll demonstrate how to solve this kind of exercise. Given:
+
+```haskell
+muFunc :: (x -> y)
+       -> (y -> z)
+       -> c
+       -> (a, x)
+       -> (a, z)
+myFunc xToY yToZ _ (a, x) = undefined
+```
+
+Talking through the above, we have a function that takes four arguments. The final result is a tuple with the type `(a, z)`. It turns out, the `c` argument is nowhere in our results and there's nothing to do with it, so we use the underscore to ignore that. We named the two function arguments by their types and pattern matched on the tuple argument. The only way to get the second value of the tuple from teh type `x` to the type `z` is to use _both_ of the functions furnished to us. If we tried the following:
+
+```haskell
+myFunc xToY yToZ _ (a, x) =
+   (a, (xToY x))
+```
+
+We would get a type error that it expected the type `z` but the actual type was `y`. That's because we're on the right path, but not quite done yet! Accordingly, the following should typecheck:
+
+```haskell
+myFunc :: (x -> y)
+       -> (y -> z)
+       -> c
+       -> (a, x)
+       -> (a, z)
+myFunc xToY yToZ _ (a, x) =
+   (a, (yToZ (xToY x)))
+```
+
+1. There is only one function definition that typechecks and doesn't go into an infinite loop when you run it.
+
+```haskell
+i :: a -> a
+i = undefined
+```
+
+**Answer:**
+
+```haskell
+i :: a -> a
+i x = x
+```
+
+2. There is only one version that works.
+
+```haskell
+c :: a -> b -> a
+c = undefined
+```
+
+**Answer:**
+
+```haskell
+c :: a -> b -> a
+c x y = x
+```
+
+3. Given alpha equivalence are `c''` and `c` (see above) the same thing?
+
+```haskell
+c'' :: b -> a -> b
+c'' = undefined
+```
+
+**Answer:** Yes they are alpha equivalent.
+
+```haskell
+c'' :: b -> a -> b
+c'' x y = x
+```
+
+4. There is only one version that works.
+   ```haskell
+   c' :: a -> b -> b
+   c' = undefined
+   ```
+
+**Answer:**
+
+```haskell
+c' :: a -> b -> b
+c' x y = y
+```
+
+5. There are multiple possibilities, at least two of which you've seen in previous chapters.
+   ```haskell
+   r :: [a] -> [a]
+   r = undefined
+   ```
+
+**Answer:** Here are a few possible solutions
+
+```haskell
+r :: [a] -> [a]
+r x = tail x
+-- or
+r x = x ++ x
+-- or
+r x = concat [x, x] -- can add as many xs you like
+-- or
+r x = reverse x
+```
+
+6. There is only one version that will typecheck.
+
+```haskell
+co :: (b -> c) -> (a -> b) -> a -> c
+co = undefined
+```
+
+**Answer:**
+
+```haskell
+co :: (b -> c) -> (a -> b) -> a -> c
+co bToC aToB a = bToC $ aToB a
+```
+
+7. One version will typecheck.
+
+```haskell
+a :: (a -> c) -> a -> a
+a = undefined
+```
+
+**Answer:**
+
+```haskell
+a :: (a -> c) -> a -> a
+a _ x = x
+```
+
+8. One version will typecheck.
+
+```haskell
+a' :: (a -> b) -> a -> b
+a' = undefined
+```
+
+**Answer:**
+
+```haskell
+a' :: (a -> b) -> a -> b
+a' aToB a = aToB a
+```
