@@ -423,3 +423,48 @@ f :: f -> g -> C
 
 - ([0], [1]), fully polymorphic
 - ([2]), concrete type constructor
+
+## Write a type signature
+
+For the following expressions, please add a type signature. You should be able to rely on GHCi type inference to check your work, although you might not have precisely the same answer as GHCi gives (due to polymorphism, etc).
+
+1. While we haven't fully explained this syntax yet, you've seen it in Chapter 2 and as a solution to an exercise in Chapter 4. This syntax is a way of destructuring a single element of a list by pattern matching.
+
+```haskell
+functionH ::
+functionH (x:_) = x
+```
+
+**Answer:**
+
+```haskell
+functionH :: [a] -> a
+functionH (x:_) = x
+```
+
+2.
+
+```haskell
+functionC ::
+functionC x y = if (x > y) then True else False
+```
+
+**Answer:**
+
+```haskell
+functionC :: (Ord a) => a -> a -> Bool
+```
+
+3.
+
+```haskell
+functionS ::
+functionS (x, y) = y
+```
+
+**Answer:**
+
+```haskell
+functionS :: (a, b) -> b
+functionS (x, y) = y
+```
