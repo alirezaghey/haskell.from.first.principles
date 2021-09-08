@@ -213,3 +213,37 @@ myAlph x = x < 'z'
 ```
 
 **Answer:** `(<) :: Char -> Char -> Bool`
+
+# Chapter Exercises
+
+## Multiple choice
+
+1. A value of type `[a]` is:
+
+- [ ] a. a list of alphabetic characters
+- [ ] b. a list of lists
+- [x] c. a list whose elements are all of some type `a`
+- [ ] d. a list whose elements are all of different types
+
+_Note:_ `[a]` could also be of the types described in `a` and `b` but it _does not have_ to be. In other words, the types described in `a` and `b` are subsets of `c`. `c` is the most polymorphic permissable type that still respects the constraints of `[a]`.
+
+2. A function of type `[[a]] -> [a]` could:
+
+- [x] a. take a list of strings as an argument
+- [ ] b. transform a character into a string
+- [ ] c. transform a string into a list of strings
+- [ ] d. take two arguments
+
+3. A function of type `[a] -> Int -> a`:
+
+- [ ] a. takes one argument
+- [x] b. returns one element of type `a` from a list
+- [ ] c. must return an `Int` value
+- [ ] d. is completely fictional
+
+4. A function of type `(a, b) -> a`:
+
+- [ ] a. takes a list argument and returns a `Char` value
+- [ ] b. has zero arguments
+- [x] c. takes a tuple argument and returns the first value
+- [ ] d. requires that `a` and `b` be of different types
