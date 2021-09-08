@@ -619,7 +619,7 @@ a' :: (a -> b) -> a -> b
 a' aToB a = aToB a
 ```
 
-\*\* Fix it
+## Fix it
 
 Won't someone take pity on this poor broken code and fix it up? Be sure to check carefully for things like capitalization, parentheses, and indentation.
 
