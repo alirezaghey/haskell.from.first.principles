@@ -262,3 +262,17 @@ example = 1
 ```
 
 If you had not included the `NoMonomorphismRestriction` extension, `example` would have had the type `Integer` instead of `Num a => a`. Do your best to determine the _most_ polymorphic type an expression could have in the following exercises.
+
+1. All function applications return a value. Determin the value returned by these function applications and the type of that value.
+   <br> a. `(* 9) 6`
+   <br> **Answer:** value: `36`, type: `Num a => a`
+   <br> b. `head [(0, "doge"), (1, "kitteh")]`
+   <br> **Answer:** value: `(0, "doge")`, type: `Num a => (a, [Char])`
+   <br> c. `head [(0 :: Integer, "doge"), (1, "kitteh")]`
+   <br> **Answer:** value: `(0, "doge")`, type: `(Integer, [Char])`
+   <br> d. `if False then True else False`
+   <br> **Answer:** value: `False`, type: `Bool`
+   <br> e. `length [1, 2, 3, 4, 5]`
+   <br> **Answer:** value: `5`, type: `Int`
+   <br> f. `(length [1, 2, 3, 4]) > (length "TACOCAT")`
+   <br> **Answer:** value: `False`, type: `Bool`
