@@ -711,3 +711,30 @@ h = ???
 h :: Int -> Char
 h i = g f i
 ```
+
+2.
+
+```haskell
+data A
+data B
+data C
+
+q :: A -> B
+q = undefined
+
+w :: B -> C
+w = undefined
+
+e :: A -> C
+e = ???
+```
+
+**Answer:**
+
+```haskell
+e :: A -> C
+e a = w q a
+-- we could also write 'e a = w $ q a' which would make it more readable
+-- but syntax-wise the first solution is also correct
+-- this is also valid for the previous problem
+```
