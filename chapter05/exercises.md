@@ -765,3 +765,23 @@ xform x y = (xz x, yz y)
 -- this may evaluate to something else depending on implementation
 -- but type-wise it is correct
 ```
+
+4.
+
+```haskell
+munge :: (x -> y)
+      -> (y -> (w, z))
+      -> x
+      -> w
+munge = ???
+```
+
+**Answer:**
+
+```haskell
+munge :: (x -> y)
+      -> (y -> (w, z))
+      -> x
+      -> w
+munge xToY yToWZTuple x = fst $ yToWZTuple $ xToY x
+```
