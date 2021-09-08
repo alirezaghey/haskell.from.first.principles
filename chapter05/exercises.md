@@ -660,3 +660,34 @@ Main = do
 ```
 
 **Answer:** Solution file: [./exercise.files/arith3broken_fixed.hs](exercise.files/arith3broken_fixed.hs)
+
+## Type-Kwon-Do
+
+The name is courtesy of Phillip Wright. Thank you for the idea!
+
+The focus here is on manipulating terms in order to get the types to fit. This _sort_ of exercise is something you’ll encounter in writing real Haskell code, so the practice will make it easier to deal with when you get there. Practicing this will make you better at writing ordinary code as well.
+We provide the types and bottomed out (declared as `undefined`) terms. _Bottom_ and _undefined_ will be explained in more detail later. The contents of the terms are irrelevant here. You’ll use only the declarations provided and what the Prelude provides
+by default unless otherwise specified. Your goal is to make the `???`’d declaration pass the typechecker by modifying it alone.
+Here’s a worked example for how we present these exercises and how you are expected to solve them. Given the following:
+
+```haskell
+data Woot
+data Blah
+
+f :: Woot -> Blah
+f = undefined
+
+g :: (Blah, Woot) -> (Blah, Blah)
+g = ???
+```
+
+Here it’s _g_ that you’re supposed to implement; however, you can’t evaluate anything. You’re to only use type-checking and type-inference to validate your answers. Also note that we’re using a trick for defining datatypes which can be named in a type signature, but have no values. Here’s an example of a valid solution:
+
+```haskell
+g :: (Blah, Woot) -> (Blah, Blah)
+g (b, w) = (b, f w)
+```
+
+The idea is to only fill in what we've marked with `???`.
+
+_Not all terms will always be used in the intended solution for a problem._
