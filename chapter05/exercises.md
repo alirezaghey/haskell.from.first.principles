@@ -321,3 +321,59 @@ f = x ++ y ++ z
 
 What is the type of `f`?
 <br> **Answer:** `f :: [Char]`
+
+## Does it compile?
+
+For each set of expressions, figure out which expression, if any, causes the compiler to squawk at you (n.b. we do not mean literal squawking) and why. Fix it if you can.
+
+1.
+
+```haskell
+bigNum = (^) 5 $ 10
+wahoo = bigNum $ 10
+```
+
+<br>**Answer:** The second line `wahoo = bigNum $ 10` throws an error. It is not clear what operation we intend to do with the two numbers.
+
+2.
+
+```haskell
+x = print
+y = print "woohoo!"
+z = x "hello world"
+```
+
+<br>**Answer:** None of the lines is syntactically incorrect.
+
+3.
+
+```haskell
+a = (+)
+b = 5
+c = b 10
+d = c 200
+```
+
+<br>**Answer:** Lines 3 and 4 are problematic because 2 numbers are introduced without any operator or function. We can rewrite the code as follows:
+
+```haskell
+a = (+)
+b = 5
+c = a b 10 -- c evaluates to (+) b 10 = 5 + 10
+d = a c 200 -- d evaluates to (+) c 200 = (5 + 10) + 200
+```
+
+4.
+
+```haskell
+a = 12 + b
+b = 10000 * c
+```
+
+<br>**Answer:** `c` is not in scope. Adding it will solve the problem. Keep in mind that for it to run in GHCi, you need to arrange the order such that every introduced variable is defined previously.
+
+```haskell
+a = 12 + b
+b = 10000 * c
+c = 1
+```
