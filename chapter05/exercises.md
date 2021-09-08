@@ -247,3 +247,18 @@ _Note:_ `[a]` could also be of the types described in `a` and `b` but it _does n
 - [ ] b. has zero arguments
 - [x] c. takes a tuple argument and returns the first value
 - [ ] d. requires that `a` and `b` be of different types
+
+## Determine the type
+
+For the following functions, determine the type of the specified value. We suggest you type them into a file and load the contents of the file in GHCi. In all likelihood, it initially will not have the polymorphic types you might expect due to the monomorphism restriction. That means that top-level declarations by default will have a concrete type if any can be determined. You can fix this by setting up your file like so:
+
+```haskell
+{-# LANGUAGE NoMonomorphismRestriction #-}
+
+module DetermineTheType where
+
+-- simple example
+example = 1
+```
+
+If you had not included the `NoMonomorphismRestriction` extension, `example` would have had the type `Integer` instead of `Num a => a`. Do your best to determine the _most_ polymorphic type an expression could have in the following exercises.
