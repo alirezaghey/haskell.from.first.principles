@@ -276,3 +276,48 @@ If you had not included the `NoMonomorphismRestriction` extension, `example` wou
    <br> **Answer:** value: `5`, type: `Int`
    <br> f. `(length [1, 2, 3, 4]) > (length "TACOCAT")`
    <br> **Answer:** value: `False`, type: `Bool`
+
+2. Given:
+
+```haskell
+x = 5
+y = x + 5
+w = y * 10
+```
+
+What is the type of `w`?
+<br> **Answer:** `Num a => a`
+
+3. Given:
+
+```haskell
+x = 5
+y = x + 5
+z y = y * 10
+```
+
+What is the type of `z`?
+<br>**Answer:** `z :: Num a => a -> a`
+
+4. Given:
+
+```haskell
+x = 5
+y = x + 5
+f = 4 / y
+```
+
+What is the type of `f`?
+<br>**Answer:** `f :: Fractional a => a`
+
+5. Given:
+
+```haskell
+x = "Julie"
+y = " <3"
+z = "Haskell"
+f = x ++ y ++ z
+```
+
+What is the type of `f`?
+<br> **Answer:** `f :: [Char]`
