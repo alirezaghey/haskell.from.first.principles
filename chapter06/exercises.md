@@ -129,3 +129,20 @@ instance (Eq a) => Eq (Which a) where
     a == a'
   (==) _ _ = False
 ```
+
+7.
+
+```haskell
+data EitherOr a b =
+    Hello a
+  | Goodbye b
+
+instance (Eq a, Eq b) => Eq (EitherOr a b) where
+  (==) (Hello a)
+       (Hello a') =
+         a == a'
+  (==) (Goodbye b)
+       (Goodbye b') =
+         b == b'
+  (==) _ _ = False
+```

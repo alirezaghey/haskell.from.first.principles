@@ -130,3 +130,33 @@ instance (Eq a) => Eq (Which a) where
 -- data Which a =
 --     ThisOne a
 --   | ThatOne a deriving (Eq)
+
+--------------------------------------------------------------------
+
+data EitherOr a b =
+    Hello a
+  | Goodbye b
+
+instance (Eq a, Eq b) => Eq (EitherOr a b) where
+  (==) (Hello a)
+       (Hello a') =
+         a == a'
+  (==) (Goodbye b)
+       (Goodbye b') =
+         b == b'
+  (==) _ _ = False
+
+
+-- alternative infix implementation
+-- instance (Eq a, Eq b) => Eq (EitherOr a b) where
+--   (Hello a) == (Hello a') =
+--     a == a'
+--   (Goodbye b) == (Goodbye b') =
+--     b == b'
+--   _ == _ = False
+
+
+-- alternatively you can just derive it from Eq
+-- data EitherOr a b =
+--     Hello a
+--   | Goodbye b deriving (Eq)
