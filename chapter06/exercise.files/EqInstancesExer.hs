@@ -17,6 +17,7 @@ instance Eq TisAnInteger where
 -- data TisAnInteger =
 --  TisAn Integer deriving (Eq)
 
+------------------------------------------------------------------
 
 data TwoIntegers =
   Two Integer Integer
@@ -34,3 +35,33 @@ instance Eq TwoIntegers where
 -- alternatively you can just derive it from Eq
 -- data TwoIntegers =
 --   Two Integer Integer deriving (Eq)
+
+-------------------------------------------------------------------
+
+data StringOrInt =
+    TisAnInt Int
+  | TisAString String
+
+instance Eq StringOrInt where
+  (==) (TisAnInt int)
+       (TisAnInt int') =
+         int == int'
+  (==) (TisAString str)
+       (TisAString str') =
+         str == str'
+  (==) _ _ = False
+
+-- alternative infix implementation
+-- instance Eq StringOrInt where
+--   (TisAnInt int) == (TisAnInt int') =
+--     int == int'
+--   (TisAString str) == (TisAString str') =
+--     str == str'
+--   _ == _ = False
+
+-- alternatively you can just derive it from Eq
+-- data StringOrInt =
+--     TisAnInt Int
+--   | TisAString String deriving (Eq)
+
+------------------------------------------------------------------

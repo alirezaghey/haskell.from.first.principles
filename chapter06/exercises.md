@@ -43,3 +43,28 @@ instance Eq TwoIntegers where
        (Two int1' int2') =
     int1 == int1' && int2 == int2'
 ```
+
+3.
+
+```haskell
+data StringOrInt =
+    TisAnInt Int
+  | TisAString String
+```
+
+**Answer:**
+
+```haskell
+data StringOrInt =
+    TisAnInt Int
+  | TisAString String
+
+instance Eq StringOrInt where
+  (==) (TisAnInt int)
+       (TisAnInt int') =
+         int == int'
+  (==) (TisAString str)
+       (TisAString str') =
+         str == str'
+  (==) _ _ = False
+```
