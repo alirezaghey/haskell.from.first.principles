@@ -68,3 +68,22 @@ instance Eq StringOrInt where
          str == str'
   (==) _ _ = False
 ```
+
+4.
+
+```haskell
+data Pair a =
+  Pair a a
+```
+
+**Answer:**
+
+```haskell
+data Pair a =
+  Pair a a
+
+instance Eq a => Eq (Pair a) where
+  (==) (Pair a1 a2)
+       (Pair a1' a2') =
+         a1 == a1' && a2 == a2'
+```

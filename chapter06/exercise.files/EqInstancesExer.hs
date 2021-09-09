@@ -65,3 +65,23 @@ instance Eq StringOrInt where
 --   | TisAString String deriving (Eq)
 
 ------------------------------------------------------------------
+
+data Pair a =
+  Pair a a
+
+instance Eq a => Eq (Pair a) where
+  (==) (Pair a1 a2)
+       (Pair a1' a2') =
+         a1 == a1' && a2 == a2'
+
+-- alternative infix implementation
+-- instance Eq a => Eq (Pair a) where
+--   (Pair a1 a2) == (Pair a1' a2') =
+--     a1 == a1' && a2 == a2'
+
+
+-- alternatively you can just derive it from Eq
+-- data Pair a =
+--   Pair a a deriving (Eq)
+
+------------------------------------------------------------------
