@@ -103,3 +103,30 @@ instance (Eq a, Eq b) => Eq (Tuple a b) where
 -- data Tuple a b =
 --   Tuple a b deriving (Eq)
 
+------------------------------------------------------------------
+
+data Which a =
+    ThisOne a
+  | ThatOne a
+
+instance (Eq a) => Eq (Which a) where
+  (==) (ThisOne a) (ThisOne a') =
+    a == a'
+  (==) (ThatOne a) (ThatOne a') =
+    a == a'
+  (==) _ _ = False
+
+
+-- alternative infix implementation
+-- instance (Eq a) => Eq (Which a) where
+--   (ThisOne a) == (ThisOne a') =
+--     a == a'
+--   (ThatOne a) == (ThatOne a') =
+--     a == a'
+--   _ == _ = False
+
+
+-- alternatively you can just derive it from Eq
+-- data Which a =
+--     ThisOne a
+--   | ThatOne a deriving (Eq)

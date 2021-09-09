@@ -106,3 +106,26 @@ instance (Eq a, Eq b) => Eq (Tuple a b) where
        (Tuple a' b') =
          a == a' && b == b'
 ```
+
+6.
+
+```haskell
+data Which a =
+    ThisOne a
+  | ThatOne a
+```
+
+**Answer:**
+
+```haskell
+data Which a =
+    ThisOne a
+  | ThatOne a
+
+instance (Eq a) => Eq (Which a) where
+  (==) (ThisOne a) (ThisOne a') =
+    a == a'
+  (==) (ThatOne a) (ThatOne a') =
+    a == a'
+  (==) _ _ = False
+```
