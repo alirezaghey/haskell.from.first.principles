@@ -85,3 +85,21 @@ instance Eq a => Eq (Pair a) where
 --   Pair a a deriving (Eq)
 
 ------------------------------------------------------------------
+
+data Tuple a b =
+  Tuple a b
+
+instance (Eq a, Eq b) => Eq (Tuple a b) where
+  (==) (Tuple a b)
+       (Tuple a' b') =
+         a == a' && b == b'
+
+-- alternative infix implementation
+-- instance (Eq a, Eq b) => Eq (Tuple a b) where
+--   (Tuple a b) == (Tuple a' b') =
+--     a == a' && b == b'
+
+-- alternatively you can just derive it from Eq
+-- data Tuple a b =
+--   Tuple a b deriving (Eq)
+
