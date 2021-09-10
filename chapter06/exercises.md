@@ -325,4 +325,4 @@ s1 = Sentence "dogs" "drool"
 s2 = Sentence "Julie" "loves" "dogs"
 ```
 
-**Answer:** Yes, it will typecheck and compile.
+**Answer:** Yes, it will typecheck and compile. Please note that the effective type of `s1` will be `s1 :: Object -> Sentece`. This means that `s1` is a partially applied function that still needs an argument of type `Object` to evaluate to a value of type `Sentence`.
