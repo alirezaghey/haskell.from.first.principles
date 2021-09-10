@@ -309,3 +309,20 @@ _Note:_ The compiler infers the type of `settlDown` from context and gives it `s
 <br>a. What values are acceptable inputs to that function? Values of type `Mood` which are either `Woot` or `Blah`.
 <br>b. What will happen if you try to run `settleDown 9`? Why? The compiler throws an error starting with `No instance for (Num Mood) arising from the literal ‘9’`. The reason is that the compiler expects a value of type `Mood` but receives a `Num`.
 <br>c. What will happen if you try to run `Blah > Woot`? Why? The compiler will complain that type `Mood` doesn't have an instance for the typeclass `Ord` which is required for comparison operations.
+
+4. Does the following typecheck? If not, why not?
+
+```haskell
+type Subject = String
+type Verb = String
+type Object = String
+
+data Sentence =
+  Sentence Subject Verb Object
+  deriving (Eq, Show)
+
+s1 = Sentence "dogs" "drool"
+s2 = Sentence "Julie" "loves" "dogs"
+```
+
+**Answer:** Yes, it will typecheck and compile.
