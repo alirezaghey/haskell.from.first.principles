@@ -175,3 +175,11 @@ compare (3 * 4) (3 * 5)
 ```
 
 **Answer:** Yes, this will work and the result will be `LT`. The signature for `compare` is `compare :: (Ord a) => a -> a -> Ordering`. This means that `compare` takes 2 arguments of any type that has an instance for `Ord` and returns a value of type `Ordering`. The `Ordering` type has 3 constructors `LT`, `GT`, and `EQ`. The input arguments will render the concrete signature of `compare` to `compare :: Int -> Int -> Ordering`
+
+3.
+
+```haskell
+compare "Julie" True
+```
+
+**Answer:** No, this will not work. `compare` has the type `compare :: (Ord a) => a -> a -> Ordering`. Notice that both parameters of `compare` _must_ have the same type. Even when both `[Char]` and `Bool` have an instance of `Ord` there is no way the compiler knows how to compare them with one another.
