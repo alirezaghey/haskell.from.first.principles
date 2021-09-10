@@ -183,3 +183,11 @@ compare "Julie" True
 ```
 
 **Answer:** No, this will not work. `compare` has the type `compare :: (Ord a) => a -> a -> Ordering`. Notice that both parameters of `compare` _must_ have the same type. Even when both `[Char]` and `Bool` have an instance of `Ord` there is no way the compiler knows how to compare them with one another.
+
+4.
+
+```haskell
+(5 + 3) > (3 + 6)
+```
+
+**Answer:** Yes, this will work and the result is `False`. The signature for `(>)` is `(>) :: (Ord a) => a -> a -> Bool`.
