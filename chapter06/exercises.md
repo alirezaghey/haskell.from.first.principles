@@ -146,3 +146,11 @@ instance (Eq a, Eq b) => Eq (EitherOr a b) where
          b == b'
   (==) _ _ = False
 ```
+
+## Tuple experiment
+
+Look at the types given for `quotRem` and `divMod`. What do you think those functions do? Test your hypotheses by playing with them in the REPL. We've given you a sample to start with below:
+
+`ones x = snd (divMod x 10)`
+
+**Answer:** `ones` takes x and integer divides it by 10. `divMod` returns a tuple where the first element is the quotient and the second element is the remainder. The `snd` function returns the second element of the tuple which is the remainer.
