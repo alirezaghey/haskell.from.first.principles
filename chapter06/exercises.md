@@ -167,3 +167,11 @@ max (length [1, 2, 3])
 ```
 
 **Answer:** Yes, this will work and the result will be `5`. The signature for `max` is `max :: (Ord a) => a -> a -> a` and the signature of `length` is `length :: [a] -> Int`. This will render the concrete signature of `max` into `max :: Int -> Int -> Int`. Evaluating the expression give `max 3 5 = 5`.
+
+2.
+
+```haskell
+compare (3 * 4) (3 * 5)
+```
+
+**Answer:** Yes, this will work and the result will be `LT`. The signature for `compare` is `compare :: (Ord a) => a -> a -> Ordering`. This means that `compare` takes 2 arguments of any type that has an instance for `Ord` and returns a value of type `Ordering`. The `Ordering` type has 3 constructors `LT`, `GT`, and `EQ`. The input arguments will render the concrete signature of `compare` to `compare :: Int -> Int -> Ordering`
