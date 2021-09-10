@@ -191,3 +191,44 @@ compare "Julie" True
 ```
 
 **Answer:** Yes, this will work and the result is `False`. The signature for `(>)` is `(>) :: (Ord a) => a -> a -> Bool`.
+
+# Chapter Exercises
+
+## Multiple choice
+
+1. The `Eq` class
+
+- [ ] a. includes all types in Haskell
+- [ ] b. is the same as the `Ord` class
+- [x] c. makes equality tests possible
+- [ ] d. only includes numeric types
+
+2. The typeclass `Ord`
+
+- [x] a. allows any two values to be compared
+- [ ] b. is a subclass of `Eq`
+- [ ] c. is a superclass of `Eq`
+- [ ] d. has no instancve for `Bool`
+
+3. Suppose the typeclass `Ord` has an operator `>`. What is the type of `>`?
+
+- [x] `Ord a => a -> a -> Bool`
+- [ ] `Ord a => Int -> Bool`
+- [ ] `Ord a => a -> Char`
+- [ ] `Ord a => Char -> [Char]
+
+4. In `x = divMod 16 12`
+
+- [ ] the type of `x` is `Integer`
+- [ ] the value of `x` is undecidable
+- [x] the type of `x` is a tuple.
+- [ ] `x` is equal to `12 / 16`
+
+_Note:_ `x` is of type `Integral a => (a, a)` to be exact.
+
+5. The typeclass `Integral` includes
+
+- [x] `Int` and `Integer` numbers
+- [ ] integral, real, and fractional numbers
+- [ ] Schrodinger's cat
+- [ ] only positive numbers
