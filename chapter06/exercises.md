@@ -303,3 +303,9 @@ settleDown x = if x == Woot
 ```
 
 _Note:_ The compiler infers the type of `settlDown` from context and gives it `settleDown :: Mood -> Mood`
+
+3. If you were able to get `settleDown` to typecheck:
+
+<br>a. What values are acceptable inputs to that function? Values of type `Mood` which are either `Woot` or `Blah`.
+<br>b. What will happen if you try to run `settleDown 9`? Why? The compiler throws an error starting with `No instance for (Num Mood) arising from the literal ‘9’`. The reason is that the compiler expects a value of type `Mood` but receives a `Num`.
+<br>c. What will happen if you try to run `Blah > Woot`? Why? The compiler will complain that type `Mood` doesn't have an instance for the typeclass `Ord` which is required for comparison operations.
