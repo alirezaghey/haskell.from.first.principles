@@ -279,3 +279,27 @@ data Person = Person Bool deriving Show
 printPerson :: Person -> IO ()
 printPerson person = putStrLn (show person)
 ```
+
+2. Does the following typecheck? If not, why not?
+
+```haskell
+data Mood = Blah
+          | Woot deriving Show
+
+settleDown x = if x == Woot
+                  then Blah
+                  else x
+````
+
+**Answer:** It won't typecheck. `Mood` needs to implement the `Eq` typeclass for it to use `==`. Fix:
+
+```haskell
+data Mood = Blah
+          | Woot deriving (Show, Eq)
+
+settleDown x = if x == Woot
+                  then Blah
+                  else x
+```
+
+_Note:_ The compiler infers the type of `settlDown` from context and gives it `settleDown :: Mood -> Mood`
