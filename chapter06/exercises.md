@@ -261,3 +261,21 @@ In an equation for `printIt`: printIt = putStrLn (show x)
 It's saying it can't find an implementation of the typeclass `Show` for the type `Int -> Int`, which makes sense. Nothing with the function type constructor `(->)` has an instance of `Show` by default in Haskell.
 
 Examine the following code and decide whether it will typecheck. The load it in GHCi and see if you were correct. If it doesn't typecheck, try to match the type error against your understanding of why it didn't work. If you can, fix the error and re-run the code.
+
+1. Does the following code typecheck? If not, why not?
+
+```haskell
+data Person = Person Bool
+
+printPerson :: Person -> IO ()
+printPerson person = putStrLn (show person)
+```
+
+**Answer:** No, it won't typecheck. The problem is that `Person` has not provided an instance for the typeclass `Show` that is required to create a `String` representation of a data type. Fix:
+
+````haskell
+data Person = Person Bool deriving Show
+
+printPerson :: Person -> IO ()
+printPerson person = putStrLn (show person)
+```
