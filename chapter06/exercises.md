@@ -154,3 +154,16 @@ Look at the types given for `quotRem` and `divMod`. What do you think those func
 `ones x = snd (divMod x 10)`
 
 **Answer:** `ones` takes x and integer divides it by 10. `divMod` returns a tuple where the first element is the quotient and the second element is the remainder. The `snd` function returns the second element of the tuple which is the remainer.
+
+## Will The Work?
+
+Take a look at teh following code examples and try to decide if they will work, what result they will return if they do, and why or why not (be sure, as always, to test them in your REPL once you have decided on your answer):
+
+1.
+
+```haskell
+max (length [1, 2, 3])
+    (length [8, 9, 10, 11, 12])
+```
+
+**Answer:** Yes, this will work and the result will be `5`. The signature for `max` is `max :: (Ord a) => a -> a -> a` and the signature of `length` is `length :: [a] -> Int`. This will render the concrete signature of `max` into `max :: Int -> Int -> Int`. Evaluating the expression give `max 3 5 = 5`.
