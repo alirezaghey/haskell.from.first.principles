@@ -232,3 +232,32 @@ _Note:_ `x` is of type `Integral a => (a, a)` to be exact.
 - [ ] integral, real, and fractional numbers
 - [ ] Schrodinger's cat
 - [ ] only positive numbers
+
+## Does it typecheck?
+
+For this section of exercises, you'll be practicing looking for type and typeclass errors.
+
+For example, `printIt` will not work because functions like `x` have no instance of `Show`, the typeclass that lets you convert things to Strings (usually for printing):
+
+```haskell
+x    :: Int -> Int
+x blah = blah + 20
+
+printIt :: IO ()
+printIt = putStrLn (show x)
+```
+
+Here's the type error you get if you try to load the code:
+
+```
+No instance for (Show (Int -> Int)) arising
+  from a use of `show`
+
+In the first argument of `putStrLn`, namely `(show x)`
+In the expression: putStrLn (show x)
+In an equation for `printIt`: printIt = putStrLn (show x)
+```
+
+It's saying it can't find an implementation of the typeclass `Show` for the type `Int -> Int`, which makes sense. Nothing with the function type constructor `(->)` has an instance of `Show` by default in Haskell.
+
+Examine the following code and decide whether it will typecheck. The load it in GHCi and see if you were correct. If it doesn't typecheck, try to match the type error against your understanding of why it didn't work. If you can, fix the error and re-run the code.
