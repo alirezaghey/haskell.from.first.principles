@@ -379,3 +379,134 @@ comparePapus p p' = p > p'
 ```
 
 **Answer:** No, this won't typecheck. Reason is that the `Papus` type has not provided an instance for `Ord`.
+
+## Match the types
+
+We're going to give you two types and their implementations. Then we're going to ask you if you can substitute the second type for the first. You can test this by typing the first declaration and its type into a file and editing in the new one, loading to see if ti fails. Don't guess, test all you answers!
+
+1. For the following definition:
+
+```haskell
+i :: Num a => a
+i = 1
+```
+
+Try replacing the type signature with the following: `i :: a`.
+After you've formulated you own answer, then tested that answer and believe you understand why you were right or wrong, make sure to use GHCi to check what type GHC _infers_ for the definitions we provide without a type assigned.
+
+**Answer:** Changing the type definition to `i :: a` won't work. The most generic type that would work is `Num`.
+
+2. For the following definition:
+
+```haskell
+f :: Float
+f = 1.0
+```
+
+Try replacing the type signature with the folllowing: `f :: Num a => a`
+
+**Answer:** It won't typcheck. `Float` is more specific than `Num`. Another way to think about it is that `f :: Num a => a` means that `f` can be any type that has an instance of `Num`. Which isn't the case.
+
+3. For the following definition:
+
+```haskell
+f :: Float
+f = 1.0
+```
+
+Try replacing the type signature with the following: `f : Fractional a => a`
+
+**Answer:** It will typecheck.
+
+4. For the following definition:
+
+```haskell
+f :: Float
+f = 1.0
+```
+
+Try replacing the type signature with the following: `f :: RealFrac a => a`
+
+**Answer:** It will typecheck.
+
+5.
+
+```haskell
+freud :: a -> a
+freud x = x
+```
+
+Try replacing the type signature with the following: `freud :: Ord a => a -> a`
+
+**Answer:** It will typecheck. The additional constraint on `freud` makes it accept only types that have an instance of `Ord` implemented.
+
+6.
+
+```haskell
+freud' :: a -> a
+freud' x = x
+```
+
+Try replacing the type signature with the following: `freud' :: Int -> Int`
+
+**Answer:** It will typecheck.
+
+7.
+
+```haskell
+myX = 1 :: Int
+sigmund :: Int -> Int
+sigmund x = myX
+```
+
+Try replacing the type signature with the following: `sigmund :: a -> a`
+
+**Answer:** This won't typecheck. `sigmund :: a -> a` is way more generic than the actual type of `sigmund :: a => Int`.
+
+8.
+
+```haskell
+myX = 1 :: Int
+sigmund' :: Int -> Int
+sigmund' x = myX
+```
+
+Try replacing the type signature with the following: `sigmund' :: Num a => a -> a`
+
+**Answer:** This won't typecheck. `sigmund' :: Num a => a -> a` is more general than the actual implementation which returns an `Int`.
+
+9. You'll need to import `sort` from Data.List.
+
+```haskell
+jung :: Ord a => [a] -> a
+jung xs = head (sort xs)
+```
+
+Try replacing the type signature with the following: `jung :: [Int] -> Int`
+
+**Answer:** This will typecheck. The only difference is that `jung` won't accept anything but a list of `Int`s while previously, it did accept a list of any type that had an instance for the `Ord` typeclass.
+
+10.
+
+```haskell
+young :: [Char] -> Char
+young xs = head (sort xs)
+```
+
+Try replacing the type signature with the following: `young :: Ord a => [a] -> a`
+
+**Answer:** This will typecheck.
+
+11.
+
+```haskell
+mySort :: [Char] -> [Char]
+mySort = sort
+
+signifier :: [Char] -> Char
+signifier xs = head (mySort xs)
+```
+
+Try replacing the type signature with the following: `signifier :: Ord a => [a] -> a`
+
+**Answer:** This won't typecheck. `mySort` has a more specific type. It only accepts `[Char]` while `signifier` will accept `[a]` provided `a` has an instance of `Ord`.
