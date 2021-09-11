@@ -326,3 +326,56 @@ s2 = Sentence "Julie" "loves" "dogs"
 ```
 
 **Answer:** Yes, it will typecheck and compile. Please note that the effective type of `s1` will be `s1 :: Object -> Sentece`. This means that `s1` is a partially applied function that still needs an argument of type `Object` to evaluate to a value of type `Sentence`.
+
+## Given a datatype declaration, what can we do?
+
+Given the following datatype definitions:
+
+```haskell
+data Rocks =
+  Rocks String deriving (Eq, Show)
+
+data Yeah =
+  Yeah Bool deriving (Eq, Show)
+
+data Papu =
+  Papu Rocks Yeah
+  deriving (Eq, Show)
+```
+
+Which of the following will typecheck? For the ones that don't typecheck, why don't they?
+
+1.
+
+```haskell
+phew = Papu "chases" True
+```
+
+**Answer:** No, it won't. Reason is that `Papu` expects an instance of `Rocks` and `Yeah` as arguments to its constructor, but we are giving a String and a boolean.
+
+2.
+
+```haskell
+truth = Papu (Rocks "chomskydoz")
+             (Yeah True)
+```
+
+**Answer:** Yes, this code snippet will compile.
+
+3.
+
+```haskell
+equalityForall :: Papu -> Papu -> Bool
+equalityForall p p' = p == p'
+```
+
+**Answer:** Yes, this code snippet will compile. All of `Papu`, `Rocks` and `Yeah` have derived from `Eq`.
+
+4.
+
+```haskell
+comparePapus :: Papu -> Papu -> Bool
+comparePapus p p' = p > p'
+```
+
+**Answer:** No, this won't typecheck. Reason is that the `Papus` type has not provided an instance for `Ord`.
