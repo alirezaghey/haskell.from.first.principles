@@ -510,3 +510,41 @@ signifier xs = head (mySort xs)
 Try replacing the type signature with the following: `signifier :: Ord a => [a] -> a`
 
 **Answer:** This won't typecheck. `mySort` has a more specific type. It only accepts `[Char]` while `signifier` will accept `[a]` provided `a` has an instance of `Ord`.
+
+## Type-Kwon-Do Two: Electric Typealoo
+
+Round Two! Same rules apply -- you're trying to fill in the terms (code) which'll fit the type. The idea with these exercises is that you'll derive the implementation from the type information. You'll probably need to use stuff from Prelude.
+
+```haskell
+chk :: Eq b => (a -> b) -> a -> b -> Bool
+chk = ???
+```
+
+**Answer:**
+
+```haskell
+chk :: Eq b => (a -> b) -> a -> b -> Bool
+chk aToB A B = (aToB A) == B
+```
+
+2.
+
+```haskell
+arith :: Num b
+      => (a -> b)
+      -> Integer
+      -> a
+      -> b
+arith = ???
+```
+
+**Answer:**
+
+```haskell
+arith :: Num b
+      => (a -> b)
+      -> Integer
+      -> a
+      -> b
+arith aToB i a = aToB a + fromInteger i
+```
