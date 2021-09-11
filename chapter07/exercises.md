@@ -1,0 +1,73 @@
+# Solutions to Problmes of Chapter 6
+
+## Grab Bag
+
+Note the following exercises are from source code files, not written for use directly in the REPL. Of cource, you can change them to test directly in the REPL if you prefer.
+
+1. Which (two or more) of the following are equivalent?
+   <br>a. `mTh x y z = x * y * z`
+   <br>b. `mTh x y = \z -> x * y * z`
+   <br>c. `mTh x = \y -> \z -> x * y * z`
+   <br>d. `mTh = \x -> \y -> \z -> x * y * z`
+   <br>**Answer:** All of the above are equivalent.
+
+2. The type of `mTh` (above) is `Num a => a -> a -> a -> a`. What is the type of `mTh 3`?
+   <br>a. `Integer -> Integer -> Integer`
+   <br>b. `Num a => a -> a -> a -> a`
+   <br>c. `Num a => a -> a`
+   <br>d. `Num a => a -> a -> a`
+   <br>**Answer:** d
+3. Next, we'll practice writings anonymous lambda syntax. For example, one could rewrite:
+
+```haskell
+addOne x = x + 1
+```
+
+Into:
+
+```haskell
+addOne = \x -> x + 1
+```
+
+Try to make it so it can still be loaded as a top-level definition by GHCi. This will make it easier to validate your answers.
+<br> a. Rewrite the `f` function in the where clause.
+
+```haskell
+addOneIfOdd n = case odd n of
+  True -> f n
+  False -> n
+  where f n = n + 1
+```
+
+**Answer:**
+
+```haskell
+addOneIfOdd n = case odd n of
+  True -> f n
+  False -> n
+  where f = \x -> x + 1
+```
+
+<br>b. Rewrite the following to use anonymous lambda syntax:
+
+```haskell
+addFive x y = (if x > y then y else x) + 5
+```
+
+**Answer:**
+
+```haskell
+addFive = \x -> \y -> (if x > y then y else x) + 5
+```
+
+<br>c. Rewrite the following so that it doesn't use anonymous lambda syntax:
+
+```haskell
+mflip f = \x -> \y -> f y x
+```
+
+**Answer:**
+
+```haskell
+mflip f x y = f y x
+```
