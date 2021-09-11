@@ -71,3 +71,43 @@ mflip f = \x -> \y -> f y x
 ```haskell
 mflip f x y = f y x
 ```
+
+## Variety Pack
+
+1. Given the following declarations
+
+```haskell
+k (x, y) = x
+k1 = k ((4-1), 10)
+k2 = k ("three", (1+2))
+k3 = k (3, True)
+```
+
+a. What is the type of `k`? **Answer:** `k :: (a, b) -> a`
+<br>b. What is the type of `k2`? Is it the same type as `k1` or `k3`? **Answer:** The type of `k2` is `k2 :: String`. No, it isn't the same type as `k1` and `k3`.
+<br>c. Of `k1`, `k2`, and `k3, which one will return the number `3`as a result? **Answer:**`k1`and`k3`will return the number`3` as result.
+
+2. Fill in the definition of the following function:
+
+```haskell
+-- Remember: Tuples have the
+--           same syntax for their
+--           type constructors and
+--           their data constructors.
+
+f :: (a, b, c)
+  -> (d, e, f)
+  -> ((a, d), (c, f))
+
+f = undefined
+```
+
+**Answer:**
+
+```haskell
+f :: (a, b, c)
+  -> (d, e, f)
+  -> ((a, d), (c, f))
+
+f (a, _, c) (d, _, f) = ((a, d), (c, f))
+```
