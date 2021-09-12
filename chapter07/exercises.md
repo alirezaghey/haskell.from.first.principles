@@ -283,3 +283,7 @@ a. the value of its argument plus or minus 1
 
 7. What types of arguments can `numbers` take? **Answer:** `numbers :: (Ord a, Num a, Num p) => a -> p`
 8. What is the type of the function `numbers`? **Answer:** `numbers :: (Ord a, Num a, Num p) => a -> p`
+
+## Pointfree style and function composition
+
+[Example file](exercise.files/arith2.hs)
