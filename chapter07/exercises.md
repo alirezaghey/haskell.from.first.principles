@@ -168,3 +168,29 @@ nums x =
     GT -> 1
     EQ -> 0
 ```
+
+## Artful Dodgy
+
+Given the following definitions tell us what values resutls from further applications. When you've written down at least some of the answers and think you know what's what, type the definitions into a file and load them in GHCi to test your answers.
+
+```haskell
+-- Types not provided,
+-- try filling them in yoursefl.
+
+dodgy x y = x + y * 10
+oneIsOne = dodgy 1
+oneIsTwo = (flip dodgy) 2
+```
+
+```haskell
+-- above definitions with types
+
+dodgy :: Num a => a -> a -> a
+dodgy x y = x + y * 10
+
+oneIsOne :: Num a => a -> a
+oneIsOne = dodgy 1
+
+oneIsTwo :: Num a => a -> a
+oneIsTwo = (flip dodgy) 2
+```
