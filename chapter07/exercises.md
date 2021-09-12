@@ -194,3 +194,41 @@ oneIsOne = dodgy 1
 oneIsTwo :: Num a => a -> a
 oneIsTwo = (flip dodgy) 2
 ```
+
+1. For example, given the expression `dodgy 1 0`, what do you think will happen if we evaluate it? If you put the definitions in a file and load them in GHCi, you can do the following to see the result.
+
+```REPL
+> dodgy 1 0
+1
+```
+
+Now attempt to determine what the following expressions reduce to. Do it in your head, verify in your REPL after you think you have an answer.
+
+2. `dodgy 1 1`
+   <br>**Answer:** `11`
+
+3. `dodgy 2 2`
+   <br>**Answer:** `22`
+
+4. `dodgy 1 2`
+   <br>**Answer:** `21`
+
+5. `dodgy 2 1`
+   <br>**Answer:** `12`
+
+6. `oneIsOne 1 <br>**Answer:** `11`
+
+7. `oneIsOne 2`
+   <br>**Answer:** `21`
+
+8. `oneIsTwo 1`
+   <br>**Answer:** `21`
+
+9. `oneIsTwo 2`
+   <br>**Answer:** `22`
+
+10. `oneIsOne 3`
+    <br>**Answer:** `31`
+
+11. `oneIsTwo 3`
+    <br>**Answer:** `23`
