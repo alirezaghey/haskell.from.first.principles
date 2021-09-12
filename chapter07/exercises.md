@@ -287,3 +287,47 @@ a. the value of its argument plus or minus 1
 ## Pointfree style and function composition
 
 [Example file](exercise.files/arith2.hs)
+
+# Chapter Exercises
+
+## Multiple choice
+
+1. A polymorphic function
+
+- [ ] a. changes things into sheep when invoked
+- [ ] b. has multiple arguments
+- [ ] c. has a aconcrete type
+- [x] d. may resolve to values of different types, depending on inputs
+
+2. Two functions named `f` and `g` have types `Char -> String` and `String -> [String]` respectively. The composition `g . f` has the type:
+
+- [ ] a. `Char -> String`
+- [x] b. `Char -> [String]`
+- [ ] c. `[[String]]`
+- [ ] d. `Char -> String -> [String]`
+
+3. A function `f` hs the type `Ord a = a -> a -> Bool` and we apply it to one numeric value. What is the type now?
+
+- [ ] a. `Ord a => a -> Bool`
+- [ ] b. `Num -> Num -> Bool`
+- [ ] c. `Or a => a -> a -> Integer`
+- [x] d. `(Ord a, Num a) => a -> Bool`
+
+4. A function with the type `(a -> b) -> c`:
+
+- [ ] a. requires values of three different types
+- [x] b. is a higher-order function
+- [ ] c. must take a tuple as its first argument
+- [ ] d. has its parameters in alphabetical order
+
+5. Given the following definition of `f`, what is the type of `f True`?
+
+```hs
+f :: a-> a
+f x = x
+```
+
+- [x] `f True :: Bool`
+- [ ] `f True :: String`
+- [ ] `f True :: Bool -> Bool`
+- [ ] `f True :: a`
