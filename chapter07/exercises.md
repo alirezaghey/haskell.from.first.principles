@@ -232,3 +232,54 @@ Now attempt to determine what the following expressions reduce to. Do it in your
 
 11. `oneIsTwo 3`
     <br>**Answer:** `23`
+
+## Guard Duty
+
+```haskell
+avgGrade :: (Fractional a, Ord a)
+         => a -> Char
+avgGrade x
+  | y >= 0.9 = 'A'
+  | y >= 0.8 = 'B'
+  | y >= 0.7 = 'C'
+  | y >= 0.59 = 'D'
+  | y < 0.59 = 'F'
+```
+
+1. It is probably clear to you why you wouldn't put an `otherwise` in your top-most guard, but try it with `avgGrade` anyway and see what happens. It'll be more clear if you rewrite it as an `otherwise` match: `| otherwise = 'F'`. What happens now if you pass a `90` as an argument? `75`? `60`?
+   <br>**Answer:** Since `otherwise` is always `True`, this branch of the guard will always hit and the function will return `F` in all the cases. $
+2. What happens if you take `avgGrade` as it is written and reorder the guards? Does it still typecheck and work the same? Try moving `| y >= 0.7 = 'C'` and passing it the argument 90, which should be an `A`. Does it return an `A`?
+   <br>**Answer:** If we reverse the order of the guards of `avgGrade`, the function will return `F` if `y` is less than `0.59` and a `D` in all the other cases because `y >= 0.59` is the second guard and it will always be true.
+3. The following function returns:
+
+```haskell
+pal xs
+    | xs == reverse xs = True
+    | otherwise        = False
+```
+
+a. `xs` written backwards when it's True.
+<br>b. `True` when `xs` is a palindrome.
+<br>c. `False` when `xs` is a palindrome.
+<br>d. `False` when xs is reversed.
+<br>**Answer:** b
+
+4. What types of arguments can `pal` take? **Answer:** `pal :: Eq a => [a] -> Bool`
+5. What is the type of the function `pal`? **Answer:** `pal :: Eq a => [a] -> Bool`
+6. The following function returns:
+
+```haskell
+numbers x
+    | x < 0   = -1
+    | x == 0  = 0
+    | x > 0   = 1
+```
+
+a. the value of its argument plus or minus 1
+<br>b. the negation of its argument
+<br>c. an indication of whether its argument is a positive or negative number or zero
+<br>d. binary machine language
+<br>**Answer:** c
+
+7. What types of arguments can `numbers` take? **Answer:** `numbers :: (Ord a, Num a, Num p) => a -> p`
+8. What is the type of the function `numbers`? **Answer:** `numbers :: (Ord a, Num a, Num p) => a -> p`
