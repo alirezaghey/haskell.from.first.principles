@@ -116,6 +116,8 @@ f (a, _, c) (d, _, f) = ((a, d), (c, f))
 
 We're going to practice using case expressions by rewriting functions. Some of these functions you've seen in previous chapters (and some you'll see later usings different syntax yet again!), but you'll be writings new versions now. Please note these are all written as they would be in source code files and we recommend you write your answers in source files and then load into GHCi to check, rather than trying to do them directly into the REPL.
 
+[Solution file](./exercise.files/casePractice.hs)
+
 First, rewrite `if-then-else` expressions into case expressions.
 
 1. The following should return `x` when `x` is greater than `y`.
