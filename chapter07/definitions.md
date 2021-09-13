@@ -186,3 +186,21 @@ Int -> (Int -> Int)
 -- is higher order as well.
 ((a -> b) -> c) -> [a] -> [c]
 ```
+
+7. _Composition_ is the application of a function to the result of having applied another function. The composition operator is a higher-order function as it takes the functions it composes as arguments and then returns a functions of the composition:
+
+```hs
+(.) :: (b -> c) -> (a -> b) -> a -> c
+
+-- is
+
+(.) :: (b -> c) -> (a -> b) -> (a -> c)
+
+-- or
+
+(.) :: (b -> c) -> ((a -> b) -> (a -> c))
+
+-- can be implemented as
+comp :: (b -> c) -> ((a -> b) -> (a -> c))
+comp f g x = f (g x)
+```
