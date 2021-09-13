@@ -18,3 +18,14 @@ Here the variable `blah` is bound to the value 10.
 id x = x
 -- not anonymous, it's bound to 'id'
 ```
+
+3. _Currying_ is the process of transforming a function that takes multiple arguments into a series of functions which each take one argument and return one result. This is accomplished through the nesting. In Haskell, all functions are curried by default. You don't need to do anything special yourself.
+
+```hs
+-- curry and uncurry already
+-- exist in Prelude
+
+curry' :: ((a, b) -> c) -> a -> b -> c
+curry' f a b = f (a, b)
+
+```
