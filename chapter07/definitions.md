@@ -204,3 +204,22 @@ Int -> (Int -> Int)
 comp :: (b -> c) -> ((a -> b) -> (a -> c))
 comp f g x = f (g x)
 ```
+
+8. _Pointfree_ is programming tacitly, or without mentioning arguments by name. This tends to look like "plumby" code where you're routing data around implicitly or leaving off unnecessary arguments thanks to currying. The "point" referred to in the term _pointfree_ is an _argument_.
+
+```hs
+-- not pointfree
+blah x = x
+addAndDrop x y = x + 1
+reverseMkTuple a b = (b, a)
+revereseTuple (a, b) = (b, a)
+
+
+-- pointfree
+blah = id
+addAndDrop = const . (1 +)
+reverseMkTuple = flip (,)
+reverseTuple = uncurry (flip (,))
+```
+
+To see more examples like this, check out the Haskell Wiki page on Pointfree at [https://wiki.haskell.org/Pointfree](https://wiki.haskell.org/Pointfree)
