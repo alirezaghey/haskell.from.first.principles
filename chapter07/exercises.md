@@ -331,3 +331,42 @@ f x = x
 - [ ] `f True :: String`
 - [ ] `f True :: Bool -> Bool`
 - [ ] `f True :: a`
+
+## Let's write code
+
+1. The following function returns the tens digit of an integral argument.
+
+```hs
+tensDigit :: Integral a => a -> a
+tensDigit x = d
+   where xLast = x `div` 10
+         d     = xLast `mod` 10
+```
+
+a. First rewrite it using divMod.
+
+**Answer:**
+
+```hs
+tensDigit :: Integral a => a -> a
+tensDigit x = d
+   where (xLast, _) = divMod x 10
+         (_, d) = divMod xLast 10
+```
+
+b. Does the `divMod` version have the same type as the original version?
+<br>**Answer:** Sure
+<br>c. Next, let's change it so that we're getting the hundreds digit instead. You could start it like this (though that may not be the only possibility):
+
+```hs
+hunsD x = d2
+   where d = undefined
+```
+
+**Answer:**
+
+```hs
+hunsD x = d
+   where (xLast, _) = divMod x 100
+         (_, d) = divMod xLast 10
+```
