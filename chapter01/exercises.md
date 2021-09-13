@@ -36,9 +36,12 @@ Determine if each of the following are combinators or not.
 
 Determine if each of the following can be reduced to a normal form or if they diverge.
 
-1. λx.xxx (Is already in normal form)
-2. (λz.zz)(λy.yy) (The reduced form is (λy.yy)(λy.yy) which is diverging)
-3. (λx.xxx)z (The reduced form is λz.zzz -> zzz which is in normal form)
+1. λx.xxx
+   <br>**answer:** Is already in normal form
+2. (λz.zz)(λy.yy)
+   <br>**answer:** The reduced form is (λy.yy)(λy.yy) which is diverging
+3. (λx.xxx)z
+   <br>**answer:** The reduced form is λz.zzz -> zzz which is in normal form
 
 ## Beta reduce
 
