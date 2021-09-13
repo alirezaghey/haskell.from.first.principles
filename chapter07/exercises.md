@@ -407,3 +407,17 @@ foldBool x y bool =
       True   -> x
       False  -> y
 ```
+
+3. Fill in the definition. Note that the first argument to our function is _also_ a function which can be applied to values. Your second argument is a tuple, which can be used for pattern matching:
+
+```hs
+g :: (a -> b) -> (a, c) -> (b, c)
+g = undefined
+```
+
+**Answer:**
+
+```hs
+g :: (a -> b) -> (a, c) -> (b, c)
+g f (a, c) = (f a, c)
+```
