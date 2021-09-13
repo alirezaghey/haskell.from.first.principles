@@ -1,4 +1,4 @@
-Definitions
+# Definitions
 
 1. _Typeclass inheritance_ is when a typeclass has a superclass. This is a way of expressing that a typeclass requires _another_ typeclass to be available for a given type before you can write an inheritance.
 
