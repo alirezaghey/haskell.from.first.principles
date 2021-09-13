@@ -421,3 +421,48 @@ g = undefined
 g :: (a -> b) -> (a, c) -> (b, c)
 g f (a, c) = (f a, c)
 ```
+
+4. For this next exercise, you'll experiment with writing pointfree versions of existing code. This involves some new information, so read the following explanation carefully.
+
+Typeclasses are dispatched by type. `Read` is a typeclass like `Show`, but it is the dual or _opposite_ of `Show`. In general, the `Read` typeclass isn't something you should plan to use a lot, but this exercise is structured to teach you something about the interaction between typeclasses and types.
+
+The function `read` in the `Read` typeclass has the type:
+
+```hs
+read :: Read a => String -> a
+```
+
+Notice a pattern?
+
+```hs
+read :: Read a => String -> a
+show :: Show a => a -> String
+```
+
+Write the following code into a source file. Then load it and run it in GHCi to make sure you understand why the evaluation results in the answers you see.
+
+```hs
+-- arith4.hs
+module Arith4 where
+
+-- id :: a -> a
+-- id x = x
+
+roundTrip :: (Show a, Read a) => a -> a
+roundTrip a = read (show a)
+
+main = do
+   print (roundTrip 4)
+   print (id 4)
+```
+
+[arith4.hs](exercise.files/arith4.hs)
+
+5. Next. write a pointfree version of roundTrip. (n.b., This refers to the function definition, not to its application in `main`.)
+
+```hs
+roundTripPF :: (Show a, Read a) => a -> a
+roundTripPF = read . show
+```
+
+Solution file: [arith4.hs](exercise.files/arith4.hs)
