@@ -28,4 +28,25 @@ id x = x
 curry' :: ((a, b) -> c) -> a -> b -> c
 curry' f a b = f (a, b)
 
+
+uncurry' :: (a -> b -> c) -> ((a, b) -> c)
+uncurry' f (a, b) = f a b
+
+-- uncurried function,
+-- takes a tuple of its arguments
+add : (Int, Int) -> Int
+add (x, y) = x + y
+
+add' :: Int -> Int -> Int
+add' = curry' add
+```
+
+A function that appears to take two arguments is two functions that each take one argument and return one result. What makes this work is that a function can return another function.
+
+```hs
+f a b = a + b
+
+-- is equivalent to
+
+f = \a -> (\b -> a + b)
 ```
