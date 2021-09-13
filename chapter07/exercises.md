@@ -370,3 +370,40 @@ hunsD x = d
    where (xLast, _) = divMod x 100
          (_, d) = divMod xLast 10
 ```
+
+2. Implement the function of the type `a -> a -> Bool -> a` once each using a case expression and once with a guard.
+
+```hs
+foldBool :: a -> a -> Bool -> a
+foldBool =
+   error
+   "Error: Need to implement foldBool!"
+```
+
+The result is semantically similar to `if-then-else` expressions but syntactically quite different. Here is the pattern matching version to get you started:
+
+```hs
+foldBool3 :: a -> a -> Bool -> a
+foldBool3 x _ False  = x
+foldBool3 _ y True   = y
+```
+
+**Answer:**
+<br>_Using guard:_
+
+```hs
+foldBool :: a -> a -> Bool -> a
+foldBool x y bool
+   | bool      = x
+   | otherwise = y
+```
+
+_Using case:_
+
+```hs
+foldBool :: a -> a -> Bool -> a
+foldBool x y bool =
+   case bool of
+      True   -> x
+      False  -> y
+```
