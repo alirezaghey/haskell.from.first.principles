@@ -140,3 +140,24 @@ sumToInt _                 = 1
 ```
 
 Pattern matching is about your _data_.
+
+5. _Bottom_ is a non-value used to denote that the program cannot return a value or result. The most elemental manifestation of this is a program that loops infinitely. Other forms can involve things like writing a function that doesn't handle all of its inputs and fails on a pattern match. The following are examples of bottom:
+
+```hs
+-- If you apply this to any values,
+-- it'll recurse indefinitely.
+f x = f x
+
+-- It'll throw an error if you pass a False value
+dontDoThis :: Bool -> Int
+dontDoThis True = 1
+
+-- morally equivalent to
+definitelyDontDoThis :: Bool -> Int
+definitelyDontDoThis True  = 1
+definitelyDontDoThis Fasle = error "oops"
+-- don't use error
+-- we'll show you a better way soon
+```
+
+Bottom can be useful as a canary for signaling when code paths are being evaluated. We usually do this to determine how lazy a program is or isn't. You'll see a _lot_ of this in our chapter on non-strictness later on.
