@@ -173,3 +173,36 @@ cattyConny "are mrow Pugs" "awesome" ->
 "are mrow Pugs" ++ " mrow " ++ "awesome" ->
 "are mrow Pugs mrow awesome"
 ```
+
+## Recursion
+
+1. Write out the steps for reducing `divideBy 15 2` to its final answer according to the Haskell code.
+
+```hs
+type Numerator = Integer
+type Denominator = Integer
+type Quotient = Integer
+type Remainder = Integer
+
+divideBy :: Numerator -> Denominator -> (Quotient, Remainder)
+divideBy n d = go n d 0
+  where go n   d    c
+         | n < d = (c, n)
+         | otherwise =
+           go (n-d) d (c+1)
+```
+
+```
+divideBy 15 2
+
+go 15 2 0
+go (15-2) 2 (0+1)
+go (13-2) 2 (1+1)
+go (11-2) 2 (2+1)
+go (9-2) 2 (3+1)
+go (7-2) 2 (4+1)
+go (5-2) 2 (5+1)
+go (3-2) 2 (6+1)
+-- we hit the base case since 1 < 2
+(7, 1)
+```
