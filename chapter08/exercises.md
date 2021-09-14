@@ -70,3 +70,23 @@ which of the following is true?
 - [x] b. `func "Hello" "World"`
 - [ ] c. `func [1, 2, 3] "a, b, c"`
 - [ ] d. `func ["Hello", "World"]`
+
+## Reviewing currying
+
+Given the following definitions, tell us what value results from further application.
+
+```hs
+cattyConny :: String -> String -> String
+cattyConny x y = x ++ " mrow " ++ y
+
+--fill in the types
+
+flippy :: String -> String -> String
+flippy = flip cattyConny
+
+appedCatty :: String -> String
+appedCatty = cattyConny "woops"
+
+frappe :: String -> String
+frapper = flippy "haha"
+```
