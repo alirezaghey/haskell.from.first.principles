@@ -270,3 +270,19 @@ data DividedResult =
     Result Integer
   | DividedByZero
 ```
+
+## McCarthy 91 function
+
+We're going to describe a function in English, then in math notation, then show you what your function should return for some test inputs. Your taks is to write the function in Haskell.
+
+The McCarthy 91 function yields `x-10` when `x > 100` and `91` otherwise. The function is recursive.
+![recursive formula](exercise.files/recursive_func.png)
+
+You haven't seen `map` yet, but all you need to know right now is that it applies a function to each member of a list and returns the resulting list. It'll be explained in more detail in the next chapter.
+
+```hs
+mc91 :: Integer -> Integer
+mc91 n
+  | n > 100   = n-10
+  | otherwise = mc91 $ mc91 (n+11)
+```
