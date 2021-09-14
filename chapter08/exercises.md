@@ -90,3 +90,12 @@ appedCatty = cattyConny "woops"
 frappe :: String -> String
 frapper = flippy "haha"
 ```
+
+1. What is the value of `appedCatty "woohoo!"? Try to determine the answer for yourself, then test in the REPL.
+
+```
+appedCatty "woohoo!" ->
+cattyConny "woops" "woohoo!" ->
+woops" ++ " mrow " "woohoo!" ->
+"woops mrow woohoo!"
+```
