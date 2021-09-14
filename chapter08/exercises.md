@@ -138,3 +138,26 @@ cattyConny "woops" "blue mrow haha" ->
 "woops" ++ " mrow " ++ "blue mrow haha" ->
 "woops mrow blue mrow haha"
 ```
+
+5. What is the value of
+
+```
+cattyConny (frappe "pink")
+           (cattyConny "green" (appedCatty "blue"))
+```
+
+```
+cattyConny (frappe "pink")
+           (cattyConny "green" (appedCatty "blue")) ->
+cattyConny (flippy "haha" "pink")
+           (cattyConny "green" (cattyConny "woops" "blue")) ->
+cattyConny (flip cattyConny "haha" "pink")
+           (cattyConny "green" ("woops" ++ " mrow " ++ "blue")) ->
+cattyConny (cattyConny "pink" "haha")
+           (cattyConny "green" ("woops mrow blue")) ->
+cattyConny ("pink" ++ " mrow " ++ "haha")
+           ("green" ++ " mrow " ++ "woops mrow blue") ->
+cattyConny "pink mrow haha" "green mrow woops mrow blue" ->
+"pink mrow haha" ++ " mrow " ++ "green mrow woops mrow blue" ->
+"pink mrow haha mrow green mrow woops mrow blue"
+```
