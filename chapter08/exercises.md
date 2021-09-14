@@ -161,3 +161,15 @@ cattyConny "pink mrow haha" "green mrow woops mrow blue" ->
 "pink mrow haha" ++ " mrow " ++ "green mrow woops mrow blue" ->
 "pink mrow haha mrow green mrow woops mrow blue"
 ```
+
+6. What is the value of `cattyConny (flippy "Pugs" "are") "awesome"`?
+
+```
+cattyConny (flippy "Pugs" "are") "awesome" ->
+cattyConny (flip cattyConny "Pugs" "are") "awesome" ->
+cattyConny (cattyConny "are" "Pugs") "awesome" ->
+cattyConny ("are" ++ " mrow " ++ "Pugs") "awesome" ->
+cattyConny "are mrow Pugs" "awesome" ->
+"are mrow Pugs" ++ " mrow " ++ "awesome" ->
+"are mrow Pugs mrow awesome"
+```
