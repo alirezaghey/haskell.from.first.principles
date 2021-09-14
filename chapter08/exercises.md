@@ -229,3 +229,19 @@ sumToN n = foldl (+) 0 [1..n]
 sumToN :: (Num a) => a -> a
 sumToN = n * (n-1) `div` 2
 ```
+
+3. Write a function that multiplies two integral numbers using recursive summation. The type should be `(Integral a) => a -> a -> a`
+
+```hs
+-- guard recursive
+multiplyBySum :: (Integral a) => a -> a -> a
+multiplyBySum x y = go x 0 y
+  where go x res y
+         | y == 0 = res
+         | otherwise = go x (res+x) (y-1)
+
+-- pattern matching
+multiplyBySum :: (Integral a) => a -> a -> a
+multiplyBySum x 0 = 0
+multiplyBySum x y = x + multiplyBySum x (y-1)
+```
