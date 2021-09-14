@@ -206,3 +206,26 @@ go (3-2) 2 (6+1)
 -- we hit the base case since 1 < 2
 (7, 1)
 ```
+
+2. Write a function that recursively sums all numbers from 1 to `n`, `n` being the argument. So that if n was 5, you'd add `1+2+3+4+5` to get `15`. The type should be `(Eq a, Num a) => a -> a`.
+
+```hs
+-- recursive approach with pattern matching
+sumToN :: (Eq a, Num a) => a -> a
+sumToN 1 == 1
+sumToN n = n + sumToN (n-1)
+
+-- recursive approach using guard
+sumToN :: (Eq a, Num a) => a -> a
+sumToN n
+  |    n == 1 = 1
+  | otherwise = n + sumToN (n-1)
+
+-- iterative
+sumToN :: (Num a) => a -> a
+sumToN n = foldl (+) 0 [1..n]
+
+-- math formula
+sumToN :: (Num a) => a -> a
+sumToN = n * (n-1) `div` 2
+```
