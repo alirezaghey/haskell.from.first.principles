@@ -88,7 +88,7 @@ appedCatty :: String -> String
 appedCatty = cattyConny "woops"
 
 frappe :: String -> String
-frapper = flippy "haha"
+frappe = flippy "haha"
 ```
 
 1. What is the value of `appedCatty "woohoo!"? Try to determine the answer for yourself, then test in the REPL.
@@ -98,4 +98,15 @@ appedCatty "woohoo!" ->
 cattyConny "woops" "woohoo!" ->
 woops" ++ " mrow " "woohoo!" ->
 "woops mrow woohoo!"
+```
+
+2. What is the value of `frappe "1"`?
+
+```
+frappe "1" ->
+flippy "haha" "1" ->
+flip cattyConny "haha" "1" ->
+cattyConny "1" "haha" ->
+"1" ++ " mrow " ++ "haha"
+"1 mrow haha"
 ```
