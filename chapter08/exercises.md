@@ -124,3 +124,17 @@ cattyConny "woops mrow 2" "haha" ->
 "woops mrow 2" ++ " mrow " ++ "haha" ->
 "woops mrow 2 mrow haha"
 ```
+
+4. What is the value of `appedCatty (frappe "blue")`?
+
+```
+appedCatty (frappe "blue") ->
+appedCatty (flippy "haha" "blue") ->
+appedCatty (flip cattyConny "haha" "blue) ->
+appedCatty (cattyConny "blue" "haha") ->
+appedCatty ("blue" ++ " mrow " ++ "haha") ->
+appedCatty "blue mrow haha" ->
+cattyConny "woops" "blue mrow haha" ->
+"woops" ++ " mrow " ++ "blue mrow haha" ->
+"woops mrow blue mrow haha"
+```
