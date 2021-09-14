@@ -110,3 +110,17 @@ cattyConny "1" "haha" ->
 "1" ++ " mrow " ++ "haha"
 "1 mrow haha"
 ```
+
+3. What is the value of `frappe (appedCatty "2")`
+
+```
+frappe (appedCatty "2") ->
+frappe (cattyConny "woops" "2") ->
+frappe ("woops" ++ " mrow " ++ "2") ->
+frappe "woops mrow 2" ->
+flippy "haha" "woops mrow 2" ->
+flip cattyConny "haha" "woops mrow 2" ->
+cattyConny "woops mrow 2" "haha" ->
+"woops mrow 2" ++ " mrow " ++ "haha" ->
+"woops mrow 2 mrow haha"
+```
