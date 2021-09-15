@@ -286,3 +286,10 @@ mc91 n
   | n > 100   = n-10
   | otherwise = mc91 $ mc91 (n+11)
 ```
+
+Using `map`, you can see how the result of an example input to `mc91` should look like.
+
+```
+Prelude> map mc91 [95..110]
+[91,91,91,91,91,91,91,92,93,94,95,96,97,98,99,100]
+```
