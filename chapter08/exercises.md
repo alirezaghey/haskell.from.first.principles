@@ -293,3 +293,85 @@ Using `map`, you can see how the result of an example input to `mc91` should loo
 Prelude> map mc91 [95..110]
 [91,91,91,91,91,91,91,92,93,94,95,96,97,98,99,100]
 ```
+
+## Numbers into words
+
+```hs
+module WordNumber where
+
+import Data.List (intersperse)
+
+digitToWord :: Int -> String
+digitToWord n = undefined
+
+digits :: Int [Int]
+digits n = undefined
+
+wordNumber :: Int -> String
+wordNumber n = undefined
+```
+
+Here `undefined` is a placeholder to show you where you need to fill in the functions. The `n` to the right of the function names is the argument which will be an integer.
+
+Fill in the implementations of the functions above so that `wordNumber` returns the English word version of the `Int` value.
+
+You will first write a function that returns integers from 0-9 into their correcponding English words, "one", "two", and so on. Then you will write a function that takes the integer, separates the digits, and returns it as a list of integers. Finally you will need to apply the first function to the list produced by the second function and turn it into a single string with interspersed hyphens.
+
+We've laid out multiple functions for you to consider as you tackle the problem. You may not need all of them, depending on how you solve it; These are suggestions. Play with them and look up their documentation to understand them in deeper detail.
+
+You will probably find this difficult.
+
+```
+div           :: Integral a => a -> a -> a
+mod           :: Integral a => a -> a -> a
+map           :: (a -> b) -> [a] -> [b]
+concat        :: [[a]] -> [a]
+intersperse   :: a => [a] -> [a]
+(++)          :: [a] -> [a] -> [a]
+(:[])         :: a -> [a]
+```
+
+Here's what your output should look in the REPL when it's working:
+
+```
+Prelude> wordNumber 12324546
+"one-two-three-two-four-five-four-six
+```
+
+```hs
+module WordNumber where
+
+import Data.List (intersperse)
+
+digitToWord :: Int -> String
+digitToWord 0 = "zero"
+digitToWord 1 = "one"
+digitToWord 2 = "two"
+digitToWord 3 = "three"
+digitToWord 4 = "four"
+digitToWord 5 = "five"
+digitToWord 6 = "six"
+digitToWord 7 = "seven"
+digitToWord 8 = "eight"
+digitToWord 9 = "nine"
+digitToWord _ = error "digitToWord: invalid digit."
+
+digits :: Int -> [Int]
+digits n
+  | n < 10    = [n]
+  | otherwise = digits (n `div` 10) ++ [n `mod` 10]
+
+-- just for reference a tail recursive version of digits
+digitsTailRec :: Integral a => a -> [a]
+digitsTailRec n = go n []
+  where go n l
+         | n < 10    = n : l
+         | otherwise = go (n `div` 10) (n `mod` 10 : l)
+
+
+wordNumber :: Int -> String
+wordNumber n = concat $ intersperse "-" $ map digitToWord $ digits n
+-- equivalent to intercalate "-" $ map digitToWord $ digits nmodule WordNumber where
+```
+
+[Solution file](exercise.files/wordNumber.hs)
