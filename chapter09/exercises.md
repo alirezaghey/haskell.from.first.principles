@@ -62,3 +62,19 @@ eftChar s e
 ```
 
 [Solution file](exercise.files/enumFromTo.hs)
+
+## Thy Fearful Symmetry
+
+1. Using `takeWhile` and `dropWhile`, write a function that takes a string and returns a list of strings, using spaces to separate the elements of the string into works, as in the following sample:
+```REPL
+Predulde> myWords "sheryl wants fun"
+["wallfish", "wants", "fun"]
+```
+```hs
+splitString :: String -> [String]
+splitString str = go (' ' : str) 
+  where go xs
+         | null xs = []
+         | otherwise = takeWhile (/=' ') (dropWhile (==' ') xs) : go (dropWhile (/=' ')  (dropWhile (==' ') xs))
+```
+[Solution file with alternative implementation](exercise.files/splitString.hs)
