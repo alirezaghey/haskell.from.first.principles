@@ -176,3 +176,17 @@ take 5 [(x, y) | x <- mySqr,
 {-
 [(1, 64), (1, 81), (1, 100), (4, 64), (4, 81)]
 -}
+
+
+## Square Cube
+Given the following:
+```REPL
+Prelude> mySqr = [x^2 | x <- [1..5]]
+Prelude> myCube = [y^3 | x <-[1..5]]
+```
+1. First write an expression that will make tuples of the outputs of `mySqr` and `myCube`.
+```hs
+mySqr = [x^2 | x <- [1..5]]
+myCube = [x^3 | x <- [1..5]]
+tuples = [(x, y) | x <- mySqr, y <- myCube]
+```
