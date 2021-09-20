@@ -262,3 +262,28 @@ Remember that an expression cannot be in normal form or weak head normal form if
 <br>**Answer:** Neither WHNF, nor NF
 7. `(_, 'b')`
 <br>**Answer:** WHNF, but not NF
+
+## More Bottoms
+
+As always, we encourage you to ry figuring out the answers before you enter them into your REPL.
+
+1. Will the following expression return a value or throw an error?
+<br>`take 1 $ map (+1) [undefined, 2, 3]`
+<br>**Answer:** Will throw an error. Reason is that `take` needs one element and the first element to `map` is `undefined`.
+
+2. Will the following expression return a value?
+<br> `take 1 $ map (+1) [1, undefined, 3]`
+<br>**Answer:** This will work and produce `[2]`.
+
+3. Will the following expression return a value?
+<br>`take 2 $ map (+1) [1, undefined, 3]`
+<br>**Answer:** No. This will throw an erro.
+
+4. What does the following mystery function do? What is its type? Describe it (to yourself or a loved one) in standard English and then test it out in the REPL to  make sure you we correct.
+```hs
+itIsMystery xs =
+  map (\x -> elem x "aeiou") xs
+```
+**Answer:** The effective type of the above function is: `[Char] -> [Bool]`. It will go over every character of the input string `xs` and if its in `aeiou` (case sensitie), outputs `True` in its stead, otherwise `False`.
+
+For instance `itIsMystery "I am learning Haskell"` would result in `[False, False, True, False, False, False, True, True, False, False, True, False, False, False, False, True, False, False, True, False, False]`.
