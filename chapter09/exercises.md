@@ -202,3 +202,41 @@ tuples = [(x, y) | x <- mySqr, y <- myCube, x < 50, y < 50]
 ```hs
 length [(x, y) | x <- mySqr, y <- myCube, x < 50, y < 50]
 ```
+
+
+## Bottom Madness
+
+**Will it blow up?**
+Will the following expressions return a value or throw an error?
+
+1. `[x^y | x <- [1..5], y <- [2, undefined]]`
+<br>**Answer:** This will blow up. Reason is that the code tries to evaluate undefined.
+
+2. `take 1 $ [x^y | x <- [1..5], y <- [2, undefined]]`
+
+<br>**Answer:** This will work. Laziness makes the compiler only evaluate the first element of the list comprehension, avoiding `undefined` altogether.
+
+3. `sum [1, undefined, 3]`
+<br>**Answer:** This will blow up. `sum` will force the evaluation of the full list.
+
+4. `length [1, 2, undefined]`
+
+<br>**Answer:** This will work as `length` only evaluate the spine of the list and not the data of the inhabitants of each cell.
+
+5. `length $ [1, 2, 3] ++ undefined`
+<br>**Answer:** Blows up since `++` needs to evaluate the right hand operand to make sure it's of the same type as the elements of the list.
+
+6. `take 1 $ filter even [1,2,3, undefined]`
+<br>**Answer:** This works since `take 1` will result in only evaluating the first 2 elements of the list.
+
+7. `take 1 $ filter even [1,3,undefined]`
+<br>**Answer:** This will blow up since `take 1` forces the right operand of `$` to produce one element. But there are no even elements in the list so it reaches `undefined`.
+
+8. `take 1 $ filter odd [1, 3, undefined]`
+<br>**Answer:** This will work.
+
+9. `take 2 $ filter odd [1,3,undefined]`
+<br>**Answer:** This will work.
+
+10. `take 3 $ filter odd [1,3,undefined]`
+<br>**Answer:** This will blow up.
