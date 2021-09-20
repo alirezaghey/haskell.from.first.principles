@@ -190,3 +190,9 @@ mySqr = [x^2 | x <- [1..5]]
 myCube = [x^3 | x <- [1..5]]
 tuples = [(x, y) | x <- mySqr, y <- myCube]
 ```
+
+2. Now alter that expression so that it only uses the `x` and `y` values that are less than 50.
+
+```hs
+tuples = [(x, y) | x <- mySqr, y <- myCube, x < 50, y < 50]
+```
