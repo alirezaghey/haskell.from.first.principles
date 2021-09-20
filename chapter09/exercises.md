@@ -120,3 +120,20 @@ main =
             == shouldEqual)
 ```
 [Solution file](exercise.files/poemLines.hs)
+
+3. Now let's look at what those two functions have in common. Try writing a new function that parameterizes the character you're breaking the string argument on and rewrite `myWords` and `myLines` using it.
+
+```hs
+split :: Char -> String -> [String]
+split d s = go d (dropWhile (==d) s) where
+  go _ [] = []
+  go d s = word : (go d (dropWhile (==d) rest)) where
+    (word, rest) = break (==d) s
+
+myWords :: String -> [String]
+myWords s = split ' ' s
+
+myLines :: String -> [String]
+myLines s = split '\n' s
+```
+[Solution file](exercise.files/split.hs)
