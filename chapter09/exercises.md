@@ -287,3 +287,25 @@ itIsMystery xs =
 **Answer:** The effective type of the above function is: `[Char] -> [Bool]`. It will go over every character of the input string `xs` and if its in `aeiou` (case sensitie), outputs `True` in its stead, otherwise `False`.
 
 For instance `itIsMystery "I am learning Haskell"` would result in `[False, False, True, False, False, False, True, True, False, False, True, False, False, False, False, True, False, False, True, False, False]`.
+
+5. What will be the result of the following functions:
+<br> a. `map (^2) [1..10]`
+<br>**Answer:** `[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]`
+<br>b. `map minimum [[1..10], [10..20], [20..30]]`
+<br>**Answer:** `[1, 10, 20]`
+<br>c. `map sum [[1..5], [1..5], [1..5]]`
+<br>**Answer:** `[15, 15, 15]`
+
+6. Back in chapter 7, you wrote a function called `foldBool`. That function exists in a module known as `Data.Bool` and is called `bool`. Write a function that does the same (or similar, if you with) as the `map (if-then-else)` function you saw above but uses `bool` instead of the `if-then-else` syntax. Your first step should be bringing the `bool` function into scope by typing `import Data.Bool` at your Prelude prompt.
+
+```hs
+import Data.Bool
+
+fIfElse :: Integral a => [a] -> [a]
+fIfElse = map (\x -> if x == 3 then (-x) else x)
+
+-- above function using bool
+fBool :: Integral a => [a] -> [a]
+fBool = map (\x -> bool x (-x) (x==3))
+```
+[Solution file](exercise.files/ifElseBool.hs)
