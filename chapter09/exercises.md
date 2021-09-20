@@ -240,3 +240,25 @@ Will the following expressions return a value or throw an error?
 
 10. `take 3 $ filter odd [1,3,undefined]`
 <br>**Answer:** This will blow up.
+
+## Intermission: Is it in normal form?
+For each expression below, determine whether it's in:
+1. normal form, which implies weak head normal form;
+2. weak head normal form only; or,
+3. neither
+
+Remember that an expression cannot be in normal form or weak head normal form if the outermost part of the expression isn't a data constructor. It can't be in normal form if any part of the expression is unevaluated.
+1. `[1, 2, 3, 4, 5]`
+<br>**Answer:** WHNF, NF
+2. `1 : 2 : 3 : 4 : _ `
+<br>**Answer:** WHNF, but now NF
+3. `enumFromTo 1 10`
+<br>**Answer:** Neither WHNF, nor NF
+4. `lenght [1,2,3,4,5]`
+<br>**Answer:** Neither WHNF, nor NF
+5. `sum (enumFromTo 1 10)`
+<br>**Answer:** Neither WHNF, nor NF
+6. `['a'..'m'] ++ ['n'..'z']`
+<br>**Answer:** Neither WHNF, nor NF
+7. `(_, 'b')`
+<br>**Answer:** WHNF, but not NF
