@@ -309,3 +309,48 @@ fBool :: Integral a => [a] -> [a]
 fBool = map (\x -> bool x (-x) (x==3))
 ```
 [Solution file](exercise.files/ifElseBool.hs)
+
+
+## Filtering
+
+1. Given the above, how might we write a filter function that would give us all the multiples of 3 out of a list from 1-30?
+
+```hs
+filter (\x -> rem x 3 == 0) [1..30]
+```
+
+2. Recalling what we learned about function composition, how could we compose the above function with the `length` function to tell us **how many** multiples of `3` there are between `1` and `30`?
+
+```hs
+length $ filter (\x -> rem x 3 == 0) [1..30]
+```
+
+3. Next we're going to work on removing all articles ('the', 'a', and 'an') from sentences. You want to get to something that works like this:
+
+```REPL
+Prelude> myFilter "the brown dog was a goof"
+["brown", "dog", "was", "goof"]
+```
+```hs
+removeArticles s = filter (\x -> isArticle x) $ words s
+  where isArticle word =  word /= "a" &&
+                          word /= "A" &&
+                          word /= "an" &&
+                          word /= "An" &&
+                          word /= "the" &&
+                          word /= "The"
+
+removeArticles2 s = filter (\x -> isArticle x) $ words s
+  where isArticle word = notElem word ["a", "A", "an", "An", "the", "The"]
+  
+removeArticles3 s = filter isArticle $ words s
+  where isArticle word = notElem word ["a", "A", "an", "An", "the", "The"]
+  
+removeArticles4 s = filter (\x -> notElem x ["a", "A", "an", "An", "the", "The"]) $ words s
+
+removeArticles5 = filter (\x -> notElem x ["a", "A", "an", "An", "the", "The"]) . words
+
+removeArticles6 = filter (`notElem` ["a", "A", "an", "An", "the", "The"]) . words
+
+removeArticles7 = filter ((`notElem` ["a", "an", "the"]) . map toLower) . words
+```
