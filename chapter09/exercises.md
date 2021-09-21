@@ -493,3 +493,38 @@ You want your shift to wrap back around to the beginning of the alphabet, so tha
 You should include an `unCaesar` function that will decipher your text as well. In a later chapter, we will test it.
 [Solution file](exercise.files/cipher.hs)
 
+
+## Writing your own standard functions
+Below are the outlines of some standard functions. The goal here is to write your own versions of these to gain a deeper understanding of recursion over lists and how to make functions flexible enough to accept a variety of inputs. You could figure out how to look up the answers, but you won't do that because you know you'd only be cheating yourself out of the knowledge. Right?
+
+Let's look at an example of what we're after here. The `and` function can take a list of `Bool` values and returns `True` if and only if no values in the list are `False`. Here's how you might write your own version of it:
+```hs
+-- direct recursion, not using (&&)
+myAnd :: [Bool] -> Bool
+myAnd [] = True
+myAnd (x:xs) =
+  if x == False
+  then False
+  else myAnd xs
+
+
+-- direct recursion, using (&&)
+myAnd2 :: [Bool] -> Bool
+myAnd2 [] = True
+myAnd2 (x:xs) = x && myAnd xs
+```
+
+1. `myOr` returns True if any `Bool` in the list is `True`.
+
+```hs
+-- direct recursion, not using (||)
+myOr :: [Bool] -> Bool
+myOr []     = False
+myOr (x:xs) =
+  if x then True else myOr xs
+
+-- direct recursion, using (||)
+myOr2 :: [Bool] -> Bool
+myOr2 []      = False
+myOr2 (x:xs)  = x || myOr2 xs
+``` 
