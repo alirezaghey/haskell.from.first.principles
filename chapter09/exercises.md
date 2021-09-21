@@ -354,3 +354,38 @@ removeArticles6 = filter (`notElem` ["a", "A", "an", "An", "the", "The"]) . word
 
 removeArticles7 = filter ((`notElem` ["a", "an", "the"]) . map toLower) . words
 ```
+
+## Zipping exercise
+1. Write your own version of `zip` and ensure it behaves the same as the original.
+
+```hs
+myZip :: [a] -> [b] -> [(a, b)]
+myZip [] _          = []
+myZip _ []          = []
+myZip (x:xs) (y:ys) = (x, y) : myZip xs ys
+```
+[Solution file](exercise.files/myZip.hs)
+
+2. Do what you did for `zip`, but now for `zipWith`:
+
+```hs
+myZipWith :: (a -> b -> c) -> [a] -> [b] -> [c]
+myZipWith _ _   []        = []
+myZipWith _ []  _         = []
+myZipWith f (x:xs) (y:ys) = f x y : myZipWith f xs ys
+```
+[Solution file](exercise.files/myZipWith.hs)
+
+
+3. Rewrite your `zip` in terms of the `zipWith` you wrote.
+
+```hs
+myZipWith :: (a -> b -> c) -> [a] -> [b] -> [c]
+myZipWith _ _   []        = []
+myZipWith _ []  _         = []
+myZipWith f (x:xs) (y:ys) = f x y : myZipWith f xs ys
+
+myZip :: [a] -> [b] -> [(a, b)]
+myZip = myZipWith (,)
+```
+[Solution file](exercise.files/zipWithZipWith.hs)
