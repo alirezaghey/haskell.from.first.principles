@@ -634,8 +634,8 @@ which only works on lists and not all sorts of foldable. For now, we are going t
 -- implementation of standard maximumBy function
 myMaximumBy :: (a -> a -> Ordering)
             -> [a] -> a
-myMaximumBy _ []  = error "list of length zero"
-myMaximumBy f x   = go f (head x) x where
+myMaximumBy _ []    = error "list of length zero"
+myMaximumBy f x     = go f (head x) x where
   go f r []         = r
   go f r (x:xs) 
     | f x r == GT   = go f x xs
@@ -644,7 +644,7 @@ myMaximumBy f x   = go f (head x) x where
 -- same as above but with implicit recursion using fold
 myMaximumBy2 :: (a -> a -> Ordering)
              -> [a] -> a
-myMaximumBy2 _ [] = error "list of length zero"
+myMaximumBy2 _ []     = error "list of length zero"
 myMaximumBy2 f (x:xs) = foldr (\a b -> if f a b == GT then a else b) x xs
 ```
 [Solution file](exercise.files/standardFuncs.hs)
