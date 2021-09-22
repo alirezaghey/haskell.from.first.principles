@@ -617,3 +617,32 @@ squishMap f (x:xs)    = flatten (f x) where
 squishAgain :: [[a]] -> [a]
 squishAgain x = squishMap id x
 ```
+
+
+8. `myMaximumBy` takes a comparison function and a list and returns the greatest element of the list based on the last value that comparison returned `GT` for. If you import `maximumBy` from `Data.List`, you see the type is:
+
+```hs
+Foldable t
+=> (a -> a -> Ordering) -> t a -> a
+```
+rather than
+```hs
+(a -> a -> Ordering) -> [a] -> a
+```
+which only works on lists and not all sorts of foldable. For now, we are going to implement the list only version.
+```hs
+-- implementation of standard maximumBy function
+myMaximumBy :: (a -> a -> Ordering)
+            -> [a] -> a
+myMaximumBy _ []  = error "list of length zero"
+myMaximumBy f x   = go f (head x) x where
+  go f r []         = r
+  go f r (x:xs) 
+    | f x r == GT   = go f x xs
+    | otherwise     = go f r xs 
+
+-- same as above but with implicit recursion using fold
+myMaximumBy2 :: (a -> a -> Ordering)
+             -> [a] -> a
+myMaximumBy2 _ [] = error "list of length zero"
+myMaximumBy2 f (x:xs) = foldr (\a b -> if f a b == GT then a else b) x xs
