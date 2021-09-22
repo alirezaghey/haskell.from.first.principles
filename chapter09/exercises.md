@@ -529,6 +529,7 @@ myOr2 :: [Bool] -> Bool
 myOr2 []      = False
 myOr2 (x:xs)  = x || myOr2 xs
 ``` 
+[Solution file](exercise.files/standardFuncs.hs)
 
 2. `myAny` returns `True` if `a -> Bool` applied to any of the values in the list returns `True`.
 ```hs
@@ -541,6 +542,7 @@ myAny2 :: (a -> Bool) -> [a] -> Bool
 myAny2 _ []     = False
 myAny2 f (x:xs) = f x || myAny f xs
 ```
+[Solution file](exercise.files/standardFuncs.hs)
 
 3. After you write the recursive `myElem`, write another version that uses `any`. The built-in version of `elem` in GHC 7.10 and newer has a type that used `Foldable` instead of the list type specifically. You can ignore that and write the concrete version that works only for list.
 
@@ -554,6 +556,7 @@ myElem el (x:xs)  = el == x || myElem el xs
 myElem2 :: Eq a => a -> [a] -> Bool
 myElem2 el = any (== el)
 ```
+[Solution file](exercise.files/standardFuncs.hs)
 
 4. Implement `myReverse`.
 
@@ -567,6 +570,7 @@ myReverse2 :: [a] -> [a]
 myReverse2 []       = []
 myReverse2 (x:xs)   = concat [myReverse2 xs, [x]]
 ```
+[Solution file](exercise.files/standardFuncs.hs)
 
 
 5. `squish` flattens a list of lists into a list
@@ -579,3 +583,5 @@ squish (x:xs)         = flatten x xs where
   flatten [] _        = squish xs 
   flatten (y:ys) xs   = y : flatten ys xs
 ```
+[Solution file](exercise.files/standardFuncs.hs)
+
