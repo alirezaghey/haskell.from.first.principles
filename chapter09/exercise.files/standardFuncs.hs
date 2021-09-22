@@ -66,3 +66,9 @@ squish []             = []
 squish (x:xs)         = flatten x xs where
   flatten [] _        = squish xs 
   flatten (y:ys) xs   = y : flatten ys xs
+-- implementation of the standard `concatMap` function
+squishMap :: (a -> [b]) -> [a] -> [b]
+squishMap f []        = []
+squishMap f (x:xs)    = flatten (f x) where
+  flatten []          = squishMap f xs
+  flatten (y:ys)      = y : flatten ys

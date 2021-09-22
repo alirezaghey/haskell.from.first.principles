@@ -585,3 +585,26 @@ squish (x:xs)         = flatten x xs where
 ```
 [Solution file](exercise.files/standardFuncs.hs)
 
+6. `squishMap` maps a function over a list and concatenates the results.
+
+```hs
+-- function type
+squishMap :: (a -> [b]) -> [a] -> [b]
+squishMap = undefined
+```
+Sample input and output:
+```REPL
+Prelude> squishMap (\x -> [1, x, 3]) [2]
+[1,2,3]
+Prelude> squishMap (\x -> "WO " ++[x]++" HOO ") "123"
+"WO 1 HOO WO 2 HOO WO 3 HOO"
+```
+
+```hs
+-- implementation of the standard `concatMap` function
+squishMap :: (a -> [b]) -> [a] -> [b]
+squishMap f []        = []
+squishMap f (x:xs)    = flatten (f x) where
+  flatten []          = squishMap f xs
+  flatten (y:ys)      = y : flatten ys
+```
