@@ -608,3 +608,4 @@ squishMap f (x:xs)    = flatten (f x) where
   flatten []          = squishMap f xs
   flatten (y:ys)      = y : flatten ys
 ```
+[Solution file](exercise.files/standardFuncs.hs)
