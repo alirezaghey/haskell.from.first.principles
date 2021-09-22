@@ -617,7 +617,7 @@ squishMap f (x:xs)    = flatten (f x) where
 squishAgain :: [[a]] -> [a]
 squishAgain x = squishMap id x
 ```
-
+[Solution file](exercise.files/standardFuncs.hs)
 
 8. `myMaximumBy` takes a comparison function and a list and returns the greatest element of the list based on the last value that comparison returned `GT` for. If you import `maximumBy` from `Data.List`, you see the type is:
 
@@ -646,3 +646,5 @@ myMaximumBy2 :: (a -> a -> Ordering)
              -> [a] -> a
 myMaximumBy2 _ [] = error "list of length zero"
 myMaximumBy2 f (x:xs) = foldr (\a b -> if f a b == GT then a else b) x xs
+```
+[Solution file](exercise.files/standardFuncs.hs)
