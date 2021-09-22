@@ -670,3 +670,26 @@ myMinimumBy2 _ []     = error "list of length zero"
 myMinimumBy2 f (x:xs) = foldr (\a b -> if f a b == LT then a else b) x xs
 ```
 [Solution file](exercise.files/standardFuncs.hs)
+
+
+10. Using the `myMinimumBy` and `myMaximumBy` functions, write your own version of `maximum` and `minimum`. If you have GHC 7.10 or newer, you'll see a type constructor that wants a `Foldable` instance instead of a list as has been the case for many functions far.
+
+```hs
+-- implementation of standard maximum function using myMaximumBy
+myMaximum :: (Ord a) => [a] -> a
+myMaximum x = myMaximumBy compare x
+
+-- same as above but eta reduced
+myMaximum2 :: (Ord a) => [a] -> a
+myMaximum2 = myMaximumBy2 compare
+
+
+-- implementation of standard minimum function using myMinimumBy
+myMinimum :: (Ord a) => [a] -> a
+myMinimum x = myMinimumBy compare x
+
+-- same as above but eta reduced
+myMinimum2 :: (Ord a) => [a] -> a
+myMinimum2 = myMinimumBy compare x
+```
+[Solution file](exercise.files/standardFuncs.hs)

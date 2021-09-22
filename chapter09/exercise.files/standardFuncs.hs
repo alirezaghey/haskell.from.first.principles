@@ -119,3 +119,21 @@ myMinimumBy2 :: (a -> a -> Ordering)
              -> [a] -> a
 myMinimumBy2 _ []     = error "list of length zero"
 myMinimumBy2 f (x:xs) = foldr (\a b -> if f a b == LT then a else b) x xs
+
+
+-- implementation of standard maximum function using myMaximumBy
+myMaximum :: (Ord a) => [a] -> a
+myMaximum x = myMaximumBy compare x
+
+-- same as above but eta reduced
+myMaximum2 :: (Ord a) => [a] -> a
+myMaximum2 = myMaximumBy2 compare
+
+
+-- implementation of standard minimum function using myMinimumBy
+myMinimum :: (Ord a) => [a] -> a
+myMinimum x = myMinimumBy compare x
+
+-- same as above but eta reduced
+myMinimum2 :: (Ord a) => [a] -> a
+myMinimum2 = myMinimumBy compare
