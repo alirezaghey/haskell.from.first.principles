@@ -528,3 +528,15 @@ myOr2 :: [Bool] -> Bool
 myOr2 []      = False
 myOr2 (x:xs)  = x || myOr2 xs
 ``` 
+
+2. `myAny` returns `True` if `a -> Bool` applied to any of the values in the list returns `True`.
+```hs
+-- implementation of standard function `any`
+myAny :: (a -> Bool) -> [a] -> Bool
+myAny _ []      = False
+myAny f (x:xs)  = if f x then True else myAny f xs
+
+myAny2 :: (a -> Bool) -> [a] -> Bool
+myAny2 _ []     = False
+myAny2 f (x:xs) = f x || myAny f xs
+```

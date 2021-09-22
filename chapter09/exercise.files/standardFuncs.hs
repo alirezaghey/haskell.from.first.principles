@@ -25,3 +25,13 @@ myOr2 :: [Bool] -> Bool
 myOr2 []      = False
 myOr2 (x:xs)  = x || myOr2 xs
 
+
+
+-- implementation of standard function `any`
+myAny :: (a -> Bool) -> [a] -> Bool
+myAny _ []      = False
+myAny f (x:xs)  = if f x then True else myAny f xs
+
+myAny2 :: (a -> Bool) -> [a] -> Bool
+myAny2 _ []     = False
+myAny2 f (x:xs) = f x || myAny f xs
