@@ -579,9 +579,9 @@ myReverse2 (x:xs)   = concat [myReverse2 xs, [x]]
 -- implementation of the standard `concat` function
 squish :: [[a]] -> [a]
 squish []             = []
-squish (x:xs)         = flatten x xs where
-  flatten [] _        = squish xs 
-  flatten (y:ys) xs   = y : flatten ys xs
+squish (x:xs)         = flatten x where
+  flatten []          = squish xs 
+  flatten (y:ys)      = y : flatten ys
 ```
 [Solution file](exercise.files/standardFuncs.hs)
 
