@@ -609,3 +609,11 @@ squishMap f (x:xs)    = flatten (f x) where
   flatten (y:ys)      = y : flatten ys
 ```
 [Solution file](exercise.files/standardFuncs.hs)
+
+
+7. `squishAgain` flattens a list of lists into a list. This time re-use the `squishMap` function. (It like `concat` or our `squish` function from above but with different implementation)
+
+```hs
+squishAgain :: [[a]] -> [a]
+squishAgain x = squishMap id x
+```

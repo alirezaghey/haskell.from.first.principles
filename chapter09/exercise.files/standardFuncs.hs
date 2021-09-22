@@ -74,3 +74,13 @@ squishMap f []        = []
 squishMap f (x:xs)    = flatten (f x) where
   flatten []          = squishMap f xs
   flatten (y:ys)      = y : flatten ys
+
+
+-- implementation of standard function `concat`
+-- using `squishMap` from before
+squishAgain :: [[a]] -> [a]
+squishAgain x = squishMap id x
+
+-- eta reduce and point free version
+squishAgain2 :: [[a]] -> [a]
+squishAgain2 = squishMap id
