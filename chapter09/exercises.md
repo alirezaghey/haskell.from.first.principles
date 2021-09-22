@@ -554,3 +554,16 @@ myElem el (x:xs)  = el == x || myElem el xs
 myElem2 :: Eq a => a -> [a] -> Bool
 myElem2 el = any (== el)
 ```
+
+4. Implement `myReverse`.
+
+```hs
+-- implementation of standard `reverse`
+myReverse :: [a] -> [a]
+myReverse []      = []
+myReverse (x:xs)  = myReverse xs ++ [x]
+
+myReverse2 :: [a] -> [a]
+myReverse2 []       = []
+myReverse2 (x:xs)   = concat [myReverse2 xs, [x]]
+```
