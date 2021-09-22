@@ -35,3 +35,14 @@ myAny f (x:xs)  = if f x then True else myAny f xs
 myAny2 :: (a -> Bool) -> [a] -> Bool
 myAny2 _ []     = False
 myAny2 f (x:xs) = f x || myAny f xs
+
+
+
+-- implementation of standard function `elem`
+myElem :: Eq a => a -> [a] -> Bool
+myElem _ []       = False
+myElem el (x:xs)  = el == x || myElem el xs
+
+
+myElem2 :: Eq a => a -> [a] -> Bool
+myElem2 el = any (== el)

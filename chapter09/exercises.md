@@ -542,3 +542,15 @@ myAny2 _ []     = False
 myAny2 f (x:xs) = f x || myAny f xs
 ```
 
+3. After you write the recursive `myElem`, write another version that uses `any`. The built-in version of `elem` in GHC 7.10 and newer has a type that used `Foldable` instead of the list type specifically. You can ignore that and write the concrete version that works only for list.
+
+```hs
+-- implementation of standard function `elem`
+myElem :: Eq a => a -> [a] -> Bool
+myElem _ []       = False
+myElem el (x:xs)  = el == x || myElem el xs
+
+
+myElem2 :: Eq a => a -> [a] -> Bool
+myElem2 el = any (== el)
+```
