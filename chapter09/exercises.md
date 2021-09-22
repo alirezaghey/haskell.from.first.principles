@@ -517,6 +517,7 @@ myAnd2 (x:xs) = x && myAnd xs
 1. `myOr` returns True if any `Bool` in the list is `True`.
 
 ```hs
+-- implementing the standard `or` functions
 -- direct recursion, not using (||)
 myOr :: [Bool] -> Bool
 myOr []     = False
@@ -540,3 +541,4 @@ myAny2 :: (a -> Bool) -> [a] -> Bool
 myAny2 _ []     = False
 myAny2 f (x:xs) = f x || myAny f xs
 ```
+
