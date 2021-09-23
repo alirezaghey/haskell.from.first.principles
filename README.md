@@ -10,6 +10,9 @@
 | 04      | [exercises](chapter04/exercises.md), [definitions](chapter04/definitions.md)                                      |
 | 05      | [exercises](chapter05/exercises.md), [definitions](chapter05/definitions.md), [resources](chapter05/resources.md) |
 | 06      | [exercises](chapter06/exercises.md), [definitions](chapter06/definitions.md), [resources](chapter06/resources.md) |
+| 07      | [exercises](chapter07/exercises.md), [definitions](chapter07/definitions.md), [resources](chapter07/resources.md) |
+| 08      | [exercises](chapter08/exercises.md), [definitions](chapter08/definitions.md)|
+| 09      | [exercises](chapter09/exercises.md), [definitions](chapter09/definitions.md), [resources](chapter09/resources.md) |
 
 To install Haskell through stack, run the following command:
 `curl -sSL https://get.haskellstack.org/ | sh`
