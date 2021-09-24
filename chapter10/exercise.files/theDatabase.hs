@@ -44,3 +44,12 @@ mostRecent = foldr f z
         f (DbDate a) b = if a > b then a else b
         f _          b = b
         z              = UTCTime (fromGregorian 0 0 0) (secondsToDiffTime 0)
+
+
+-- sums all the DbNumber values
+sumDb :: [DatabaseItem]
+      -> Integer
+sumDb = foldr f 0
+  where
+        f (DbNumber a) b = a + b
+        f _            b = b

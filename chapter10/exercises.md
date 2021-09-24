@@ -127,8 +127,17 @@ mostRecent = foldr f z
 [Solution file](exercise.files/theDatabase.hs)
 
 
+4. Write a function that sums all of the `DbNumber` values.
 
-
+```hs
+sumDb :: [DatabaseItem]
+      -> Integer
+sumDb = foldr f 0
+  where
+        f (DbNumber a) b = a + b
+        f _            b = b
+```
+[Solution file](exercise.files/theDatabase.hs) 
 
 
 
