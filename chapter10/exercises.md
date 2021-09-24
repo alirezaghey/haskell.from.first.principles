@@ -100,7 +100,17 @@ filterDbDate = foldr f []
 ```
 [Solution file](exercise.files/theDatabase.hs)
 
+2. Write a function that filters for `DbNumber` values and returns a list of the `Integer` values inside them.
 
+```hs
+filterDbNumber :: [DatabaseItem]
+               -> [Integer]
+filterDbNumber = foldr f []
+  where
+        f (DbNumber a) b = a : b
+        f _            b = b
+```
+[Solution file](exercise.files/theDatabase.hs)
 
 
 

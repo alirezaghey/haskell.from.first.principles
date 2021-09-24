@@ -26,3 +26,12 @@ filterDbDate = foldr f []
   where 
         f (DbDate a) b = a : b
         f  _         b = b
+        
+
+-- filters DbNumber instances and returns their Integer as a list
+filterDbNumber :: [DatabaseItem]
+               -> [Integer]
+filterDbNumber = foldr f []
+  where
+        f (DbNumber a) b = a : b
+        f _            b = b
