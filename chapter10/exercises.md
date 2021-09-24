@@ -140,7 +140,20 @@ sumDb = foldr f 0
 [Solution file](exercise.files/theDatabase.hs) 
 
 
+5. Write a function that gets the average of the DbNumber values.
 
-
-
-
+```hs
+-- You'll probably need to use fromIntegral
+-- to get from Integer to Double.
+avgDb :: [DatabaseItem]
+      -> Double
+avgDb xs = calc (go xs)
+  where
+        calc (s, 0) = fromIntegral s
+        calc (s, l) = fromIntegral s / fromIntegral l
+        go xs = foldr f (0, 0) xs
+          where
+                f (DbNumber a) (b, c) = (b+a, c+1)
+                f _            (b, c) = (b, c)
+```
+[Solution file](exercise.files/theDatabase.hs)

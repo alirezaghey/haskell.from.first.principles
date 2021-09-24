@@ -53,3 +53,17 @@ sumDb = foldr f 0
   where
         f (DbNumber a) b = a + b
         f _            b = b
+        
+
+-- returns the mean of DbNumber
+avgDb :: [DatabaseItem]
+      -> Double
+avgDb xs = calc (go xs)
+  where
+        calc (s, 0) = fromIntegral s
+        calc (s, l) = fromIntegral s / fromIntegral l
+        go xs = foldr f (0, 0) xs
+          where
+                f (DbNumber a) (b, c) = (b+a, c+1)
+                f _            (b, c) = (b, c)
+        
