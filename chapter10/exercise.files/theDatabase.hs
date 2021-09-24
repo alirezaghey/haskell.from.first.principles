@@ -35,3 +35,12 @@ filterDbNumber = foldr f []
   where
         f (DbNumber a) b = a : b
         f _            b = b
+
+-- gets the most recent date in the database
+mostRecent :: [DatabaseItem]
+           -> UTCTime
+mostRecent = foldr f z
+  where
+        f (DbDate a) b = if a > b then a else b
+        f _          b = b
+        z              = UTCTime (fromGregorian 0 0 0) (secondsToDiffTime 0)
