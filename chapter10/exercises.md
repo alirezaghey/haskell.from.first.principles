@@ -66,8 +66,39 @@ flip (*) 2 3
 <br>**Answer:** Same as previous problem. `foldl const 'z' [1..5]`
 
 
+## Database Processing
 
+Write the following functions for processing this data.
 
+```hs
+import Data.Time
+
+data DatabaseItem = DbString    String
+                  | DbNumber    Integer
+                  | DbDate      UTCTime 
+                  deriving (Eq, Ord, Show)
+
+theDatabase :: [DatabaseItem]
+theDatabase =
+    [ DbDate $ UTCTime  (fromGregorian 1911 5 1)
+                        (secondsToDiffTime 34123)
+    , DbNumber 9001
+    , DbString "Hello, World!"
+    , DbDate $ UTCTime  (fromGregorian 1921 5 1)
+                        (secondsToDiffTime 34123)
+    ]
+```
+
+1. Write a function that filters for `DbDate` values and returns a list of the `UTCTime` values inside them.
+```hs
+filterDbDate :: [DatabaseItem]
+             -> [UTCTime]
+filterDbDate = foldr f []
+  where 
+        f (DbDate a) b = a : b
+        f  _         b = b
+```
+[Solution file](exercise.files/theDatabase.hs)
 
 
 
