@@ -134,3 +134,17 @@ myFilter3 :: (a -> Bool) -> [a] -> [a]
 myFilter3 p = foldr (\a acc -> if p a then a : acc else acc) []
 
 
+
+-- standard concat impplementations
+-- recursive
+squish :: [[a]] -> [a]
+squish []     = []
+squish (x:xs) = x ++ squish xs
+
+-- foldr
+squish2 :: [[a]] -> [a]
+squish2 xs = foldr (++) [] xs
+
+-- foldr, point-free
+squish3 :: [[a]] -> [a]
+squish3 = foldr (++) []
