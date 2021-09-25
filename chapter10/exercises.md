@@ -275,3 +275,11 @@ seekritFunc x =
 ```
 
 This function returns the average (mean) length of words truncated towards 0. `length (words x)` returns the number of words in `x`, `map length (words x)` returns a list containing the length of each individual word. Taking the `sum` of it gives the number of characters in all the words combined. Their `div` is the number of characters in all the words combined integer divided by the number of individual words.
+
+3. We'd really like the answer to be more precise. Can you rewrite that using fractional division?
+
+```hs
+seekritFun2 x =
+  (/) (fromIntegral $ sum $ map length $ words x)
+      (fromIntegral $ length $ words x)
+```
