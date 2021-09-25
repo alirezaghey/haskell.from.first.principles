@@ -91,3 +91,28 @@ myReverse3 xs = foldl (flip (:)) [] xs
 -- foldl, point-free
 myReverse4 :: [a] -> [a]
 myReverse4 = foldl (flip (:)) []
+
+
+
+-- standar map implementations
+-- recursive
+myMap :: (a -> b) -> [a] -> [b]
+myMap _ []      = []
+myMap f (x:xs)  = f x : myMap f xs
+
+-- foldr
+myMap2 :: (a -> b) -> [a] -> [b]
+myMap2 _ []     = []
+myMap2 f xs = foldr (\a acc -> (f a) : acc) [] xs
+
+-- foldr, eta-reduced
+myMap3 :: (a -> b) -> [a] -> [b]
+myMap3 f = foldr (\a acc -> (f a) : acc) []
+
+-- foldr, lambda-free
+myMap4 :: (a -> b) -> [a] -> [b]
+myMap4 f xs = foldr ((:) . f) [] xs
+
+-- foldr, lambda-free, eta-reduced
+myMap5 :: (a -> b) -> [a] -> [b]
+myMap5 f = foldr ((:) . f) []
