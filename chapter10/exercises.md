@@ -376,3 +376,40 @@ myAny5 p   = foldr ((||) . p) False
 [Solution file](exercise.files/recursiveToFold.hs)
 
 
+3. Write two versions of `myElem`. One version should use folding and the other should use `any`.
+
+```hs
+-- standard elem implementations
+-- recursive
+myElem :: (Eq a) => a -> [a] -> Bool
+myElem _ []     = False
+myElem x (y:ys)
+  | x == y      = True
+  | otherwise   = myElem x ys
+  
+
+-- foldr
+myElem2 :: (Eq a) => a -> [a] -> Bool
+myElem2 x xs = foldr (\a b -> x == a || b) False xs
+
+-- foldr, point-free
+myElem3 :: (Eq a) => a -> [a] -> Bool
+myElem3 x = foldr (\a b -> x == a || b) False
+
+-- foldr, map
+myElem4 :: (Eq a) => a -> [a] -> Bool 
+myElem4 x xs = foldr (||) False $ map (==x) xs 
+
+-- foldr, function composition
+myElem5 :: (Eq a) => a -> [a] -> Bool
+myElem5 x xs = foldr ((||) . (==x)) False xs
+
+-- foldr, function composition, point-free
+myElem6 :: (Eq a) => a -> [a] -> Bool 
+myElem6 x = foldr ((||) . (==x)) False
+
+-- using any
+myElem7 :: (Eq a) => a -> [a] -> Bool 
+myElem7 x = any (== x)
+```
+[Solution file](exercise.files/recursiveToFold.hs)
