@@ -199,3 +199,69 @@ facN2 :: Int -> [Integer]
 facN2 = flip take fac
 ```
 [Solution file](exercise.files/fibs.hs)
+
+# Chapter exercises
+
+## Warm-up and review
+For the following set of exercises, you are not expected to use folds. These are intended to review material from previous chapters. Feel free to use any syntax or structure from previous chapters that seems appropriate.
+
+1. Given the following sets of consonants and vowels:
+
+```hs
+stops = "pbtdkg"
+vowels = "aeiou"
+```
+a. Write a function that takes inputs from `stops` and `vowels` and makes 3-tuples of all possible stop-vowel-stop combinations. These will not all correspond to real words in English, although the stop-vowel-stop pattern is common enough that many of them will.
+
+```hs
+stops = "pbtdkg"
+vowels = "aeiou"
+
+create3Tuples :: String -> String -> [(Char, Char, Char)]
+create3Tuples s v = [(a, b, c) | a <- stops, b <- vowels, c <- stops]
+```
+[Solution file](exercise.files/stopVowelStop.hs)
+<br>b. Modify that function so that it only returns the combinations that begin with a `p`.
+
+```hs
+create3TuplesStartingWithP :: String -> String -> [(Char, Char, Char)]
+create3TuplesStartingWithP s v = [('p', b, c) | b <- v, c <- s]
+```
+[Solution file](exercise.files/stopVowelStop.hs)
+<br>c. Now set up lists of nouns and verbs (instead of stops and vowels) and modify the function to make tuples representing possible noun-verb-noun sentences.
+```hs
+
+verbs = ["Act","Answer","Approve","Arrange","Break","Build","Buy","Coach"
+        ,"Color","Cough","Create","Complete","Cry","Dance","Describe","Draw"
+        ,"Drink","Eat","Edit","Enter","Exit","Imitate","Invent","Jump","Laugh"
+        ,"Lie","Listen","Paint","Plan","Play","Read","Replace","Run","Scream"
+        ,"See","Shop","Shout","Sing","Skip","Sleep","Sneeze","Solve","Study"
+        ,"Teach","Touch","Turn","Walk","Win","Write","Whistle","Yank","Zip"]
+nouns = ["Actor","Gold","Painting","Advertisement","Grass","Parrot","Afternoon"
+        ,"Greece","Pencil","Airport","Guitar","Piano","Ambulance","Hair","Pillow"
+        ,"Animal","Hamburger","Pizza","Answer","Helicopter","Planet","Apple"
+        ,"Helmet","Plastic","Army","Holiday","Portugal","Australia","Honey","Potato"
+        ,"Balloon","Horse","Queen","Banana","Hospital","Quill","Battery","House"
+        ,"Rain","Beach","Hydrogen","Rainbow","Beard","Ice","Raincoat","Bed","Insect"
+        ,"Refrigerator","Belgium","Insurance","Restaurant","Boy","Iron","River"
+        ,"Branch","Island","Rocket","Breakfast","Jackal","Room","Brother","Jelly"
+        ,"Rose","Camera","Jewellery","Russia","Candle","Jordan","Sandwich","Car"
+        ,"Juice","School","Caravan","Kangaroo","Scooter","Carpet","King","Shampoo"
+        ,"Cartoon","Kitchen","Shoe","China","Kite","Soccer","Church","Knife","Spoon"
+        ,"Crayon","Lamp","Stone","Crowd","Lawyer","Sugar","Daughter","Leather"
+        ,"Sweden","Death","Library","Teacher","Denmark","Lighter","Telephone"
+        ,"Diamond","Lion","Television","Dinner","Lizard","Tent","Disease","Lock"
+        ,"Thailand","Doctor","London","Tomato","Dog","Lunch","Toothbrush","Dream"
+        ,"Machine","Traffic","Dress","Magazine","Train","Easter","Magician","Truck"
+        ,"Egg","Manchester","Uganda","Eggplant","Market","Umbrella","Egypt","Match"
+        ,"Van","Elephant","Microphone","Vase","Energy","Monkey","Vegetable","Engine"
+        ,"Morning","Vulture","England","Motorcycle","Wall","Evening","Nail","Whale"
+        ,"Eye","Napkin","Window","Family","Needle","Wire","Finland","Nest","Xylophone"
+        ,"Fish","Nigeria","Yacht","Flag","Night","Yak","Flower","Notebook","Zebra"
+        ,"Football","Ocean","Zoo","Forest","Oil","Garden","Fountain","Orange","Gas"
+        ,"France","Oxygen","Girl","Furniture","Oyster","Glass","Garage","Ghost"]
+        
+createNounVerbNounTuples :: [String] -> [String] -> [(String, String, String)]
+createNounVerbNounTuples n v = [(a, b, c) | a <- nouns, b <- verbs, c <- nouns]
+```
+[Solution file](exercise.files/stopVowelStop.hs)
