@@ -413,3 +413,27 @@ myElem7 :: (Eq a) => a -> [a] -> Bool
 myElem7 x = any (== x)
 ```
 [Solution file](exercise.files/recursiveToFold.hs)
+
+
+4. Implement myReverse, don't worry about trying to make it lazy.
+
+```hs
+-- standard reverese implementations
+-- recursive
+myReverse :: [a] -> [a]
+myReverse []     = []
+myReverse (x:xs) = myReverse xs ++ [x]
+
+-- foldl
+myReverse2 :: [a] -> [a]
+myReverse2 xs = foldl (\acc x -> x : acc) [] xs
+
+-- foldl without lambda
+myReverse3 :: [a] -> [a]
+myReverse3 xs = foldl (flip (:)) [] xs
+
+-- foldl, point-free
+myReverse4 :: [a] -> [a]
+myReverse4 = foldl (flip (:)) []
+```
+[Solution file](exercise.files/recursiveToFold.hs)

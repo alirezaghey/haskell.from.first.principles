@@ -72,3 +72,22 @@ myElem6 x = foldr ((||) . (==x)) False
 -- using any
 myElem7 :: (Eq a) => a -> [a] -> Bool 
 myElem7 x = any (== x)
+
+
+-- standard reverese implementations
+-- recursive
+myReverse :: [a] -> [a]
+myReverse []     = []
+myReverse (x:xs) = myReverse xs ++ [x]
+
+-- foldl
+myReverse2 :: [a] -> [a]
+myReverse2 xs = foldl (\acc x -> x : acc) [] xs
+
+-- foldl without lambda
+myReverse3 :: [a] -> [a]
+myReverse3 xs = foldl (flip (:)) [] xs
+
+-- foldl, point-free
+myReverse4 :: [a] -> [a]
+myReverse4 = foldl (flip (:)) []
