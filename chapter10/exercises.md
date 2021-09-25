@@ -283,3 +283,66 @@ seekritFun2 x =
   (/) (fromIntegral $ sum $ map length $ words x)
       (fromIntegral $ length $ words x)
 ```
+
+## Rewriting functions using folds
+
+In the previous chapter, you wrote these functions using direct recursion over lists. The goal now is to rewrite them using folds. Where possible, to gain a deeper understanding of folding, try rewriting the fold version so taht it is point-free.
+
+Point-free versions of these functions written with a fold should look like:
+```hs
+myFunc = foldr f z
+```
+So for example with the `and` function:
+
+```hs
+-- Again, this type will be less
+-- reusable than the one in GHC 7.10
+-- and newer. Don't worry.
+
+-- direct recursion, not using (&&)
+myAnd :: [Bool] -> Bool
+myAnd []    = True
+myAnd (x:xs)=
+  if x == False
+  then False
+  else myAnd xs
+
+-- direct recursion, using (&&)
+myAnd2 :: [Bool] -> Bool
+myAnd2 []         = True
+myAnd2 (x:xs)     = x && myAnd xs
+
+
+-- fold, not point-free
+-- in the folding function
+myAnd3 :: [Bool] -> Bool
+myAnd3 = foldr
+            (\a b ->
+             if a == False
+             then False
+             else b) True
+
+-- fold, both myAnd and the folding
+-- function are point-free now
+myAnd4 :: [Bool] -> Bool
+myAnd4 = foldr && True
+```
+
+The goal here is to converge on the final version where possible. You don't need to write all variations for each example, but the more variations you write, the deeper your understanding of these function will become.
+
+1. `myOr` returns `True` if any `Bool` in the list is `True`.
+```hs
+-- recursive
+myOr :: [Bool] -> Bool
+myOr []     = False
+myOr (x:xs) = x || myOr xs
+
+-- foldr
+myOr2 :: [Bool] -> Bool
+myOr2 xs = foldr (||) False xs
+
+-- foldr point-free
+myOr3 :: [Bool] -> Bool
+myOr3 = foldr (||) False
+```
+[Solution file](exercise.files/recursiveToFold.hs)
