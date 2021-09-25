@@ -467,3 +467,22 @@ myMap5 f = foldr ((:) . f) []
 ```
 [Solution file](exercise.files/recursiveToFold.hs)
 
+
+6. Write `myFilter` in terms of `foldr`. It should have the same behavior as the built-in `filter`.
+
+```hs
+-- standard filter implementations
+-- recursive
+myFilter :: (a -> Bool) -> [a] -> [a]
+myFilter _ []     = []
+myFilter p (x:xs) = if p x then x : myFilter p xs else myFilter p xs
+
+-- foldr
+myFilter2 :: (a -> Bool) -> [a] -> [a]
+myFilter2 p xs = foldr (\a acc -> if p a then a : acc else acc) [] xs
+
+-- foldr, eta-reduced
+myFilter3 :: (a -> Bool) -> [a] -> [a]
+myFilter3 p = foldr (\a acc -> if p a then a : acc else acc) []
+```
+[Solution file](exercise.files/recursiveToFold.hs)

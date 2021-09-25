@@ -116,3 +116,21 @@ myMap4 f xs = foldr ((:) . f) [] xs
 -- foldr, lambda-free, eta-reduced
 myMap5 :: (a -> b) -> [a] -> [b]
 myMap5 f = foldr ((:) . f) []
+
+
+
+-- standard filter implementations
+-- recursive
+myFilter :: (a -> Bool) -> [a] -> [a]
+myFilter _ []     = []
+myFilter p (x:xs) = if p x then x : myFilter p xs else myFilter p xs
+
+-- foldr
+myFilter2 :: (a -> Bool) -> [a] -> [a]
+myFilter2 p xs = foldr (\a acc -> if p a then a : acc else acc) [] xs
+
+-- foldr, eta-reduced
+myFilter3 :: (a -> Bool) -> [a] -> [a]
+myFilter3 p = foldr (\a acc -> if p a then a : acc else acc) []
+
+
