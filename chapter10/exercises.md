@@ -265,3 +265,13 @@ createNounVerbNounTuples :: [String] -> [String] -> [(String, String, String)]
 createNounVerbNounTuples n v = [(a, b, c) | a <- nouns, b <- verbs, c <- nouns]
 ```
 [Solution file](exercise.files/stopVowelStop.hs)
+
+2. What does the following mystery function do? What is its type? Try to get a good sense of what it does before you test it in the REPL to verify it.
+
+```hs
+seekritFunc x =
+  div (sum (map length (words x)))
+      (length (words x))
+```
+
+This function returns the average (mean) length of words truncated towards 0. `length (words x)` returns the number of words in `x`, `map length (words x)` returns a list containing the length of each individual word. Taking the `sum` of it gives the number of characters in all the words combined. Their `div` is the number of characters in all the words combined integer divided by the number of individual words.
