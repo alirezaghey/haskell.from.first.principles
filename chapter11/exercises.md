@@ -59,4 +59,13 @@ isCar _  = False
 isPlane :: Vehicle -> Bool
 isPlane (Plane _) = True
 isPlane _ = False
+
+areCars :: [Vehicle] -> [Bool]
+areCars = foldr (\a acc -> (isCar a):acc) []
+
+areCars2 :: [Vehicle] -> [Bool]
+areCars2 = foldr ((:) . isCar) []
+
+areCars3 :: [Vehicle] -> [Bool]
+areCars3 = map isCar
 ```
