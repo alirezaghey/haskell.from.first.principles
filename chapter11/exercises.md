@@ -78,3 +78,8 @@ getManu :: Vehicle -> Manufacturer
 getManu (Car m _) = m
 ```
 [Solution file](exercise.files/vehicles.hs)
+
+4. Given that we're returning the `Manufacturer`, what will hapen if you use this on `Plane` data? Run time throws an exception since our patterns are non-exhaustive.
+
+5. All right. Let's say you've decided to add the size of the plane as an argument to the `Plane` constructro. Add that to your datatypes in the appropriate places and change your data functions appropriately.
+[Solution file](exercise.files/vehicles.hs)
