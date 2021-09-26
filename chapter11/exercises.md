@@ -69,6 +69,7 @@ areCars2 = foldr ((:) . isCar) []
 areCars3 :: [Vehicle] -> [Bool]
 areCars3 = map isCar
 ```
+[Solution file](exercise.files/vehicles.hs)
 
 3. Now we're going to write a function to tell us the manufacturer of a piece of data:
 
@@ -76,3 +77,4 @@ areCars3 = map isCar
 getManu :: Vehicle -> Manufacturer
 getManu (Car m _) = m
 ```
+[Solution file](exercise.files/vehicles.hs)
