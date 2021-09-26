@@ -204,3 +204,23 @@ myMaximumBy2 :: (a -> a -> Ordering)
              -> [a] -> a
 myMaximumBy2 _ []     = error "list of length zero"
 myMaximumBy2 f (x:xs) = foldr (\a b -> if f a b == GT then a else b) x xs
+
+
+
+--standard minimumBy implementations
+-- recursive
+myMinimumBy :: (a -> a -> Ordering)
+            -> [a] -> a
+myMinimumBy _ []  = error "list of length zero"
+myMinimumBy f xs   = go f (head xs) xs where
+  go f r []       = r
+  go f r (x:xs)
+    | f x r == LT = go f x xs
+    | otherwise   = go f r xs
+
+-- foldr
+myMinimumBy2 :: (a -> a -> Ordering)
+             -> [a] -> a
+myMinimumBy2 _ []     = error "list of length zero"
+myMinimumBy2 f (x:xs) = foldr (\a b -> if f a b == LT then a else b) x xs
+
