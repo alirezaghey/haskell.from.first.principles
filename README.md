@@ -13,6 +13,7 @@
 | 07      | [exercises](chapter07/exercises.md), [definitions](chapter07/definitions.md), [resources](chapter07/resources.md) | anonymous-functions, pattern-matching, case, guards, function-composition, pointfree-style, higher-order-functions
 | 08      | [exercises](chapter08/exercises.md), [definitions](chapter08/definitions.md)| recursion|
 | 09      | [exercises](chapter09/exercises.md), [definitions](chapter09/definitions.md), [resources](chapter09/resources.md) | lists, filter, map, zip, list comprehension, range |
+| 10    | [exercises](chapter10/exercises.md), [definitions](chapter10/definitions.md), [resources](chapter10/resources.md)| foldr, foldl, scanr, scan
 
 To install Haskell through stack, run the following command:
 `curl -sSL https://get.haskellstack.org/ | sh`
