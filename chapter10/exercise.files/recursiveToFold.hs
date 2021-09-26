@@ -148,3 +148,28 @@ squish2 xs = foldr (++) [] xs
 -- foldr, point-free
 squish3 :: [[a]] -> [a]
 squish3 = foldr (++) []
+
+
+
+
+-- standard concatMap impplementations
+-- recursive
+squishMap :: (a -> [b]) -> [a] -> [b]
+squishMap _ []     = []
+squishMap f (x:xs) = f x ++ squishMap f xs
+
+-- foldr
+squishMap2 :: (a -> [b]) -> [a] -> [b]
+squishMap2 f xs = foldr (\a acc -> f a ++ acc) [] xs
+
+-- foldr, eta-reduced
+squishMap3 :: (a -> [b]) -> [a] -> [b]
+squishMap3 f = foldr (\a acc -> f a ++ acc) []
+
+-- foldr, lambda-free
+squishMap4 :: (a -> [b]) -> [a] -> [b]
+squishMap4 f xs = foldr ((++) . f) [] xs
+
+-- foldr, lambda-free, eta-reduced
+squishMap5 :: (a -> [b]) -> [a] -> [b]
+squishMap5 f = foldr ((++) . f) []
