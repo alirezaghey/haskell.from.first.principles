@@ -173,3 +173,34 @@ squishMap4 f xs = foldr ((++) . f) [] xs
 -- foldr, lambda-free, eta-reduced
 squishMap5 :: (a -> [b]) -> [a] -> [b]
 squishMap5 f = foldr ((++) . f) []
+
+
+-- standard concat implementations relying on concatMap
+squishAgain :: [[a]] -> [a]
+squishAgain xs = squishMap (\a -> a) xs
+
+-- lambda-free
+squishAgain2 :: [[a]] -> [a]
+squishAgain2 xs = squishMap id xs
+
+-- lambda-free, eta-reduced
+squishAgain3 :: [[a]] -> [a]
+squishAgain3 = squishMap id
+
+
+-- standard maximumBy implementations
+-- recursive
+myMaximumBy :: (a -> a -> Ordering)
+            -> [a] -> a
+myMaximumBy _ []    = error "list of length zero"
+myMaximumBy f xs     = go f (head xs) xs where
+  go f r []         = r
+  go f r (x:xs) 
+    | f x r == GT   = go f x xs
+    | otherwise     = go f r xs 
+    
+-- foldr
+myMaximumBy2 :: (a -> a -> Ordering)
+             -> [a] -> a
+myMaximumBy2 _ []     = error "list of length zero"
+myMaximumBy2 f (x:xs) = foldr (\a b -> if f a b == GT then a else b) x xs

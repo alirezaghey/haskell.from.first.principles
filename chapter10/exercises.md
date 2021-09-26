@@ -531,3 +531,44 @@ squishMap5 :: (a -> [b]) -> [a] -> [b]
 squishMap5 f = foldr ((++) . f) []
 ```
 [Solution file](exercise.files/recursiveToFold.hs)
+
+
+
+9. `squishAgain` flattens a list of lists into a list. This time re-use the `squishMap` function.
+```hs
+-- standard concat implementations relying on concatMap
+squishAgain :: [[a]] -> [a]
+squishAgain xs = squishMap (\a -> a) xs
+
+-- lambda-free
+squishAgain2 :: [[a]] -> [a]
+squishAgain2 xs = squishMap id xs
+
+-- lambda-free, eta-reduced
+squishAgain3 :: [[a]] -> [a]
+squishAgain3 = squishMap id
+```
+[Solution file](exercise.files/recursiveToFold.hs)
+
+
+10. `myMaximumBy` takes a comparison function and a list and returns the greatest element of the list based on the last value that the comparison returned `GT` for.
+
+```hs
+-- standard maximumBy implementations
+-- recursive
+myMaximumBy :: (a -> a -> Ordering)
+            -> [a] -> a
+myMaximumBy _ []    = error "list of length zero"
+myMaximumBy f xs     = go f (head xs) xs where
+  go f r []         = r
+  go f r (x:xs) 
+    | f x r == GT   = go f x xs
+    | otherwise     = go f r xs 
+    
+-- foldr
+myMaximumBy2 :: (a -> a -> Ordering)
+             -> [a] -> a
+myMaximumBy2 _ []     = error "list of length zero"
+myMaximumBy2 f (x:xs) = foldr (\a b -> if f a b == GT then a else b) x xs
+```
+[Solution file](exercise.files/recursiveToFold.hs)
