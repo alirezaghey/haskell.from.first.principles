@@ -69,3 +69,10 @@ areCars2 = foldr ((:) . isCar) []
 areCars3 :: [Vehicle] -> [Bool]
 areCars3 = map isCar
 ```
+
+3. Now we're going to write a function to tell us the manufacturer of a piece of data:
+
+```hs
+getManu :: Vehicle -> Manufacturer
+getManu (Car m _) = m
+```
