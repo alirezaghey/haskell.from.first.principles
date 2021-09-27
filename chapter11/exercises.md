@@ -159,3 +159,11 @@ instance TooMany (Int, Int) where
   tooMany (n , m) = tooMany (n + m)
 ```
 [Solution file](exercise.files/tooManyTypeclass.hs)
+
+3. Make another `TooMany` instance, this time for `(Num a, TooMany a) => (a, a)`. This can mean whatever you want, such as summing the two numbers together.
+
+```hs
+instance (Num a, TooMany a) => TooMany (a, a) where
+  tooMany (n, m) = tooMany n && tooMany m
+```
+[Solution file](exercise.files/tooManyTypeclass.hs)
