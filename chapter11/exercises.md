@@ -102,4 +102,28 @@ data Airline =
 
 3. Given what we know about `Int8`, what's the cardinality of `Int16`?<br>**Answer:** 2^16 = 65536 => 2^15 negative number and 2^15-1 positive numbers plus zero.
 4. Use the REPL and `maxBound` and `minBound` to examine `Int` and `Integer`. What can you say about the cardinality of those types?<br>**Answer:** `Int` has cardinality of 2^64 = 18446744073709551616 => 2^63 negative numbers and 2^63-1 positive number plus zero.
-5. Extra credit: What's the connection between the 8 in `Int8` and that type's cardinality of 256?<br>**Answer:** 2^8 = 256  
+5. Extra credit: What's the connection between the 8 in `Int8` and that type's cardinality of 256?<br>**Answer:** 2^8 = 256
+
+
+## For Example
+
+1. You can query the type of a value in GHCi with the `:type` command, also abbreviated `:t`.
+
+```REPL
+Prelude> :t False
+False :: Bool
+```
+
+What is the type of data constructor `MakeExample`? What happens when you request the type of `Example`?
+<br>**Answer:** The type of `Example` is `Example :: MakeExample`. When typing `:t Example` GHCi throws and error saying: `Data constructor not in scope: Example`. The reason is that `Example` is a type constructor.
+
+2. What if you try `:info` on `Example` in GHCi? Can you determine what typeclass instances are defined for the `Example` type using `:info` in GHCi?
+<br>**Answer:**Yes. `Show` instance is defined for `Example`.
+
+3. Try making a new datatype like `Example` but with a single type argument added to `MakeExample`, such as `Int`. What has changed when you query `MakeExample` with `:type` in GHCi?
+<br>**Answer:**
+```hs
+data Example2 = MakeExample2 Int deriving (Show, Eq, Ord)
+```
+Requsting `:type MakeExample2` in GHCi shows: `MakeExample2 :: Int -> Example2`. It means that the data constructor `MakeExample2` takes one `Int` argument and create an instance of type `Example2`.
+
