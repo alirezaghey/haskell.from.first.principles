@@ -150,3 +150,12 @@ instance TooMany (Int, String) where
   tooMany (n, _) = tooMany n
 ```
 [Solution file](exercise.files/tooManyTypeclass.hs)
+
+
+2. Make another `TooMany` instance for `(Int, Int)`. Sum the values together under the assumption this is a count of goats from two fields.
+
+```hs
+instance TooMany (Int, Int) where
+  tooMany (n , m) = tooMany (n + m)
+```
+[Solution file](exercise.files/tooManyTypeclass.hs)
