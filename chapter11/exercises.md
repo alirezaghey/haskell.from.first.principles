@@ -241,3 +241,79 @@ data GardenNormal =
   | Lilac'    Gardener
   deriving Show
 ```
+
+## Programmers
+
+Write a funciton that generates all possible values of `Programmer`. Use the provided lists of inhabitants of `OperatingSystem` and `ProgLang`.
+
+```hs
+module Programmers where
+
+data OperatingSystem =
+        GnuPlusLinux
+      | OpenBSDPlusNevermindJustBSDStill
+      | Mac
+      | Windows
+      deriving (Eq, Show)
+
+data ProgLang =
+        Haskell
+     |  Agda
+     |  Idris
+     |  PureScript
+     deriving (Eq, Show)
+
+data Programmer =
+  Programmer { os :: OperatingSystem
+             , lang :: ProgLang }
+  deriving (Eq, Show)
+
+
+allOperatingSystems :: [OperatingSystem]
+allOperatingSystems =
+  [ GnuPlusLinux
+  , OpenBSDPlusNevermindJustBSDStill
+  , Mac
+  , Windows
+  ]
+  
+allLanguages :: [ProgLang]
+allLanguages =
+  [ Haskell
+  , Agda
+  , Idris
+  , PureScript
+  ]
+
+allProgrammers :: [Programmer]
+allProgrammers = [Programmer os lang | os <- allOperatingSystems, lang <- allLanguages]
+
+main :: IO ()
+main = do
+  print allProgrammers
+```
+Please note that we could also create all the possible `OperatingSystem`s and `ProgLang`s without hardcoding them into lists. In order to do so, we have to derive instances of the `Enum` typeclass for both types and then we could enumerate over all the data constructors. Something as follows:
+```hs
+data OperatingSystem =
+        GnuPlusLinux
+      | OpenBSDPlusNevermindJustBSDStill
+      | Mac
+      | Windows
+      deriving (Eq, Show, Enum)
+
+data ProgLang =
+        Haskell
+     |  Agda
+     |  Idris
+     |  PureScript
+     deriving (Eq, Show, Enum)
+
+data Programmer =
+  Programmer { os :: OperatingSystem
+             , lang :: ProgLang }
+  deriving (Eq, Show)
+  
+allProgrammers :: [Programmer]
+allProgrammers = [Programmer os lang | lang <- enumFrom Haskell, os <- enumFrom GnuPlusLinux]
+print allProgrammers
+```
