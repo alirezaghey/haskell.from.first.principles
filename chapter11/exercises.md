@@ -127,3 +127,26 @@ data Example2 = MakeExample2 Int deriving (Show, Eq, Ord)
 ```
 Requsting `:type MakeExample2` in GHCi shows: `MakeExample2 :: Int -> Example2`. It means that the data constructor `MakeExample2` takes one `Int` argument and create an instance of type `Example2`.
 
+## Logic Goats
+
+1. Reusing the `TooMany` typeclass, write an instance of the typeclass for the type `(Int, String)`. This will require adding a language pragma named `FlexibleInstances` _if_ you do not used a newtype -- GHC will tell you what to do.
+
+```hs
+{-# LANGUAGE FlexibleInstances #-}
+
+class TooMany a where
+  tooMany :: a -> Bool 
+
+instance TooMany Int where
+  tooMany n = n > 42
+
+newtype Goats =
+  Goats Int deriving (Eq, Show)
+
+instance TooMany Goats where
+  tooMany (Goats n) = tooMany n
+
+instance TooMany (Int, String) where
+  tooMany (n, _) = tooMany n
+```
+[Solution file](exercise.files/tooManyTypeclass.hs)
