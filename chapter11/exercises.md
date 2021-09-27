@@ -83,3 +83,23 @@ getManu (Car m _) = m
 
 5. All right. Let's say you've decided to add the size of the plane as an argument to the `Plane` constructro. Add that to your datatypes in the appropriate places and change your data functions appropriately.
 [Solution file](exercise.files/vehicles.hs)
+
+
+## Cardinality
+
+While we haven't explicitly described the rules for calculating the cardinality of datatypes yet, you might already have an idea of how to do it for simple datatypes with nullary constructors. Try not to overthink these exercises -- follow your intuition based on what you know.
+
+1. `data PugType = PugData`<br>**Answer:** Cardinality of 1.
+2. For this one, recall that `Bool` is also defined with the `|`:
+
+```hs
+data Airline =
+        PapuAir
+     |  CatapultsR'Us
+     |  TakeYourChancesUnited
+```
+<br>**Answer:** Cardinality is 3.
+
+3. Given what we know about `Int8`, what's the cardinality of `Int16`?<br>**Answer:** 2^16 = 65536 => 2^15 negative number and 2^15-1 positive numbers plus zero.
+4. Use the REPL and `maxBound` and `minBound` to examine `Int` and `Integer`. What can you say about the cardinality of those types?<br>**Answer:** `Int` has cardinality of 2^64 = 18446744073709551616 => 2^63 negative numbers and 2^63-1 positive number plus zero.
+5. Extra credit: What's the connection between the 8 in `Int8` and that type's cardinality of 256?<br>**Answer:** 2^8 = 256  
