@@ -212,3 +212,32 @@ Numba Int8 | BoolyBool Bool =
 256 + 2 = 258
 ```
 What happens if you try to create a `Numba` with numeric literals out of the `Int8` min/max bounds? It overflows/underflows
+
+
+## How Does Your Garden Grow?
+
+1. Given the type
+
+```hs
+data FlowerType = Gardenia
+                | Daisy
+                | Rose
+                | Lilac
+                deriving Show
+
+type Gardener = String
+
+data Garden =
+  Garden Gardener FlowerType
+  deriving Show
+```
+What is the sum of products normal form of `Garden`?
+<br>**Answer:** 
+```hs
+data GardenNormal =
+    Gardenia' Gardener
+  | Daisy'    Gardener
+  | Rose'     Gardener
+  | Lilac'    Gardener
+  deriving Show
+```
