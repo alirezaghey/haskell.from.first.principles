@@ -446,3 +446,5 @@ foldTree _ b Leaf   = b
 foldTree f b (Node left a right) = foldTree f z right where
                                     z = f a g where
                                       g = goldTree f b left
+```
+
