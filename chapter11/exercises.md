@@ -493,3 +493,45 @@ f Friday = "Miller Time"
 - [ ] b. delivers the head of `xs`
 - [x] c. delivers the final element of `xs`
 - [ ] d. has the same type as `xs`
+
+## Ciphers
+
+In the Lists chapter, you wrote a Caesar cipher. Now, we want to expand on that idea by writing a Vigenere cipher. A Vigenere cipher is another substitution cipher, based on Caesar cipher, but it uses a series of Caesar ciphers for polyalphabetic substitution. The substitution for each letter in the plaintext is determined by a fixed keyword.
+
+So, for example, if you want to encode the message "meet at dawn", the first step is to pick a keyword that will determine which Caesar cipher to use. We'll use the keyword "Ally" here. You repeat the kyword for as many characters as there are in your original message:
+```
+MEET AT DAWN
+ALLY AL LYAL
+```
+Now the number of rightward shifts to make to encode each character is set by the character of the keyword that lines up with it. The 'A' means a shift of 0, so the initial 'M' will remain 'M'. But the 'L' for our second character sets a rightward shift of 11, so 'E' becoms 'P'. And so on, so 'meet at dawn' encoded with the keyword 'Ally' becomes 'MPPR AE OYWY'.
+
+Like the Caesar cipher, you can find all kinds of resources to help you understand the cipher and also many examples written in Haskell. Consider using a combination of `chr`, `ord`, and `mod` again, possibly very similar to what you used for writing the original Caesar cipher.
+```hs
+import Data.Char
+
+-- shifts each character of t by the ord of the corresponding character in k
+-- wrapping around if it reaches 256
+-- if k is shorter than t, k is repeated as many times as required
+cipher :: [Char] -> [Char] -> [Char]
+cipher t [] = error "key cannot be empty"
+cipher t k  = go t k  where
+  go []       _       = []
+  go xs       []      = go xs k
+  go (x:xs)   (y:ys)  = shift x y : go xs ys where
+    shift x y = chr (rem (ord x + ord y) 256)
+
+
+-- reverses the effect of cipher by unshifting each character in t
+-- by the ord of the corresponding character in k
+-- wrapping around if it goes below 0
+-- if k is shorter than t, k is repeated as many times as required
+uncipher :: [Char] -> [Char] -> [Char]
+uncipher t [] = error "key cannot be empty"
+uncipher t k  = go t k where
+  go []       _       = []
+  go xs       []      = go xs k
+  go (x:xs)  (y:ys)  = unshift x y : go xs ys where
+    unshift x y       = chr $ if num < 0 then num + 256 else num where
+      num = ord x - ord y 
+```
+[Solution file](exercise.files/cipher_advanced.hs)
