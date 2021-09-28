@@ -431,3 +431,18 @@ testPostorder =
   else putStrLn "Bad news bears."
 ```
 [Solution file](exercise.files/binaryTree.hs)
+
+
+## Write foldr for BinaryTree
+
+Given the definition of `BinaryTree` we have prodived, write a catamorphism for the binary trees.
+```hs
+-- inorder fold
+foldTree :: (a -> b -> b)
+         ->  b
+         ->  BinaryTree a
+         ->  b
+foldTree _ b Leaf   = b
+foldTree f b (Node left a right) = foldTree f z right where
+                                    z = f a g where
+                                      g = goldTree f b left

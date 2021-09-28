@@ -62,6 +62,21 @@ testPostorder =
   then putStrLn "Inorder fine!"
   else putStrLn "Bad news bears."
     
+-- inorder fold
+foldTree :: (a -> b -> b)
+         ->  b
+         ->  BinaryTree a
+         ->  b
+foldTree _ b Leaf   = b
+foldTree f b (Node left a right) = foldTree f z right where
+                                    z = f a g where
+                                      g = foldTree f b left
+
+testfoldTree1 :: IO ()
+testfoldTree1 =
+  if foldTree (+) 0 testTree == 6
+  then putStrLn "foldTree fin!"
+  else putStrLn "Bad New about foldTree"
 
 main :: IO ()
 main = do
@@ -69,3 +84,4 @@ main = do
   testPreorder
   testInorder
   testPostorder
+  testfoldTree1
