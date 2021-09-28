@@ -317,3 +317,40 @@ allProgrammers :: [Programmer]
 allProgrammers = [Programmer os lang | lang <- enumFrom Haskell, os <- enumFrom GnuPlusLinux]
 print allProgrammers
 ```
+
+
+## The Quad
+
+Determine how many unique inhabitants each type has.
+
+Suggestion: do the arithmetic unless you want to verify. Writing them out gets dedious quickly. Considering the `Quad` type as described below answer the following questions.
+```hs
+data Quad =
+    One
+  | Two
+  | Three
+  | Four
+  deriving (Eq, Show)
+```
+1. How many different forms can this take:
+
+```hs
+eQuad :: Either Quad Quad
+eQuad = ???
+```
+**Answer:** 2 * 4 = 8
+
+2. `prodQuad :: (Quad, Quaad)`
+<br>**Answer:** 4 * 4 = 16
+
+3. `funcQuad :: Quad -> Quad`
+<br>**Answer:** 4^4 = 2^8 = 256
+
+4. `prodTBool :: (Bool, Bool, Bool)`
+<br>**Answer:** 2 * 2 * 2 = 8
+
+5. `gTwo :: Bool -> Bool -> Bool`
+<br>**Answer:** (2^2)^2 = 2^4 = 16
+
+6. `fTwo :: Bool -> Quad -> Quad`
+<br>**Answer:** (2^4)^4 = 2^16 = 65536
