@@ -535,3 +535,75 @@ uncipher t k  = go t k where
       num = ord x - ord y 
 ```
 [Solution file](exercise.files/cipher_advanced.hs)
+
+
+# As-patterns
+
+_As-patterns_ in Haskell are a nifty way to be able to pattern match on part of something and still refer to the entire original value. Some examples:
+
+```hs
+f :: Show a => (a, b) -> IO (a, b)
+f t@(a, _) = do
+  print a
+  return t
+```
+
+Here we pattern-matched on a tuple so we could get at the first value for printing, but used the `@` symbol to introduce a binding named `t` in order to refer to the whole tuple rather than just a part.
+```REPL
+Prelude> f (1, 2)
+1
+(1, 2)
+```
+
+We can use as-patterns with pattern matching on arbitrary data constructors, which includes lists:
+```hs
+doubleUp :: [a] -> [a]
+doubleUp [] = []
+doubleUp xs@(x:_) = x : xs
+```
+```REPL
+λ> doubleUp []
+[]
+λ> doubleUp [1]
+[1,1]
+λ> doubleUp [1,2]
+[1,1,2]
+λ> doubleUp [1,2,3]
+[1,1,2,3]
+```
+Use as-patterns in implementing the following functions:
+1. This should return `True` if (and only if) all the values in the first list appear in the second list, though they need not be contiguous.
+
+```hs
+isSubseqOf :: (Eq a)
+           => [a]
+           -> [a]
+           -> Bool
+```
+The following are examples of how this functions should work:
+```REPL
+λ> isSubSeqOf "blah" "blahwoot"
+True
+λ> isSubsecOf "blah" "wootblah"
+True
+λ> isSubsecOf "blah" "wboloath"
+True
+λ> isSubsecOf "blah" "wootblah"
+False
+λ> isSubsecOf "blah" "halbwoot"
+False
+λ> isSubsecOf "blah" "blawhoot"
+True
+```
+Remember that the sub-sequence has to be in the original order!
+```hs
+isSubsequenceOf :: (Eq a) => [a] -> [a] -> Bool 
+isSubsequenceOf []            _   = True 
+isSubsequenceOf _             []  = False 
+isSubsequenceOf xs'@(x:xs) (y:ys)
+  | x == y                        = isSubsequenceOf xs  ys
+  | otherwise                     = isSubsequenceOf xs' ys
+```
+[Solution file](exercise.files/subsequence.hs)
+
+
