@@ -354,3 +354,28 @@ eQuad = ???
 
 6. `fTwo :: Bool -> Quad -> Quad`
 <br>**Answer:** (2^4)^4 = 2^16 = 65536
+
+
+## Write map for BinaryTree
+
+Given the following definition of `BinaryTree`
+```hs
+data BinaryTree a =
+    Leaf
+  | Node (BinaryTree a) a (BinaryTree a)
+  deriving (Eq, Ord, Show)
+```
+write a map function for the data structure. You don't really need to know anything about binary trees to write these functions. The struture inherent in the definition of the type is all you need. All you need to do is write the recursive functions.
+
+No special algorithms are needed and we don't expect you to keep the tree balanced or ordered. Also, remember that we've never once mutated anything. We've only built new values from input data. Given that, when you go to implement `mapTree`, you're not changing an existing tree -- you're building a new one based on an existing one (as when you are mapping functions over lists).
+
+Note, you do _note_ need to use `insert'` for this. Retain the original structure of the tree.
+
+```hs
+mapTree :: (a -> b)
+        -> BinaryTree a
+        -> BinaryTree b
+mapTree _ Leaf                = Leaf
+mapTree f (Node left a right) = Node (mapTree f left) f a (mapTree f right)
+```
+[Solution file with tests]
