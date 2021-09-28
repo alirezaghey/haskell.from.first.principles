@@ -378,4 +378,5 @@ mapTree :: (a -> b)
 mapTree _ Leaf                = Leaf
 mapTree f (Node left a right) = Node (mapTree f left) f a (mapTree f right)
 ```
-[Solution file with tests](exercise.files/mapTree.hs)
+[Solution file with tests](exercise.files/binaryTree.hs.hs)
+
