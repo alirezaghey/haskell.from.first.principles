@@ -607,3 +607,35 @@ isSubsequenceOf xs'@(x:xs) (y:ys)
 [Solution file](exercise.files/subsequence.hs)
 
 
+2. Split a sentence into words, then tuple each word with the capitalized form of each.
+
+```hs
+capitalizeWords :: String
+                -> [(String, String)]
+```
+```REPL
+λ> capitalizeWords "hello world"
+[("hello", "Hello"), (world", "World")]
+```
+
+```hs
+import Data.Char
+
+
+capitalizeWords :: String
+                -> [(String, String)]
+capitalizeWords text = map capitalize $ myWords text where
+  capitalize []         = error "empty string"
+  capitalize w@(w':ws)  = (w,toUpper w' : ws )
+
+
+split :: Char -> String -> [String]
+split d s = go d (dropWhile (==d) s) where
+  go _ [] = []
+  go d s = word : go d (dropWhile (==d) rest) where
+    (word, rest) = break (==d) s
+
+myWords :: String -> [String]
+myWords = split ' '
+```
+[Soluttion file](exercise.files/capitalizeWords.hs)
