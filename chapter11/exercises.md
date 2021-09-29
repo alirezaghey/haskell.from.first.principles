@@ -639,3 +639,16 @@ myWords :: String -> [String]
 myWords = split ' '
 ```
 [Soluttion file](exercise.files/capitalizeWords.hs)
+
+
+## Language exercises
+
+1. Write a function that capitalizes a word.
+
+```hs
+import Data.Char (toUpper)
+
+capitalizeWord :: String -> String
+capitalizeWord word = toUpper (head word) : tail word
+```
+[Solution file](exercise.files/capitalizeWord.hs) 
