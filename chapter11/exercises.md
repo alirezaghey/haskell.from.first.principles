@@ -676,3 +676,58 @@ capitalizeWord :: String -> String
 capitalizeWord word = toUpper (head word) : tail wordmport Data.Char (toUpper)
 ```
 [Solution file](exercise.files/capitalizeParagraph.hs)
+
+## Phone exercise
+
+This exercise is made by geophf originally for 1HaskellADay.
+
+Remember old-fashioned phone inputs for writing text where you had to press a button multiple times to get different letters to come up? You may still have to do this when you try to search for a movie to watch using your television remote control. You're going to write code to translate sequences of button presses into strings and vice versa.
+
+So! Here is the layout of the phone:
+
+```
+------------------------------------
+| 1       | 2 ABC      | 3 DEF      |
+------------------------------------
+| 1 GHI   | 2 JKL      | 3 MNO      |
+------------------------------------
+| 1 PQRS  | 2 TUV      | 3 WXYS     |
+------------------------------------
+| * ^     | 0 + _      | # . ,      |
+
+```
+
+Where star `*` gives you capitalization of the letter you're writing to your friends, and 0 is your space bar. To represent the digit itself, you press that digit once more than the letters it represents. If you press a button one more than is required to type the digit, it wraps around to the first letter. For example,
+```
+2     -> 'A'
+22    -> 'B'
+222   -> 'C'
+2222  -> '2'
+22222 -> 'A'
+```
+So on and so forth. We're going to kick this around.
+
+1. Create a data structure that captures the phone layout above. The data structure should be able to express enough of how the layout works that you can use it to dictate the behavior of the functions in the following exercies.
+```hs
+type Digit    = Char
+type Presses  = Int
+
+data DaPhone  = DaPhone [Button]
+
+data Button   = Button Digit [Char]
+
+phone :: DaPhone
+phone = DaPhone [ Button '1' "1"
+                , Button '2' "2abc"
+                , Button '3' "3def"
+                , Button '4' "4ghi"
+                , Button '5' "5jkl"
+                , Button '6' "6mno"
+                , Button '7' "7pqrs"
+                , Button '8' "8tuv"
+                , Button '9' "9wxyz"
+                , Button '*' "*^"
+                , Button '0' "0+_"
+                , Button '#' "#.,"
+```
+[Solution file](exercise.files/phone.hs) 
