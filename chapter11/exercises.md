@@ -731,3 +731,92 @@ phone = DaPhone [ Button '1' "1"
                 , Button '#' "#.,"
 ```
 [Solution file](exercise.files/phone.hs) 
+
+2. Convert the following converstions into keypresses required to express them. We're going to suggest types and functions to fill in order to accomplish the goal, but they're not obligatory. If you want to do it differently, go right ahead.
+
+```hs
+convo :: [String]
+convo =
+  [ "Wanna play 20 questions"
+  , "ya"
+  , "U 1st haha"
+  , "Lol ok. Have u ever tasted alcohol"
+  , "Lol ya"
+  , "Wow ur cool haha. Ur turn"
+  , "Ok. Do u think I am pretty Lol"
+  , "Lol ya"
+  , "Just making sure rofl ur turn"
+  ]
+  ```
+
+  ```hs
+  import Data.Char (isUpper, toUpper, toLower)
+import Data.Maybe (isNothing, isJust, fromJust)
+import Data.List (elemIndex)
+
+
+type Digit    = Char
+type Presses  = Int
+
+newtype DaPhone  = DaPhone [Button]
+
+data Button   = Button Digit [Char]
+
+-- represents an old school phone keyboard
+phone :: DaPhone
+phone = DaPhone [ Button '1' "1"
+                , Button '2' "2abc"
+                , Button '3' "3def"
+                , Button '4' "4ghi"
+                , Button '5' "5jkl"
+                , Button '6' "6mno"
+                , Button '7' "7pqrs"
+                , Button '8' "8tuv"
+                , Button '9' "9wxyz"
+                , Button '*' "*^"
+                , Button '0' "0+_ "
+                , Button '#' "#.,"
+                ] 
+
+-- calculates which button how many times must be pressed
+-- to produce a specific character
+reverseTaps :: DaPhone
+            -> Char 
+            -> [(Digit, Presses)]
+reverseTaps (DaPhone buttons) c
+  | isUpper c = ('*', 1) : [charToTap buttons $ toLower c]
+  | otherwise = [charToTap buttons c]
+  where
+      charToTap ((Button d s):bs) c
+        | c == '1'        = ('1', 1)
+        | isNothing num   = charToTap bs c
+        | otherwise       = (d, if fromJust num == 0 then length s else fromJust num)
+        where
+          num = elemIndex c s
+      charToTap [] _                = error ("where phone? or what char is" ++ [c] ++ "?")
+
+
+-- produces the sequence of digits in the form of (digit, #press)
+-- that must be pressed to produce a specific message
+cellPhonesDead :: DaPhone
+               -> String
+               -> [(Digit, Presses)]
+cellPhonesDead = concatMap . reverseTaps
+
+
+convo :: [String]
+convo =
+  [ "Wanna play 20 questions"
+  , "ya"
+  , "U 1st haha"
+  , "Lol ok. Have u ever tasted alcohol"
+  , "Lol ya"
+  , "Wow ur cool haha. Ur turn"
+  , "Ok. Do u think I am pretty Lol"
+  , "Lol ya"
+  , "Just making sure rofl ur turn"
+  ]
+  ```
+  [Solution file](exercise.files/phone.hs)
+  
+

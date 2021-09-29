@@ -1,12 +1,18 @@
 module Phone where
 
+import Data.Char (isUpper, toUpper, toLower)
+import Data.Maybe (isNothing, isJust, fromJust)
+import Data.List (elemIndex)
+
+
 type Digit    = Char
 type Presses  = Int
 
-data DaPhone  = DaPhone [Button]
+newtype DaPhone  = DaPhone [Button]
 
 data Button   = Button Digit [Char]
 
+-- represents an old school phone keyboard
 phone :: DaPhone
 phone = DaPhone [ Button '1' "1"
                 , Button '2' "2abc"
@@ -18,6 +24,45 @@ phone = DaPhone [ Button '1' "1"
                 , Button '8' "8tuv"
                 , Button '9' "9wxyz"
                 , Button '*' "*^"
-                , Button '0' "0+_"
+                , Button '0' "0+_ "
                 , Button '#' "#.,"
                 ] 
+
+-- calculates which button how many times must be pressed
+-- to produce a specific character
+reverseTaps :: DaPhone
+            -> Char 
+            -> [(Digit, Presses)]
+reverseTaps (DaPhone buttons) c
+  | isUpper c = ('*', 1) : [charToTap buttons $ toLower c]
+  | otherwise = [charToTap buttons c]
+  where
+      charToTap ((Button d s):bs) c
+        | c == '1'        = ('1', 1)
+        | isNothing num   = charToTap bs c
+        | otherwise       = (d, if fromJust num == 0 then length s else fromJust num)
+        where
+          num = elemIndex c s
+      charToTap [] _                = error ("where phone? or what char is" ++ [c] ++ "?")
+
+
+-- produces the sequence of digits in the form of (digit, #press)
+-- that must be pressed to produce a specific message
+cellPhonesDead :: DaPhone
+               -> String
+               -> [(Digit, Presses)]
+cellPhonesDead = concatMap . reverseTaps
+
+
+convo :: [String]
+convo =
+  [ "Wanna play 20 questions"
+  , "ya"
+  , "U 1st haha"
+  , "Lol ok. Have u ever tasted alcohol"
+  , "Lol ya"
+  , "Wow ur cool haha. Ur turn"
+  , "Ok. Do u think I am pretty Lol"
+  , "Lol ya"
+  , "Just making sure rofl ur turn"
+  ]
