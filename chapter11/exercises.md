@@ -818,5 +818,13 @@ convo =
   ]
   ```
   [Solution file](exercise.files/phone.hs)
-  
+
+
+3. How many times do digits need to be pressed for each message?
+
+```hs
+fingerTaps :: [(Digit, Presses)] -> Presses
+fingerTaps = sum . map snd
+```
+[Solution file](exercise.files/phone.hs)
 

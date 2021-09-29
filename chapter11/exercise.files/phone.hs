@@ -66,3 +66,7 @@ convo =
   , "Lol ya"
   , "Just making sure rofl ur turn"
   ]
+  
+-- calculates how many key presse are
+fingerTaps :: [(Digit, Presses)] -> Presses
+fingerTaps = sum . map snd
