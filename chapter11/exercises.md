@@ -918,3 +918,28 @@ eval (Lit int) = int
 eval (Add exp1 exp2) = eval exp1 + eval exp2
 ```
 [Solution file](exercise.files/huttonRazor.hs)
+
+2. Write a printer for the expressions.
+
+```hs
+printExpr :: Expr -> String
+printExpr = undefined
+```
+Expected output:
+```REPL
+λ> printExpr (Add (Lit 1) (Lit 9001))
+"1 + 9001"
+λ> a1 = Add (Lit 9001) (Lit 1)
+λ> a2 = Add a1 (Lit 20001)
+λ> a3 = Add (Lit 1) a2
+λ> printExpr a3
+"1 + 9001 + 1 + 20001"
+```
+
+```hs
+-- prints the mathematical expression that Expr represents
+printExpr :: Expr -> String 
+printExpr (Lit int) = show int
+printExpr (Add expr1 expr2) = printExpr expr1 ++ " + " ++ printExpr expr2
+```
+[Solution file](exercise.files/huttonRazor.hs)
