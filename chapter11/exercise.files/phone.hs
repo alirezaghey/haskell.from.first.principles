@@ -3,6 +3,10 @@ module Phone where
 import Data.Char (isUpper, toUpper, toLower)
 import Data.Maybe (isNothing, isJust, fromJust)
 import Data.List (elemIndex, maximumBy)
+import Data.Ord (comparing)
+-- hiding lookup to avoid confusing errors if we miss `Map` in Map.lookup
+import Prelude hiding (lookup)
+import qualified Data.Map.Strict as Map
 
 
 type Digit    = Char
@@ -76,10 +80,42 @@ fingerTaps = sum . map snd
 -- ignores case
 mostPopularLetter :: String -> Char 
 mostPopularLetter text = fst $ maximumBy (\x y -> compare (snd x) (snd y)) $ freqLetter text where
-  freqLetter :: String -> [(Char, Int)]
-  freqLetter text = [(c, length $ filter (\x -> toLower x==c) text) | c <- ['a'..'z']]
+
+-- returns the freq table of chrs in a string
+freqLetter :: String -> [(Char, Int)]
+freqLetter text = [(c, length $ filter (\x -> toLower x==c) text) | c <- ['a'..'z']]
 
 -- calculates the cost (num of required presses)
 -- of the most frequent char in a string
 costOfMostPopularChar :: String -> Presses
 costOfMostPopularChar = fingerTaps . reverseTaps phone . mostPopularLetter
+
+
+-- returns the letter that's most repeated in list of strings
+-- ignores case
+coolestLtr :: [String] -> Char
+--            take the first element of the tuple
+coolestLtr  = fst . 
+--            get the maximum tuple comparing the second elements of them
+              maximumBy (\(_,x) (_,y) -> compare x y) . 
+--            create a list of tuples from a Map
+              Map.toAscList . 
+--            create a Map out of [(Char, Int)] tuples adding the Ints
+              Map.fromListWith (+) . 
+--            apply freqLetter to a [String] and concatenate the results
+              concatMap freqLetter 
+
+
+-- returns the word that's most repeated in a list of strings
+-- ignores case
+coolestWord :: [String] -> String
+--                    take the first element of the tuple
+coolestWord strings = fst .
+--                    get the maximum tuple comparing the second elements of them 
+                      maximumBy (comparing snd) .
+--                    create a list of tuples from a Map 
+                      Map.toAscList .
+--                    create a Map out of [(String, Int)] tuples adding the Ints 
+                      Map.fromListWith (+) $
+--                    create lower case (word, 1) for each word in all the strings and concat them into one list
+                      [(map toLower w, 1) | w <- concatMap words strings]

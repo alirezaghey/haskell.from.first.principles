@@ -851,3 +851,37 @@ costOfMostPopularChar = fingerTaps . reverseTaps phone . mostPopularLetter
 ```
 [Solution file](exercise.files/phone.hs)
 
+5. What was the most popular letter overall? What was the most popular word?
+
+```hs
+-- returns the letter that's most repeated in list of strings
+-- ignores case
+coolestLtr :: [String] -> Char
+--            take the first element of the tuple
+coolestLtr  = fst . 
+--            get the maximum tuple comparing the second elements of them
+              maximumBy (\(_,x) (_,y) -> compare x y) . 
+--            create a list of tuples from a Map
+              Map.toAscList . 
+--            create a Map out of [(Char, Int)] tuples adding the Ints
+              Map.fromListWith (+) . 
+--            apply freqLetter to a [String] and concatenate the results
+              concatMap freqLetter 
+
+
+-- returns the word that's most repeated in a list of strings
+-- ignores case
+coolestWord :: [String] -> String
+--                    take the first element of the tuple
+coolestWord strings = fst .
+--                    get the maximum tuple comparing the second elements of them 
+                      maximumBy (comparing snd) .
+--                    create a list of tuples from a Map 
+                      Map.toAscList .
+--                    create a Map out of [(String, Int)] tuples adding the Ints 
+                      Map.fromListWith (+) $
+--                    create lower case (word, 1) for each word in all the strings and concat them into one list
+                      [(map toLower w, 1) | w <- concatMap words strings
+```
+[Solutin file](exercise.files/phone.hs)
+
