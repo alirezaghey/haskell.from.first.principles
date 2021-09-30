@@ -2,7 +2,7 @@ module Phone where
 
 import Data.Char (isUpper, toUpper, toLower)
 import Data.Maybe (isNothing, isJust, fromJust)
-import Data.List (elemIndex)
+import Data.List (elemIndex, maximumBy)
 
 
 type Digit    = Char
@@ -67,6 +67,19 @@ convo =
   , "Just making sure rofl ur turn"
   ]
   
--- calculates how many key presse are
+-- calculates how many key presses are
 fingerTaps :: [(Digit, Presses)] -> Presses
 fingerTaps = sum . map snd
+
+
+-- returns the letter that's most repeated in a string
+-- ignores case
+mostPopularLetter :: String -> Char 
+mostPopularLetter text = fst $ maximumBy (\x y -> compare (snd x) (snd y)) $ freqLetter text where
+  freqLetter :: String -> [(Char, Int)]
+  freqLetter text = [(c, length $ filter (\x -> toLower x==c) text) | c <- ['a'..'z']]
+
+-- calculates the cost (num of required presses)
+-- of the most frequent char in a string
+costOfMostPopularChar :: String -> Presses
+costOfMostPopularChar = fingerTaps . reverseTaps phone . mostPopularLetter

@@ -828,3 +828,26 @@ fingerTaps = sum . map snd
 ```
 [Solution file](exercise.files/phone.hs)
 
+
+4. What was the most popular letter for each message? What was it's cost? You'll want to combine `revereseTaps` and `fingerTaps` to figure out what it cost in taps. `reverseTaps` is a list because you need to press a different button in order to get capitals.
+
+```hs
+-- calculates how many key presses are
+fingerTaps :: [(Digit, Presses)] -> Presses
+fingerTaps = sum . map snd
+
+
+-- returns the letter that's most repeated in a string
+-- ignores case
+mostPopularLetter :: String -> Char 
+mostPopularLetter text = fst $ maximumBy (\x y -> compare (snd x) (snd y)) $ freqLetter text where
+  freqLetter :: String -> [(Char, Int)]
+  freqLetter text = [(c, length $ filter (\x -> toLower x==c) text) | c <- ['a'..'z']]
+
+-- calculates the cost (num of required presses)
+-- of the most frequent char in a string
+costOfMostPopularChar :: String -> Presses
+costOfMostPopularChar = fingerTaps . reverseTaps phone . mostPopularLetter
+```
+[Solution file](exercise.files/phone.hs)
+
