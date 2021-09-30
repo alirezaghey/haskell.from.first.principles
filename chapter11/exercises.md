@@ -885,3 +885,36 @@ coolestWord strings = fst .
 ```
 [Solutin file](exercise.files/phone.hs)
 
+
+## Hutton's Razor
+
+Hutton's Razor is a very simple expression language that expresses integer literals and addition of values in that expression language. The "trick" to it is that it's recursive and the two expressions you're summing together could be literals or themselves further addition operations. This sort of datatype is stereotypical of expression languages used to motivate ideas in research papaers and functional pearls. Evaluating or folding a datatype is also in some sense what you're doing most of the time while programming anyway.
+
+1. Your first task is to write the `eval` function which reduces an expression to a final sum.
+
+```hs
+data Expr
+  = Lit Integer
+  | Add Expr Expr
+
+eval :: Expr -> Integer
+eval = error "implement it!"
+```
+
+Example of expected output:
+```REPL
+λ> eval (Add (Lit 1) (Lit 9001))
+9002
+```
+
+```hs
+data Expr =
+    Lit Integer
+  | Add Expr Expr
+  
+
+eval :: Expr -> Integer
+eval (Lit int) = int
+eval (Add exp1 exp2) = eval exp1 + eval exp2
+```
+[Solution file](exercise.files/huttonRazor.hs)
