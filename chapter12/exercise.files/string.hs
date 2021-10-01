@@ -1,38 +1,7 @@
-# Solutions to problems of chapter 12
-
-# Chapter exercises
-
-## Determin the kinds
+import Data.Char (toLower)
+import Data.Maybe (fromMaybe)
 
 
-1. Given
-
-```hs
-id :: a -> a
-```
-What is the kind of `a`?
-```hs
-a :: *
-```
-
-
-2.
-```hs
-r :: a -> f a
-```
- What are the kinds of `a` and `f`?
- ```
- a :: *
- f :: * -> *
-```
-
-## String processing
-
-Because this is the kind of thing linguists _ahem_ enjoy doing in their spare time.
-
-1. Write a recursive function named `replaceThe` which takes a text/string, breaks it into words and replaces each instance of "the" with "a". It's intended only to replace exactly the word "the". `notThe` is a suggested helper function for accomplishing this.
-
-```hs
 -- example input and output for `replaceThe`
 -- >>> replaceThe "the cow loves us"
 -- "a cow loves us"
