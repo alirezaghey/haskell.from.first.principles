@@ -59,6 +59,7 @@ notThe :: String -> Maybe String
 notThe word
   | word == "the" = Nothing
   | otherwise = Just word
+```
 
 2. Write a recursive function that takes a text/string, breaks it into works, and counts the number of instances of "the" followed by a vowel-initial word.
 ```hs
