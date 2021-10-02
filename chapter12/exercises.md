@@ -188,3 +188,29 @@ integerToNat n
       | otherwise     = Succ (go (n-1))
 ```
 [Solution file](exercise.files/naturals.hs)
+
+
+## Small library for Maybe
+
+Write the following functions. This may take some time.
+
+1. Simple boolean checks for `Maybe` values.
+
+```hs
+-- >>> isJust (Just 1)
+-- True
+-- >>> isJust Nothing
+-- False
+isJust :: Maybe a -> Bool
+isJust (Just _) = True
+isJust _        = False
+
+
+-- >>> isNothing (Just 1)
+-- False
+-- >>> isNothing Nothing
+-- True
+isNothing :: Maybe a -> Bool
+isNothing = not . isJust
+```
+[Solution file](exercise.files/maybe.hs)
