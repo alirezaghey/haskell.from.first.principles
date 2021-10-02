@@ -121,3 +121,16 @@ countVowelsRec (x:xs)
 ```
 [Solution file](exercise.files/string.hs)
 
+
+## Validate the word
+Use the `Maybe` type to write a function that counts the number of vowels in a string and the number of consonants. If the number of vowels exceeds the number of consonants, the function returns `Nothing`. In many human languages, vowels rarely exceed the number of consonants so when they do, it _may_ indicate the input isn't a word (that is, a valud input to your dataset).
+
+```hs
+newtype Word' =
+  Word' String
+  deriving (Eq, Show)
+
+
+vowels = "aeiou"
+
+mkWord :: String -> Maybe Word'
