@@ -127,10 +127,20 @@ Use the `Maybe` type to write a function that counts the number of vowels in a s
 
 ```hs
 newtype Word' =
-  Word' String
+  Word' String 
   deriving (Eq, Show)
 
-
+vowels :: String
 vowels = "aeiou"
 
 mkWord :: String -> Maybe Word'
+mkWord word = if    countConsonants > countVowels
+              then  Nothing 
+              else  Just (Word' word) where
+    (countConsonants, countVowels) =
+      foldr f (0, 0) word where
+      f x (v, c) = if x `elem` vowels
+                   then (v+1, c)
+                   else (v, c+1)
+```
+[Solution file](exercise.files/validateWord.hs)
