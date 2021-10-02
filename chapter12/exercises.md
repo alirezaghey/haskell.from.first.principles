@@ -59,3 +59,31 @@ notThe :: String -> Maybe String
 notThe word
   | word == "the" = Nothing
   | otherwise = Just word
+
+2. Write a recursive function that takes a text/string, breaks it into works, and counts the number of instances of "the" followed by a vowel-initial word.
+```hs
+-- example input and output for countTheBeforeVowel
+-- >>> countTheBeforeVowel "the cow"
+-- 0
+-- >>> CountTheBeforeVowel "the evil cow"
+-- 1
+
+-- takes a string and returns the number of "the"s
+-- where the next word starts with a vowel
+countTheBeforeVowel :: String -> Integer
+countTheBeforeVowel = snd . foldr go ("", 0) . words where
+  go = \word (nextWord, count) -> if not (null nextWord) && toLower (head nextWord) `elem` "aeoiuy" && map toLower word == "the" then (word, count+1) else (word, count)
+  
+
+-- same as countTheBeforeVowel
+-- explicit recursion
+countTheBeforeVowelRec :: String -> Integer 
+countTheBeforeVowelRec xs = snd  (go (words xs)) where
+  go :: [String] -> (String, Integer)
+  go [] = ("", 0)
+  go (x:xs) 
+   | not (null nextWord) && toLower (head nextWord) `elem` "aeoiuy" && map toLower x == "the" = (x, count+1)
+   | otherwise = (x, count)
+   where
+     (nextWord, count) = go xs
+```
