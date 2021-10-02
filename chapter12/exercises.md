@@ -87,3 +87,34 @@ countTheBeforeVowelRec xs = snd  (go (words xs)) where
    where
      (nextWord, count) = go xs
 ```
+
+
+3. Return the number of letters that are vowels in a word. Hint: it's helpful to break this into steps. Add any helper functions necessary to achieve your objectives.
+
+<br>a. Test for vowelhood
+<br>b. Return the vowels of a string
+<br>c. Count the number of elements returned
+
+```hs
+-- example input and output for countVowels
+-- >>> countVowels "the cow"
+-- 2
+-- >>> countVowels "Mikolajczak"
+-- 4
+-- takes a string and returns the number of vowels in it
+countVowels :: String -> Integer
+countVowels = foldr (\x acc -> if x `elem` "aeiouy" then acc+1 else acc) 0
+
+
+
+
+-- same as countVowels
+-- explicit recursion
+countVowelsRec :: String -> Integer 
+countVowelsRec []      = 0
+countVowelsRec (x:xs)
+  | toLower x `elem` "aeoiuy" = 1 + countVowelsRec xs
+  | otherwise                 = countVowelsRec xs
+```
+[Solution file](exercise.files/string.hs)
+

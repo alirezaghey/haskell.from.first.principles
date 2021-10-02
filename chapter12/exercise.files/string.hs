@@ -55,3 +55,25 @@ countTheBeforeVowelRec xs = snd  (go (words xs)) where
    | otherwise = (x, count)
    where
      (nextWord, count) = go xs
+     
+
+-- example input and output for countVowels
+-- >>> countVowels "the cow"
+-- 2
+-- >>> countVowels "Mikolajczak"
+-- 4
+-- takes a string and returns the number of vowels in it
+countVowels :: String -> Integer
+countVowels = foldr (\x acc -> if x `elem` "aeiouy" then acc+1 else acc) 0
+
+
+
+
+-- same as countVowels
+-- explicit recursion
+countVowelsRec :: String -> Integer 
+countVowelsRec []      = 0
+countVowelsRec (x:xs)
+  | toLower x `elem` "aeoiuy" = 1 + countVowelsRec xs
+  | otherwise                 = countVowelsRec xs
+  
