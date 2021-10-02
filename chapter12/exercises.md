@@ -60,6 +60,8 @@ notThe word
   | word == "the" = Nothing
   | otherwise = Just word
 ```
+[Solution file](exercise.files/string.hs)
+
 
 2. Write a recursive function that takes a text/string, breaks it into works, and counts the number of instances of "the" followed by a vowel-initial word.
 ```hs
@@ -88,7 +90,7 @@ countTheBeforeVowelRec xs = snd  (go (words xs)) where
    where
      (nextWord, count) = go xs
 ```
-
+[Solution file](exercise.files/string.hs)
 
 3. Return the number of letters that are vowels in a word. Hint: it's helpful to break this into steps. Add any helper functions necessary to achieve your objectives.
 
