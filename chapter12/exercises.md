@@ -338,3 +338,21 @@ rightsFoldr' = foldr f [] where
   ```
   [Solution file](exercise.files/either.hs)
   
+
+3. Implement the standard `partitionEithers` function from `Data.Either`.
+
+```hs
+-- implementation of the standard function
+-- partitionEithers in Data.Either
+partitionEithers' :: [Either a b]
+                  -> ([a], [b])
+partitionEithers' []                = ([], [])
+partitionEithers' (x:xs) = either (\a -> (a:as, bs)) (\b -> (as, b:bs)) x
+  where (as, bs) = partitionEithers' xs
+  
+-- same as above but using foldr
+partitionEithersFoldr'  :: [Either a b]
+                        -> ([a], [b])
+partitionEithersFoldr' = foldr (\x (as, bs) -> either (\a -> (a:as, bs)) (\b -> (as, b:bs)) x) ([],[])
+```
+[Solution file](exercise.files/either.hs)

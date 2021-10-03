@@ -28,3 +28,18 @@ rightsFoldr' :: [Either a b] -> [b]
 rightsFoldr' = foldr f [] where
   f (Right x) acc = x: acc
   f _ acc         = acc
+  
+
+-- implementation of the standard function
+-- partitionEithers in Data.Either
+partitionEithers' :: [Either a b]
+                  -> ([a], [b])
+partitionEithers' []                = ([], [])
+partitionEithers' (x:xs) = either (\a -> (a:as, bs)) (\b -> (as, b:bs)) x
+  where (as, bs) = partitionEithers' xs
+  
+-- same as above but using foldr
+partitionEithersFoldr'  :: [Either a b]
+                        -> ([a], [b])
+partitionEithersFoldr' = foldr (\x (as, bs) -> either (\a -> (a:as, bs)) (\b -> (as, b:bs)) x) ([],[])
+
