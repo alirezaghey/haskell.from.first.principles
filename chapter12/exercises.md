@@ -240,3 +240,26 @@ fromMaybe :: a -> Maybe a -> a
 fromMaybe b = mayybee b id
 ```
 [Solution file](exercise.files/maybe.hs)
+
+
+4. Converting between `List` and `Maybe`.
+
+```hs
+-- >>> listToMaybe [1, 2, 3]
+-- Just 1
+-- >>> listToMaybe []
+-- Nothing
+listToMaybe :: [a] -> Maybe a
+listToMaybe []      = Nothing
+listToMaybe (x:xs)  = Just x
+
+
+-- >>> maybeToList (Just 1)
+-- [1]
+-- >>> maybeToList Nothing
+-- []
+maybeToList :: Maybe a -> [a]
+maybeToList Nothing   = []
+maybeToList (Just a)  = [a]
+```
+[Solution file](exercise.files/maybe.hs)
