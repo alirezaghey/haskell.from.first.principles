@@ -24,3 +24,12 @@ isNothing = not . isJust
 mayybee :: b -> (a -> b) -> Maybe a -> b
 mayybee b _ Nothing       = b
 mayybee b f (Just a)      = f a
+
+
+
+-- >>> fromMaybe 0 Nothing
+-- 0
+-- >>> fromMaybe 0 (Just 1)
+-- 1
+fromMaybe :: a -> Maybe a -> a
+fromMaybe b = mayybee b id

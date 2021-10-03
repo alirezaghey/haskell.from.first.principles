@@ -228,3 +228,15 @@ mayybee b _ Nothing       = b
 mayybee b f (Just a)      = f a
 ```
 [Solution file](exercise.files/maybe.hs)
+
+3. In case you just want to provide a fallback value.
+
+```hs
+-- >>> fromMaybe 0 Nothing
+-- 0
+-- >>> fromMaybe 0 (Just 1)
+-- 1
+fromMaybe :: a -> Maybe a -> a
+fromMaybe b = mayybee b id
+```
+[Solution file](exercise.files/maybe.hs)
