@@ -317,3 +317,24 @@ leftsFoldr' = foldr f [] where
   f _ acc         = acc
 ```
 [Solution file](exercise.files/either.hs)
+
+2. Same as the last exercise but for `Right`. Use `foldr` eventually.
+
+```hs
+-- takes a list of Either and
+-- returns a list of all the inhabitants of Rights
+-- implementation of the standard right function in Data.Either
+rights' :: [Either a b] -> [b]
+rights' []              = []
+rights' ((Right x):xs)  = x : rights' xs
+rights' (_:xs)          = rights' xs
+
+
+-- same as above but using foldr
+rightsFoldr' :: [Either a b] -> [b]
+rightsFoldr' = foldr f [] where
+  f (Right x) acc = x: acc
+  f _ acc         = acc
+  ```
+  [Solution file](exercise.files/either.hs)
+  
