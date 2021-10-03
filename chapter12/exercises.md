@@ -370,3 +370,19 @@ eitherMaybe' f (Right b)  = Just (f b)
 eitherMaybe' _ _          = Nothing
 ```
 [Solution file](exercise.files/either.hs)
+
+
+5. This is a general catamorphism for `Either` values.
+
+```hs
+-- implementation of the standard function either
+-- take 2 function (a -> c), (b -> c) and Either a b
+-- return c
+either' :: (a -> c)
+        -> (b -> c)
+        -> Either a b
+        -> c
+either' l _ (Left x)  = l x
+either' _ r (Right x) = r x
+```
+[Solution file](exercise.files/either.hs)
