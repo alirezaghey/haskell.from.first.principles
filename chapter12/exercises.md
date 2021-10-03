@@ -277,3 +277,18 @@ catMaybes :: [Maybe a] -> [a]
 catMaybes = concatMap maybeToList
 ```
 [Solution file](exercise.files/maybe.hs)
+
+6. You'll see this called "sequence" later.
+
+
+```hs
+-- >>> flipMaybe [Just 1, Just 2, Just 3]
+-- Just [1, 2, 3]
+-- >>> flipMaybe [Just 1, Nothing, Just 3]
+-- Nothing
+flipMaybe :: [Maybe a] -> Maybe [a]
+flipMaybe []      = Just []
+flipMaybe (Nothing:xs)  = Nothing
+flipMaybe ((Just a):xs) = fmap (a :) (flipMaybe xs)
+```
+[Solution file](exercise.files/maybe.hs)

@@ -61,3 +61,14 @@ maybeToList (Just a)  = [a]
 -- []
 catMaybes :: [Maybe a] -> [a]
 catMaybes = concatMap maybeToList
+
+
+
+-- >>> flipMaybe [Just 1, Just 2, Just 3]
+-- Just [1, 2, 3]
+-- >>> flipMaybe [Just 1, Nothing, Just 3]
+-- Nothing
+flipMaybe :: [Maybe a] -> Maybe [a]
+flipMaybe []      = Just []
+flipMaybe (Nothing:xs)  = Nothing
+flipMaybe ((Just a):xs) = fmap (a :) (flipMaybe xs)
