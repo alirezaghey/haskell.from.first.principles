@@ -52,3 +52,12 @@ listToMaybe (x:xs)  = Just x
 maybeToList :: Maybe a -> [a]
 maybeToList Nothing   = []
 maybeToList (Just a)  = [a]
+
+
+-- >>> catMaybes [Just 1, Nothing, Just 2]
+-- [1, 2]
+-- >> xs = take 3 $ repeat Nothing
+-- >>> catMaybes xs
+-- []
+catMaybes :: [Maybe a] -> [a]
+catMaybes = concatMap maybeToList

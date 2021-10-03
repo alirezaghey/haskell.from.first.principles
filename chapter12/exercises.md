@@ -263,3 +263,17 @@ maybeToList Nothing   = []
 maybeToList (Just a)  = [a]
 ```
 [Solution file](exercise.files/maybe.hs)
+
+
+5. For when we want to drop the `Nothing values from out list.
+
+```hs
+-- >>> catMaybes [Just 1, Nothing, Just 2]
+-- [1, 2]
+-- >> xs = take 3 $ repeat Nothing
+-- >>> catMaybes xs
+-- []
+catMaybes :: [Maybe a] -> [a]
+catMaybes = concatMap maybeToList
+```
+[Solution file](exercise.files/maybe.hs)
