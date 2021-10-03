@@ -356,3 +356,17 @@ partitionEithersFoldr'  :: [Either a b]
 partitionEithersFoldr' = foldr (\x (as, bs) -> either (\a -> (a:as, bs)) (\b -> (as, b:bs)) x) ([],[])
 ```
 [Solution file](exercise.files/either.hs)
+
+
+4. Take a function `(b -> c)` and `Either a b` and return `Maybe c`.
+
+```hs
+-- take a function (b -> c) and Either a b
+-- return Maybe c
+eitherMaybe'  :: (b -> c)
+              -> Either a b
+              -> Maybe c
+eitherMaybe' f (Right b)  = Just (f b)
+eitherMaybe' _ _          = Nothing
+```
+[Solution file](exercise.files/either.hs)
