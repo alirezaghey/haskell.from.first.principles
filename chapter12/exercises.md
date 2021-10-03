@@ -214,3 +214,17 @@ isNothing :: Maybe a -> Bool
 isNothing = not . isJust
 ```
 [Solution file](exercise.files/maybe.hs)
+
+
+2. The following is the `Maybe` catamorphism. You can turn a `Maybe` value into anything else with this.
+
+```hs
+-- >>> mayybee 0 (+1) Nothing
+-- 0
+-- >>> mayybee 0 (+1) (Just 1)
+-- 2
+mayybee :: b -> (a -> b) -> Maybe a -> b
+mayybee b _ Nothing       = b
+mayybee b f (Just a)      = f a
+```
+[Solution file](exercise.files/maybe.hs)
