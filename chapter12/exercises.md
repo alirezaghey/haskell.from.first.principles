@@ -292,3 +292,28 @@ flipMaybe (Nothing:xs)  = Nothing
 flipMaybe ((Just a):xs) = fmap (a :) (flipMaybe xs)
 ```
 [Solution file](exercise.files/maybe.hs)
+
+
+## Small library for Either
+
+Write each of the following functions. If more than one possible unique function exists for the type, use common sense eto determine what it should do.
+
+1. Try to eventually arrive at a solution that uses `foldr`, even if earlier versions don't use `foldr`.
+
+```hs
+-- takes a list of Either and
+-- returns a list of all the inhabitants of Lefts
+-- implementation of the standard left function in Data.Either
+lefts' :: [Either a b] -> [a]
+lefts' []             = []
+lefts' ((Left x):xs)  = x : lefts' xs
+lefts' (_:xs)         = lefts' xs
+
+
+-- same as above but using foldr
+leftsFoldr' :: [Either a b] -> [a]
+leftsFoldr' = foldr f [] where
+  f (Left x) acc  = x : acc
+  f _ acc         = acc
+```
+[Solution file](exercise.files/either.hs)
