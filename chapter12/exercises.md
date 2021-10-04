@@ -519,10 +519,9 @@ data BinaryTree a =
 unfold  :: (a -> Maybe (a, b, a))
         -> a
         -> BinaryTree b
-unfold f x
-  | isNothing $ f x   = Leaf
-  | otherwise         = Node (unfold f y) z (unfold f k) where
-    Just (y, z, k) = f x
+unfold f x = case f x of
+  Nothing         -> Leaf
+  Just (y, z, k)  -> Node (unfold f y) z (unfold f kx
 ```
 
 
