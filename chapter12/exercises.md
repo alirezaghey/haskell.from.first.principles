@@ -487,10 +487,9 @@ myIterate f x = x : go f x [] where
 -- implementation of the standard unfoldr function
 -- from Data.List
 myUnfoldr :: (b -> Maybe (a, b)) -> b -> [a]
-myUnfoldr f x
-  | isNothing $ f x = []
-  | otherwise       = a : myUnfoldr f b where
-    Just (a, b)     = f x
+myUnfoldr f x = case f x of
+  Nothing           -> []
+  Just (a, b)       -> a : myUnfoldr f b
 ```
 
 3. Rewrite `myIterate` into `betterIterate` using `myUnfoldr`. A hint -- we used `unfoldr` to produce the same results as `iterate` earlier. Do this with different functions and see if you can abstract the structure out.

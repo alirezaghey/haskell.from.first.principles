@@ -1,4 +1,3 @@
-import Data.Maybe (isNothing)
 -- implementation of the standard iterate function
 -- from Data.List
 myIterate :: (a -> a) -> a -> [a]
@@ -9,11 +8,10 @@ myIterate f x = x : go f x [] where
 -- implementation of the standard unfoldr function
 -- from Data.List
 myUnfoldr :: (b -> Maybe (a, b)) -> b -> [a]
-myUnfoldr f x
-  | isNothing $ f x = []
-  | otherwise       = a : myUnfoldr f b where
-    Just (a, b)     = f x
-    
+myUnfoldr f x = case f x of
+  Nothing           -> []
+  Just (a, b)       -> a : myUnfoldr f b
+
 
 -- implementation of the standar iterate function
 -- using myUnfoldr
