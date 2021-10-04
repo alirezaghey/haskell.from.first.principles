@@ -478,6 +478,27 @@ This may have given you a mild headache, but you may also see that this same pri
 -- from Data.List
 myIterate :: (a -> a) -> a -> [a]
 myIterate f x = x : go f x [] where
-  go f x acc = f x : go f (f x) acc 
+  go f x acc = f x : go f (f x) acc
 ```
 
+2. Write the function `myUnfoldr` using direct recursion. Compare with the built-in `unfoldr` to check your implementation. Again, don't look at implementations of `unfoldr` so that you figure it out yourself.
+
+```hs
+-- implementation of the standard unfoldr function
+-- from Data.List
+myUnfoldr :: (b -> Maybe (a, b)) -> b -> [a]
+myUnfoldr f x
+  | isNothing $ f x = []
+  | otherwise       = a : myUnfoldr f b where
+    Just (a, b)     = f x
+```
+
+3. Rewrite `myIterate` into `betterIterate` using `myUnfoldr`. A hint -- we used `unfoldr` to produce the same results as `iterate` earlier. Do this with different functions and see if you can abstract the structure out.
+
+```hs
+-- implementation of the standar iterate function
+-- using myUnfoldr
+betterIterate :: (a -> a) -> a -> [a]
+betterIterate f x = myUnfoldr g x where
+  g x = Just (x, f x)
+```
