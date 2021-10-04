@@ -386,3 +386,16 @@ either' l _ (Left x)  = l x
 either' _ r (Right x) = r x
 ```
 [Solution file](exercise.files/either.hs)
+
+
+6. Same as before, but use the `either'` function you just wrote.
+
+```hs
+-- same as the eitherMaybe' above
+-- but using either'
+eitherMaybe'' ::  (b -> c)
+              -> Either a b
+              -> Maybe c
+eitherMaybe'' f = either' (const Nothing) (Just . f)
+```
+

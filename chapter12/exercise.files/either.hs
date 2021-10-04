@@ -63,3 +63,10 @@ either' :: (a -> c)
 either' l _ (Left x)  = l x
 either' _ r (Right x) = r x
 
+
+-- same as the eitherMaybe' above
+-- but using either'
+eitherMaybe'' ::  (b -> c)
+              -> Either a b
+              -> Maybe c
+eitherMaybe'' f = either' (const Nothing) (Just . f)
