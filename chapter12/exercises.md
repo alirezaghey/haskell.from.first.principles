@@ -398,6 +398,7 @@ eitherMaybe'' ::  (b -> c)
               -> Maybe c
 eitherMaybe'' f = either' (const Nothing) (Just . f)
 ```
+[Solution file](exercise.files/either.hs)
 
 Most of the functions you just saw are in the `Prelude`, `Data.Maybe`, or `Data.Either` but you should strive to write them yourself without looking at existing implementations. You will deprive _yourself_ if you cheat.
 
@@ -426,7 +427,7 @@ unfoldr :: (b -> Maybe (a, b)) -> b -> [a]
 -- the same thing as iterate
 λ> take 10 $ unfoldr (\b -> Just (b, b+1)) 0
 [0,1,3,4,5,6,7,8,9]
-
+```
 
 ## Why bother?
 
@@ -480,6 +481,7 @@ myIterate :: (a -> a) -> a -> [a]
 myIterate f x = x : go f x [] where
   go f x acc = f x : go f (f x) acc
 ```
+[Solution file](exercise.files/unfold.hs)
 
 2. Write the function `myUnfoldr` using direct recursion. Compare with the built-in `unfoldr` to check your implementation. Again, don't look at implementations of `unfoldr` so that you figure it out yourself.
 
@@ -491,6 +493,7 @@ myUnfoldr f x = case f x of
   Nothing           -> []
   Just (a, b)       -> a : myUnfoldr f b
 ```
+[Solution file](exercise.files/unfold.hs)
 
 3. Rewrite `myIterate` into `betterIterate` using `myUnfoldr`. A hint -- we used `unfoldr` to produce the same results as `iterate` earlier. Do this with different functions and see if you can abstract the structure out.
 
@@ -501,7 +504,7 @@ betterIterate :: (a -> a) -> a -> [a]
 betterIterate f x = myUnfoldr g x where
   g x = Just (x, f x)
 ```
-
+[Solution file](exercise.files/unfold.hs)
 ## Finally something other than a list!
 
 Given the `BinaryTree` from last chapter, complete the following exercises. Here's that datatype again:
@@ -523,6 +526,7 @@ unfold f x = case f x of
   Just (y, z, k)  -> Node (unfold f y) z (unfold f kx
 ```
 [Solution file](exercise.files/binaryTree.hs)
+
 
 2. Make a tree builder.
 
