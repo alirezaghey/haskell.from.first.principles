@@ -524,4 +524,50 @@ unfold f x
   | otherwise         = Node (unfold f y) z (unfold f k) where
     Just (y, z, k) = f x
 ```
+
+
+2. Make a tree builder.
+
+Using the `unfold` function you've made for the `BinaryTree`, write the following function:
+```hs
+treeBuild :: Integer -> BinaryTree Integer
+treeBuild n = undefined
+```
+
+You should be producing results taht look like the following:
+```REPL
+λ> treeBuild 0
+Leaf
+λ> treeBuild 1
+Node Leaf 0 Leaf
+λ> treeBuild 2
+Node  (Node Leaf 1 Leaf)
+      0
+      (Node Leaf 1 Leaf)
+λ> treeBuild 3
+Node  (Node (Node Leaf 2 Leaf)
+            1
+            (Node Leaf 2 Leaf))
+      0
+      (Node (Node Leaf 2 Leaf)
+            1
+            (Node Leaf 2 Leaf))
+```
+
+Or in a slightly different representation
+
+```REPL
+0
+
+
+    0
+  /   \
+1       1
+
+
+          0
+        /   \
+      1       1
+    /   \   /   \
+  2      2 2      2
 ```
