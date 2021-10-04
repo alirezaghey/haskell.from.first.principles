@@ -1,5 +1,3 @@
-import Data.Maybe (isNothing)
-
 data BinaryTree a =
     Leaf
   | Node (BinaryTree a) a (BinaryTree a)
