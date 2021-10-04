@@ -399,3 +399,73 @@ eitherMaybe'' ::  (b -> c)
 eitherMaybe'' f = either' (const Nothing) (Just . f)
 ```
 
+Most of the functions you just saw are in the `Prelude`, `Data.Maybe`, or `Data.Either` but you should strive to write them yourself without looking at existing implementations. You will deprive _yourself_ if you cheat.
+
+## Unfolds
+
+While the idea of catamorphisms is still relatively fresh in our heads, let's turn our attention to their dual: _anamorphisms_. If folds, or catamorphisms, let us break data structures down then unfolds let us build them up. There are, as with folds, a few different ways to unfold a data structure. We can use them to create finite and infinite data structures alike.
+
+```hs
+-- iterate is like a limited
+-- unfold that never ends
+λ> :t iterate
+iterate :: (a -> a) -> a -> [a]
+
+-- because it never ends, we must use
+-- take to get a finite list
+λ> take 10 $ iterate (+1) 0
+[0,1,2,3,4,5,6,7,8,9]
+
+
+-- unfoldr is more general
+λ> :t unfoldr
+unfoldr :: (b -> Maybe (a, b)) -> b -> [a]
+
+
+-- Using unfoldr to do
+-- the same thing as iterate
+λ> take 10 $ unfoldr (\b -> Just (b, b+1)) 0
+[0,1,3,4,5,6,7,8,9]
+
+
+## Why bother?
+
+We bother with this for the same reason we abstracted direct recursion into folds, such as with `sum`, `product`, and `concat`.
+
+```hs
+import Data.List
+
+
+mehSum :: Num a => [a] -> a
+mehSum xs = go 0 xs
+  where go :: Num a => a -> [a] -> a
+        go n [] = n
+        go n (x:xs) = go (n + x) xs
+
+niceSum :: Num a => [a] -> a
+niceSum = foldl' (+) 0
+
+
+mehProduct :: Num a => [a] -> a
+mehProduct xs = go 1 xs
+  where go :: Num a => a -> [a] -> a
+        go n [] = n
+        go n (x:xs) = go (n * x) xs
+
+niceProduct :: Num a => [a] -> a
+niceProduct = foldl' (*) 1
+
+
+mehConcat :: [[a]] -> [a]
+mehConcat xs = go [] xs
+  where go :: [a] -> [[a]] -> [a]
+        go acc [] = acc
+        go acc (x:xs) = go (acc ++ x) xs
+
+niceConcat :: [[a]] -> [a]
+niceConcat = foldr (++) []
+```
+
+This may have given you a mild headache, but you may also see that this same principle of abstracting out common patterns and giving them names applies as well to unfolds as it does to folds.
+
+
