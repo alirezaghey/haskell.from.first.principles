@@ -469,3 +469,15 @@ niceConcat = foldr (++) []
 This may have given you a mild headache, but you may also see that this same principle of abstracting out common patterns and giving them names applies as well to unfolds as it does to folds.
 
 
+## Write your own iterate and unfoldr
+
+1. Write the function `myIterate` using direct recursion. Compare the behavior with the build-in `iterate` to guage correctness. Do not look at the source or any examples of `iterate` so that you are forced to do this yourself.
+
+```hs
+-- implementation of the standard iterate function
+-- from Data.List
+myIterate :: (a -> a) -> a -> [a]
+myIterate f x = x : go f x [] where
+  go f x acc = f x : go f (f x) acc 
+```
+
