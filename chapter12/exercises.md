@@ -523,7 +523,7 @@ unfold f x = case f x of
   Nothing         -> Leaf
   Just (y, z, k)  -> Node (unfold f y) z (unfold f kx
 ```
-
+[Solution file](exercise.files/binaryTree.hs)
 
 2. Make a tree builder.
 
@@ -570,3 +570,12 @@ Or in a slightly different representation
     /   \   /   \
   2      2 2      2
 ```
+
+```hs
+treeBuild :: Integer -> BinaryTree Integer
+treeBuild n = unfold f 0 where
+  f x
+    | x == n = Nothing
+    | otherwise = Just (x+1, x, x+1)
+```
+[Solution file](exercise.files/binaryTree.hs)
