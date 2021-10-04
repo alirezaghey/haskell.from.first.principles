@@ -502,3 +502,26 @@ betterIterate :: (a -> a) -> a -> [a]
 betterIterate f x = myUnfoldr g x where
   g x = Just (x, f x)
 ```
+
+## Finally something other than a list!
+
+Given the `BinaryTree` from last chapter, complete the following exercises. Here's that datatype again:
+
+```hs
+data BinaryTree a =
+    Leaf
+  | Node (BinaryTree a) a (BinaryTree a)
+```
+
+1. Write `unfold` for `BinaryTree`.
+
+```hs
+unfold  :: (a -> Maybe (a, b, a))
+        -> a
+        -> BinaryTree b
+unfold f x
+  | isNothing $ f x   = Leaf
+  | otherwise         = Node (unfold f y) z (unfold f k) where
+    Just (y, z, k) = f x
+```
+```
