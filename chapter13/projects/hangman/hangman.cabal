@@ -1,0 +1,24 @@
+name:                 hangman
+version:              0.1.0.0
+synopsis:             Playing Hangman 
+-- description:
+homepage:             https://github.com/alirezaghey/hs-hangman#readme
+license:              BSD3
+license-file:         LICENSE
+author:               alirezaghey
+maintainer:           alirezaghey
+copyright:            2021 Author name here
+category:             Games
+build-type:           Simple
+cabal-version:        >=1.10
+extra-source-files:   data/dict.txt
+
+
+executable hangman
+  hs-source-dirs:      src
+  main-is:             Main.hs
+  default-language:    Haskell2010
+  build-depends:       base >= 4.7 && < 5
+                     , random
+                     , split
+                      
