@@ -5,5 +5,6 @@ import DogsRule
 
 main :: IO ()
 main = do
-  sayHello
+  name <- getLine
+  sayHello name
   dogs
