@@ -11,4 +11,6 @@ main = do
   putStr "Please input your name: "
   name <- getLine
   sayHello name
-  dogs
+  putStr "Please input your dog's name: "
+  dogName <- getLine
+  dogs dogName
