@@ -127,3 +127,44 @@ isPal str = cleanStr == reverse cleanStr where
   cleanStr = filter (\x -> ord x >= ord 'a' && ord x <= ord 'z' ) $ map toLower str
 ```
 [Solution file](exercise.files/palindrome2.hs)
+
+4. For the following code:
+
+```hs
+type Name = String
+type Age = Integer
+
+data Person = Person Name Age deriving Show
+
+data PersonInvalid =
+    NameEmpty
+  | AgeTooLow
+  | PersonInvalidUnknown String
+  deriving (Eq, Show)
+
+mkPerson  ::  Name
+          ->  Age
+          ->  Either PersonInvalid Person
+mkPerson  name age
+  | name /= "" && age > 0 = Right $ Person name age
+  | name == ""            = Left NameEmpty
+  | age <= 0              = Left AgeTooLow
+  | otherwise             =
+      Left $ PersonInvalidUnknown $
+        "Name was: " ++ show name ++
+        " Age was: " ++ show age
+```
+
+Your job is to write the following function _without_ modifying the code above.
+
+```hs
+gimmePerson :: IO ()
+gimmePerson = undefined
+```
+
+Since `IO ()` is about the least informative type imaginable, we'll tell what it should do.
+
+a. It should prompt the user for a name and age input.
+<br> b. It should attempt to construct a `Person` value using the name and age the user entered. You'll need the `read` function for Age because it's an `Integer` rather than a `String`.
+<br> c. If it constructed a successful person, it should print "Yay! Successfully got a person:" followed by the Person value.
+<br> d. if it got an error value, report that an error occured and print the error.
