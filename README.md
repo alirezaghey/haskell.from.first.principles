@@ -16,6 +16,7 @@
 | 10    | [exercises](chapter10/exercises.md), [definitions](chapter10/definitions.md), [resources](chapter10/resources.md)| foldr, foldl, scanr, scan
 | 11    | [exercises](chapter11/exercises.md), [definitions](chapter11/definitions.md)                                      | data types, data & type constructors, sum & product types, exponential types, newtype, higher-kinded types
 | 12    | [exercises](chapter12/exercises.md), [definitions](chapter12/definitions.md)                                      | maybe, either, unfold, iterate, kinds
+| 13    | [exercises](chapter13/exercises.md), [resources](chapter13/resources.md)                                          | cabal, stack, module, import, export, do and IO
 
 To install Haskell through stack, run the following command:
 `curl -sSL https://get.haskellstack.org/ | sh`
