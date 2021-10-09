@@ -71,5 +71,12 @@ These make it unlike hangman as you might have played it in the past. Ordinarily
 A bit more cimplicated but worth attempting as an exercise is changing the game so that, as with normal hangman, only incorrrect guesses count towards the guess limit.
 
 
+## Modifying code
+
+1. Ciphers: Open your Ciphers module and modify it so that it works with user input.
+
+[Solution file](exercise.files/cipher.hs)
+
+
 
 
