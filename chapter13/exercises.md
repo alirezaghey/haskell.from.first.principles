@@ -103,3 +103,27 @@ palindrome = forever $ do
     False -> putStrLn "Nope!"
 ```
 [Solution file](exercise.files/palindrome.hs)
+
+
+3. If you tried using `palindrome` on a sentence such as "Madam I'm Adam", you may have noticed that palindrome checker doesn't work on that. Modifying the above so that it works on sentences, too, involves several steps. You may need to refer back to previous examples in the chapter to get ideas for proper ordering and nesting. You may wish to import `Data.Char` to use the function `toLower`. Have fun.
+
+```hs
+import Control.Monad
+import System.Exit (exitSuccess)
+import Data.Char (toLower, ord)
+
+
+palindrome :: IO ()
+palindrome = forever $ do
+  line1 <- getLine
+  (if isPal line1 then
+     (do putStrLn "It's a palindrome!"
+         exitSuccess)
+  else
+     putStrLn "Nope!")
+
+isPal :: [Char] -> Bool
+isPal str = cleanStr == reverse cleanStr where
+  cleanStr = filter (\x -> ord x >= ord 'a' && ord x <= ord 'z' ) $ map toLower str
+```
+[Solution file](exercise.files/palindrome2.hs)
