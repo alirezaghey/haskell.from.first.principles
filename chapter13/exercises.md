@@ -55,5 +55,21 @@ a. The type signature refers to three aliased imports. What modules are named in
 <br>**Answer:** `import Control.Monad (forever, when)`
 
 
+# Chapter exercises
+
+## Hangman game logic
+
+You may have noticed when you were playing with the hangman game, that there are some weird things about tis game logic:
+
+ - alghtough it can play with words up to 9 characters long, you only get to guess 7 characters;
+ - it ends the game after 7 guesses, whether they were correct or incorrect;
+ - if your 7th guess supplies the last letter in the word, it may still tell you you lost;
+ - it picks some very strange words that you didn't suspect were even in the dictionary.
+
+These make it unlike hangman as you might have played it in the past. Ordinarily, only incorrect guesses count against you, so you can make as many correct guesses as you need to fill in the word. Modifying the game so that it either gives you more guesses before the game ends or only usese shorter words (or both) involves only a couple of uncomplicated steps.
+
+A bit more cimplicated but worth attempting as an exercise is changing the game so that, as with normal hangman, only incorrrect guesses count towards the guess limit.
+
+
 
 
