@@ -11,9 +11,9 @@ main = hspec $ do
       (2 :: Integer) + 2 `shouldBe` 4
   describe "division" $ do
     it "15 divided by 3 is 5)" $ do
-      dividedBy 15 3 `shouldBe` (5, 0)
+      dividedBy (15 :: Integer) 3 `shouldBe` (5, 0)
     it "22 divided by 5 is 4 remainder 2" $ do
-      dividedBy 22 5 `shouldBe` (4, 2)
+      dividedBy (22 :: Integer) 5 `shouldBe` (4, 2)
 
 sayHello  :: IO ()
 sayHello  = putStrLn "hello!"
