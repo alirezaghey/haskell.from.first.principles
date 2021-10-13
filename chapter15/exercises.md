@@ -148,3 +148,9 @@ main =
 ```
 [Solution file (can be run directly from terminal with cabal)](exercise.files/trivial.hs)
 
+2. Validate associativity with `QuickCheck`
+
+```hs
+newtype Identity a = Identity a
+```
+[Solution file (can be run directly from terminal with cabal)](exercise.files/identity.hs)
