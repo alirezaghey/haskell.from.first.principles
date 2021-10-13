@@ -163,3 +163,9 @@ data Two a b = Two a b
 Hint: Ask for another `Semigroup` instance.
 [Solution file (can be run with cabal)](exercise.files/two.hs)
 
+4. Validate associativity with `QuickCheck`
+
+```hs
+data Three a b c = Three a b c
+```
+[Solution file (can be run with cabal)](exercise.files/three.hs)
