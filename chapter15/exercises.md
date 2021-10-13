@@ -114,3 +114,37 @@ main = do
   quickCheck (monoidRightIdentity :: FstId)
 ```
 [Solution file (can be run directly from terminal with cabal)](exercise.files/maybe-another-monoid.hs)
+
+# Chapter exercises
+
+## Semigroup exercises
+
+Given a datatype, implement the `Semigroup` instance. Add `Semigroup` constraints to type variables where needed. Use the `Semigroup` class from the `semigroups` library (or from base if you are on GHC 8) or write your own. When we use `(<>)`, we mean the infix `mappend` from the `Semigroup` typeclass.
+
+**Note:** We're not always going to derive every instance you may want or need in the datatypes we provide for exercises. We expect you to know what you need and to take care of it yourself by this point.
+
+1. Validate _all_ of your instances with `QuickCheck`. Since `Semigroup`'s only law is associativity, that's the only property you need to reuse. Keep in mind that you'll potentially need to import the modules for `Monoid` and `Semigroup` and to avoid naming conflicts for the `(<>)` depending on your version of GHC.
+
+```hs
+data Trivial = Trivial deriving (Eq, Show)
+
+instance Semigroup Trivial where
+  _ <> _ = undefined
+
+instance Arbitrary Trivial where
+  arbitrary = return Trivial
+
+semigroupAssoc  :: (Eq m, Semigroup m)
+                => m -> m -> m -> Bool
+semigroupAssoc x y z =
+  (x <> y) <> z == x <> (y <> z)
+
+type TrivialAssoc =
+  Trivial -> Trivial -> Trivial -> Bool
+
+main :: IO ()
+main =
+  quickCheck (semigroupAssoc :: TrivAssoc)
+```
+[Solution file (can be run directly from terminal with cabal)](exercise.files/trivial.hs)
+
