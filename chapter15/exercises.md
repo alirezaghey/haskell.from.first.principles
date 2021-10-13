@@ -154,3 +154,12 @@ main =
 newtype Identity a = Identity a
 ```
 [Solution file (can be run directly from terminal with cabal)](exercise.files/identity.hs)
+
+3. Validate associativity with `QuickCheck`
+
+```hs
+data Two a b = Two a b
+```
+Hint: Ask for another `Semigroup` instance.
+[Solution file (can be run with cabal)](exercise.files/two.hs)
+
