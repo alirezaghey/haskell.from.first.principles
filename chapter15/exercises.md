@@ -191,6 +191,7 @@ BoolConj True
 λ> (BoolConj True) <> (BoolConj False)
 BoolConj False
 ```
+[Solution file (can be run with cabal)](exercise.files/boolConj.hs)
 
 7. Validate associativity with `QuickCheck`
 
@@ -205,3 +206,4 @@ BoolDisj True
 λ> (BoolDisj True) <> (BoolDisj False)
 BoolDisj False
 ```
+[Solution file (can be run with cabal)](exercise.files/boolDisj.hs)
