@@ -191,3 +191,17 @@ BoolConj True
 λ> (BoolConj True) <> (BoolConj False)
 BoolConj False
 ```
+
+7. Validate associativity with `QuickCheck`
+
+```hs
+newtype BoolDisj =
+  BoolDisj Bool
+```
+What it should do:
+```
+λ> (BoolDisj True) <> (BoolDisj True)
+BoolDisj True
+λ> (BoolDisj True) <> (BoolDisj False)
+BoolDisj False
+```
