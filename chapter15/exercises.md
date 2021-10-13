@@ -177,3 +177,17 @@ data Four a b c d = Four a b c d
 ```
 [Solution file (can be run with cabal)](exercise.files/four.hs)
 
+6. Validate associativity with  `QuickCheck`
+
+```hs
+newtype BoolConj =
+  BoolConj Bool
+```
+What it should do:
+
+```
+λ> (BoolConj True) <> (BoolConj True)
+BoolConj True
+λ> (BoolConj True) <> (BoolConj False)
+BoolConj False
+```
