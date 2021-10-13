@@ -169,3 +169,11 @@ Hint: Ask for another `Semigroup` instance.
 data Three a b c = Three a b c
 ```
 [Solution file (can be run with cabal)](exercise.files/three.hs)
+
+5. Validate associativity with `QuickCheck`
+
+```hs
+data Four a b c d = Four a b c d
+```
+[Solution file (can be run with cabal)](exercise.files/four.hs)
+
