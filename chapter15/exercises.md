@@ -76,3 +76,41 @@ madlibbin' e adv noun adj =
 
 Now you're going to refactor this code a bit! Rewrite it using `mconcat`.
 [Solution file](exercise.files/madness.hs)
+
+
+## Maybe Another Monoid
+
+Write a `Monoid` instance for a `Maybe` type which doesn't require a `Monoid` for the contents. Reuse the `Monoid` law `QuickCheck` properties and use them to validate the instance.
+
+Don't forget to write an `Arbitrary` instance for `First'`. We won't always stub that out explicitly for you. We suggest learning how to use the `frequency` function from `QuickCheck` for `First'`s instance.
+
+```hs
+newtype First' a =
+    First' { getFirst' :: Optional a}
+    deriving (Eq, Show)
+
+instance Monoid (First' a) where
+  mempty = undefined
+  mappend = undefined
+
+firstMappend  :: First' a
+              -> First' a
+              -> First' a
+firstMappend  = mappend
+
+type FirstMappend =
+      First' String
+  ->  First' String
+  ->  First' String
+  ->  Bool
+
+type FstId =
+  First' String -> Bool
+
+main :: IO ()
+main = do
+  quickCheck (monoidAssoc :: FirstMappend)
+  quickCheck (monoidLeftIdentity :: FstId)
+  quickCheck (monoidRightIdentity :: FstId)
+```
+[Solution file (can be run directly from terminal with cabal)](exercise.files/maybe-another-monoid.hs)
