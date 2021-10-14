@@ -343,3 +343,20 @@ newtype Identity a =
 data Two a b = Two a b deriving Show
 ```
 [Solution file (can be run with cabal)](exercise.files/two.hs)
+
+4. Validate `Monoid` properties using `QuickCheck`.
+
+```hs
+newtype BoolConj =
+  BoolConj Bool
+```
+
+What it should do:
+
+```
+λ> (BoolConj True) `mappend` mempty
+BoolConj True
+λ> mempty `mappend` (BoolConj False)
+BoolConj
+```
+[Solution file (can be run with cabal)](exercise.files/boolConj.hs)
