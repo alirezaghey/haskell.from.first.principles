@@ -262,3 +262,38 @@ newtype Comp a =
 
 Hint: We can do something that seems a little more specific and natural to functions now that the input and output types are the same.
 [Solution file (This exercise in not complete)](exercise.files/comp.hs)
+
+11. Looks familiar?
+
+```hs
+data Validation a b =
+  Failure a | Success b
+  deriving (Eq, Show)
+
+instance Semigroup a =>
+  Semigroup (Validation a b) where
+    (<>) = undefined
+
+main = do
+  let failure :: String
+              -> Validation String Int
+  failure     = Failure
+  success     :: Int
+              -> Validation String Int
+  success     = Success
+
+print $ success 1 <> failure "blah"
+print $ failure "woot" <> failure "blah"
+print $ success 1 <> success 2
+print $ failure "woot" <> success 2
+```
+
+You should get this output:
+```
+λ> main
+Success 1
+Failure "wootblah"
+Success 1
+Success 2
+```
+[Solution file](exercise.files/validation.hs)
