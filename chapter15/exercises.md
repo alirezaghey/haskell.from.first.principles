@@ -360,3 +360,10 @@ BoolConj True
 BoolConj
 ```
 [Solution file (can be run with cabal)](exercise.files/boolConj.hs)
+
+5. Validate `Monoid` properties using `QuickCheck`.
+
+```hs
+newtype BoolDisj =
+  BoolDisj Bool
+```
