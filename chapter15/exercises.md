@@ -207,3 +207,24 @@ BoolDisj True
 BoolDisj False
 ```
 [Solution file (can be run with cabal)](exercise.files/boolDisj.hs)
+
+8. Validate associativity with `QuickCheck`
+
+```hs
+data Or a b =
+    Fst a
+  | Snd b
+```
+The `Semigroup` for `Or` should have the following behavior. We can think of this as having a "sticky" `Snd` value where it'll hold onto the first `Snd` value when and if one is passed as an argument. This is similar to the `First'` `Monoid` you wrote earlier.
+
+```
+λ> Fst 1 <> Snd 2
+Snd 2
+λ> Fst 1 <> Fst 2
+Fst 2
+λ> Snd 1 <> Fst 2
+Snd 1
+λ> Snd 1 <> Snd 2
+Snd 1
+```
+[Solution file (can be run with cabal)](exercise.files/or.hs)
