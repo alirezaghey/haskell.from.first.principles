@@ -297,3 +297,34 @@ Success 1
 Success 2
 ```
 [Solution file](exercise.files/validation.hs)
+
+
+## Monoid exercises
+
+Given a datatype, implement the `Monoid` instance. Add `Monoid` constraints to type variables where needed. For the datatypes you've already implemented `Semigroup` instances for, you need to figure out what the identity values is.
+
+1. Again, validate _all_ of your instances with `QuickCheck`. Example scaffold is provided for the `Trivial` type.
+
+```hs
+data Trivial = Trivial deriving (Eq, Show)
+
+instance Semigroup Trivial where
+  (<>) = undefined
+
+instance Monoid Trivial where
+  mempty = undefined
+  mappend = (<>)
+
+type TrivAssoc =
+  Trivial -> Trivial -> Trivial -> Bool
+
+main :: IO ()
+main = do
+  let sa = semigroupAssoc
+      mli = monoidLeftIdentity
+      mri = monoidRightIdentity
+  quickCheck (sa :: TrivAssoc)
+  quickCheck (mli :: Trivial -> Bool)
+  quickCheck (mri :: Trivial -> Bool)
+```
+[Solution file (can be run with cabal directly)](exercise.files/trivial.hs)
