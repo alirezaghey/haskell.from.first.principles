@@ -261,7 +261,7 @@ newtype Comp a =
 ```
 
 Hint: We can do something that seems a little more specific and natural to functions now that the input and output types are the same.
-[Solution file (This exercise in not complete)](exercise.files/comp.hs)
+[Solution file)](exercise.files/comp.hs)
 
 11. Looks familiar?
 
