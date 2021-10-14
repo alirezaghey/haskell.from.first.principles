@@ -251,7 +251,7 @@ Sum {getSum = 2}
 ```
 Hint: This function will eventually be applied to a single value of type `a`. But you'll have multiple functions that can produce a value of type `b`. How do we combine multiple values so we have a single `b`? This one will probably be tricky! Remember that the type of the value inside of `Combine` is that of a _function_. The type of functions should already have an `Arbitrary` instance that you can reuse for testing this instance.
 
-[Solution file (This exercise is uncomplete)](exercise.files/combine.hs)
+[Solution file](exercise.files/combine.hs)
 
 10. Validate associativity with `QuickCheck`.
 
