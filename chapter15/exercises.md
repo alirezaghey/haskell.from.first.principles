@@ -374,3 +374,20 @@ BoolDisj True
 BoolConj
 ```
 [Solution file (can be run with cabal)](exercise.files/boolDisj.hs)
+
+
+6. Validate `Monoid` properties using `QuickCheck`.
+
+```hs
+newtype Combine a b =
+  Combine {unCombine :: (a -> b)}
+```
+
+What it should do:
+
+```
+λ> f = Combine $ \n -> Sum (n + 1)
+λ> unCombine (mappend f mempty) $ 1
+Sum {getSum = 2}
+```
+[Solution file](exercise.files/combine.hs)
