@@ -228,3 +228,27 @@ Snd 1
 Snd 1
 ```
 [Solution file (can be run with cabal)](exercise.files/or.hs)
+
+9. Validate associativity with `QuickCheck`
+
+```hs
+newtype Combine a b =
+  Combine {unCombine :: (a -> b)}
+```
+What it should do:
+
+```
+λ> f = Combine $ \n -> Sum (n + 1)
+λ> g = Combine $ \n -> Sum (n - 1)
+λ> unCombine (f <> g) $ 0
+Sum {getSum = 0}
+λ> unCombine (f <> g) $ 1
+Sum {getSum = 2}
+λ> unCombine (f <> f) $ 1
+Sum {getSum = 4}
+λ> unCombine (g <> f) $ 1
+Sum {getSum = 2}
+```
+Hint: This function will eventually be applied to a single value of type `a`. But you'll have multiple functions that can produce a value of type `b`. How do we combine multiple values so we have a single `b`? This one will probably be tricky! Remember that the type of the value inside of `Combine` is that of a _function_. The type of functions should already have an `Arbitrary` instance that you can reuse for testing this instance.
+
+[Solution file (This exercise is uncomplete)](exercise.files/combine.hs)
