@@ -328,3 +328,11 @@ main = do
   quickCheck (mri :: Trivial -> Bool)
 ```
 [Solution file (can be run with cabal directly)](exercise.files/trivial.hs)
+
+2. Validate `Monoid` properties using `QuickCheck`.
+
+```hs
+newtype Identity a =
+  Identity a deriving Show
+```
+[Solution file (can be run with cabal)](exercise.files/identity.hs)
