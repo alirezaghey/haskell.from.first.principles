@@ -391,3 +391,11 @@ What it should do:
 Sum {getSum = 2}
 ```
 [Solution file](exercise.files/combine.hs)
+
+7. Hint: We can do something that seems a little more specific and natural to function no that the input and output types are the same.
+
+```hs
+newtype Comp a =
+  Comp (a -> a)
+```
+[Solution file](exercise.files/comp.hs)
