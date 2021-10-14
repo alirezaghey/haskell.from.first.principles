@@ -367,3 +367,10 @@ BoolConj
 newtype BoolDisj =
   BoolDisj Bool
 ```
+```
+λ> (BoolDisj True) `mappend` mempty
+BoolDisj True
+λ> mempty `mappend` (BoolDisj)
+BoolConj
+```
+[Solution file (can be run with cabal)](exercise.files/boolDisj.hs)
