@@ -336,3 +336,10 @@ newtype Identity a =
   Identity a deriving Show
 ```
 [Solution file (can be run with cabal)](exercise.files/identity.hs)
+
+3. Validate `Monoid` properties using `QuickCheck`.
+
+```hs
+data Two a b = Two a b deriving Show
+```
+[Solution file (can be run with cabal)](exercise.files/two.hs)
