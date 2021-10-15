@@ -399,3 +399,54 @@ newtype Comp a =
   Comp (a -> a)
 ```
 [Solution file](exercise.files/comp.hs)
+
+8. This next exercise will involve doing something that will feel a bit unnatural still and you may find it difficult. We're going to toss you the instance declaration so you don't churn on a missing `Monoid` constraint you didn't know you needed.
+
+```hs
+newtype Mem s a =
+Mem {
+  runMem :: s -> (a, s)
+}
+
+instance Monoid a => Monoid (Mem s a) where
+  mempty = undefined
+  mappend = undefined
+```
+
+Given the following code:
+
+```hs
+f' = Mem $ \s -> ("hi", s + 1)
+
+main = do
+  let rmzero = runMem mempty 0
+    rmleft = runMem (f' <> mempty) 0
+    rmright = runMem (mempty <> f') 0
+  print $ rmleft
+  print $ rmright
+  print $ (rmzero :: (String, Int))
+  print $ rmleft == runMem f' 0
+  print $ rmright == runMem f' 0
+```
+
+A correct `Monoid` for `Mem` should, given the above code, get the following output:
+
+```
+λ> main
+("hi", 1)
+("hi", 1)
+("", 0)
+True
+True
+```
+Make certain your instance has output like the above. This is sanity checking the `Monoid` identity laws for you! It's not a proof and it's not even as good as property testing, but it'll catch the most common mistakes people make.
+
+It's not a trick and you don't need a `Monoid` for `s`. Yes, such a `Monoid` can and does exist. Hint: chain the `s` values from one function to the other. You'll want to check the identity laws as a common first attemt will break them.
+[Solution file](exercise.files/mem.hs)
+
+
+
+
+
+
+
