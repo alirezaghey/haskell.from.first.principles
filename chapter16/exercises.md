@@ -140,3 +140,9 @@ data Pair a = Pair a a
 ```
 [Solution file](exercise.files/pairFunctor.hs)
 
+3. For the following data type
+
+```hs
+data Two a b = Two a b
+```
+[Solution file](exercise.files/twoFunctor.hs)
