@@ -160,3 +160,11 @@ data Three a b c = Three a b c
 data Three' a b = Three' a b b
 ```
 [Solution file](exercise.files/threePrimeFunctor.hs)
+
+
+6. For the following data type
+
+```hs
+data Four a b c d = Four a b c d
+```
+[Solution file](exercise.files/fourFunctor.hs)
