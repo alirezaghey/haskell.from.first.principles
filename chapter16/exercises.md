@@ -121,3 +121,14 @@ e = let ioi = readIO "1" :: IO Integer
         changed = fmap (read . ("123"++) . show) ioi
     in fmap (*3) changed
 ```
+
+## Instances of Func
+
+Implement `Functor` instances for the following datatypes. Use the `QuickCheck` properties we showed you to validate them.
+
+1. For the following data type
+
+```hs
+newtype Identity a = Identity a
+```
+[Solution file](exercise.files/identityFunctor.hs)
