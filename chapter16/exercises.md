@@ -132,3 +132,11 @@ Implement `Functor` instances for the following datatypes. Use the `QuickCheck` 
 newtype Identity a = Identity a
 ```
 [Solution file](exercise.files/identityFunctor.hs)
+
+2. For the following data type
+
+```hs
+data Pair a = Pair a a
+```
+[Solution file](exercise.files/pairFunctor.hs)
+
