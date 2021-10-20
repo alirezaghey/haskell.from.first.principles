@@ -153,3 +153,10 @@ data Two a b = Two a b
 data Three a b c = Three a b c
 ```
 [Solution file](exercise.files/threeFunctor.hs)
+
+5. For the following data type
+
+```hs
+data Three' a b = Three' a b b
+```
+[Solution file](exercise.files/threePrimeFunctor.hs)
