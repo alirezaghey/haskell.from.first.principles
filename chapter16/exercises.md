@@ -175,3 +175,11 @@ data Four a b c d = Four a b c d
 data Four' a b = Four' a a a b
 ```
 [Solution file](exercise.files/fourPrimeFunctor.hs)
+
+
+8. Can you implement a `Functor` instance for this type? Why? Why not?
+
+```hs
+data Trivial = Trivial
+```
+No, I can not. A `Functor` instance needs a type of kind `* -> *`  while `Trivial` has kind `*`.
