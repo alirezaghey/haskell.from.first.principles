@@ -444,3 +444,11 @@ data IgnoreOne f g a b =
   IgnoreingSomething (f a) (g b)
 ```
 [Solution file](exercise.files/ignoreOneFunctor.hs)
+
+8. For the following data type
+
+```hs
+data Notorious g o a t =
+  Notorious (g o) (g a) (g t)
+```
+[Solution file](exercise.files/notoriousFunctor.hs)
