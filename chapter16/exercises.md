@@ -475,3 +475,14 @@ data GoatLord a =
               (GoatLord a)
 ```
 [Solution file](exercise.files/goatLordFunctor.hs)
+
+
+11. You'll use an extra functor for this one, although your solution might do it monomorphically without using fmap. Keep in mind that you will probably not be able to validate this one in the usual manner. Do your best to make it work.
+
+```hs
+data TalkToMe a =
+    Halt
+  | Print String a
+  | Read (String -> a)
+```
+[Solution file](exercise.files/talkToMeFunctor.hs)
