@@ -390,3 +390,23 @@ data K a b =
 ```
 [Solution file](exercise.files/kFunctor.hs)
 
+
+3. For the following data type
+
+```hs
+{-# LANGUAGE FlexibleInstance #-}
+
+newtype Flip f a b =
+  Flip (f b a)
+  deriving (Eq, Show)
+
+newtype K a b =
+  K a
+
+
+-- should remind you of an
+-- instance you've written before
+instance Functor (Flip K a) where
+  fmap = undefined
+```
+[Solution file](exercise.files/flipFunctor.hs)
