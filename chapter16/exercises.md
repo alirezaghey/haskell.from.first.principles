@@ -183,3 +183,18 @@ data Four' a b = Four' a a a b
 data Trivial = Trivial
 ```
 No, I can not. A `Functor` instance needs a type of kind `* -> *`  while `Trivial` has kind `*`.
+
+
+## Possibly
+
+Write a `Functor` instance for a datatype identical to `Maybe`. We'll use our own datatype because `Maybe` already has a `Functor` instance and we cannot make a duplicate one.
+
+```hs
+data Possibly a =
+    LolNope
+  | Yeppers a
+  deriving (Eq, Show)
+
+instance Functor Possibly where
+  fmap = undefined
+```
