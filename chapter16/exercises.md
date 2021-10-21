@@ -381,3 +381,12 @@ data Quant a b =
   | Bloor b
 ```
 [Solution file](exercise.files/quantFunctor.hs)
+
+2. For the following data type
+
+```hs
+data K a b =
+  K a
+```
+[Solution file](exercise.files/kFunctor.hs)
+
