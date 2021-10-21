@@ -222,3 +222,74 @@ instance Functor (Sum a) where
 2. Whi is a `Functor` instance that applies the function only to `First`, `Either`s `Left`, impossible?
 
 `Functor` instance needs a type constructor that only lacks its last argument and will supply that argument based on the signature of the function that is applied to `fmap`. In case we wanted to apply that function to the first argument of `Either` we needed to provide its second argument on instance creation and leave the first one free for the function to `fmap` to be able to determine it. This is syntactically impossible or very awkward, at least. If we wanted to really do that, we would probably need to create another class than `Functor`.
+
+# Chapter exercises
+
+## Can we write a `Functor`?
+
+Determine if a valid `Functor` can be written for the datatype provided.
+
+1. For the following data type
+
+```hs
+data Bool =
+  False | True
+```
+
+**Answer:** No, a `Functor` instance needs a data type of kind `* -> *` but `Bool` is of kind `*`.
+
+2. For the following data type
+
+```hs
+data BoolAndSomethingElse a =
+  False' a | True' a
+```
+
+**Answer:** Yes, a valid `Functor` can written for this data type as follows:
+```hs
+data BoolAndSomethingElse a =
+  False' a | True' a
+  deriving (Show, Eq)
+
+instance Functor BoolAndSomethingElse where
+  fmap f (False' x) = False' (f x)
+  fmap f (True' x)  = True' (f x)
+```
+
+3. For the following data type
+
+```hs
+data BoolAndMaybeSomethingElse a =
+  Falsish | Truish a
+```
+
+**Answer:** Yes, a valid `Functor` can be written for this data type as follows:
+
+```hs
+data BoolAndMaybeSomethingElse a =
+  Falsish | Truish a deriving (Eq, Show)
+
+instance Functor BoolAndMaybeSomethingElse where
+  fmap _ Falsish = Falsish
+  fmap f (Truish x) = Truish (f x)
+```
+
+4. Use the kinds to guide you on this one, don't get too hung up on the details.
+
+```hs
+newtype Mu f = Inf {outF :: f (Mu f)}
+```
+
+**Answer:** No, a valid `Functor` can't be written for it. It has kind `(* -> *) -> *` which isn't right.
+
+5. Again, follow the kinds and ignore the unfamiliar parts.
+
+```hs
+import GHC.Arr
+
+data D =
+  D (Array Word Word) Int Int
+```
+
+**Answer:** No, a valid `Functor` can't be written for it. It has kind `*` which isn't right.
+
