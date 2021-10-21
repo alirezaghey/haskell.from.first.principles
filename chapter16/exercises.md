@@ -452,3 +452,13 @@ data Notorious g o a t =
   Notorious (g o) (g a) (g t)
 ```
 [Solution file](exercise.files/notoriousFunctor.hs)
+
+
+9. You'll need to use recursion for this.
+
+```hs
+data List a =
+    Nil
+  | Cons a (List a)
+```
+[Solution file](exercise.files/listFunctor.hs)
