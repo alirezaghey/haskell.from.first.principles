@@ -217,3 +217,8 @@ instance Functor (Sum a) where
   fmap f (Second b) = Second (f b)
 ```
 [Solution file](exercise.files/sumFunctor.hs)
+
+
+2. Whi is a `Functor` instance that applies the function only to `First`, `Either`s `Left`, impossible?
+
+`Functor` instance needs a type constructor that only lacks its last argument and will supply that argument based on the signature of the function that is applied to `fmap`. In case we wanted to apply that function to the first argument of `Either` we needed to provide its second argument on instance creation and leave the first one free for the function to `fmap` to be able to determine it. This is syntactically impossible or very awkward, at least. If we wanted to really do that, we would probably need to create another class than `Functor`.
