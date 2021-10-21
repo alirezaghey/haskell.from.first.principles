@@ -462,3 +462,16 @@ data List a =
   | Cons a (List a)
 ```
 [Solution file](exercise.files/listFunctor.hs)
+
+
+10. A tree of goats forms a Goat-Lord, fearsome poly-creature.
+
+```hs
+data GoatLord a =
+    NoGoat
+  | OneGoat a
+  | MoreGoats (GoatLord a)
+              (GoatLord a)
+              (GoatLord a)
+```
+[Solution file](exercise.files/goatLordFunctor.hs)
