@@ -367,3 +367,17 @@ instance Functor (More x) where
   fmap f (L a b a') = L (f a) b (f a')
   fmap f (R b a b') = R b (f a) b'
 ```
+
+## Implementing `Functor` instances
+
+Write `Functor` instances for the following datatypes.
+
+1. For the following data type
+
+```hs
+data Quant a b =
+    Finance
+  | Desk a
+  | Bloor b
+```
+[Solution file](exercise.files/quantFunctor.hs)
