@@ -419,3 +419,11 @@ data EvilGoateeConst a b =
 ```
 It doesn't do anything interesting. If it works, you succeeded.
 [Solution file](exercise.files/goatyConstFunctor.hs)
+
+5. Do you need something extra to make the instance work?
+
+```hs
+data LiftItOut f a =
+  LiftItOut (f a)
+```
+[Solution file](exercise.files/liftItOutFunctor.hs)
