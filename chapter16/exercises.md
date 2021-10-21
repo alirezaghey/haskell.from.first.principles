@@ -427,3 +427,12 @@ data LiftItOut f a =
   LiftItOut (f a)
 ```
 [Solution file](exercise.files/liftItOutFunctor.hs)
+
+
+6. For the following data type
+
+```hs
+data Parappa f g a =
+  DaWrappa (f g) (g a)
+```
+[Solution file](exercise.files/parappaFunctor.hs)
