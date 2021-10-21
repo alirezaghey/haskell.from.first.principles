@@ -436,3 +436,11 @@ data Parappa f g a =
   DaWrappa (f g) (g a)
 ```
 [Solution file](exercise.files/parappaFunctor.hs)
+
+7. Don't ask for more typeclass instances than you need. You can let GHC tell you what to do.
+
+```hs
+data IgnoreOne f g a b =
+  IgnoreingSomething (f a) (g b)
+```
+[Solution file](exercise.files/ignoreOneFunctor.hs)
