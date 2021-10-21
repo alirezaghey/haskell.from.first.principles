@@ -410,3 +410,12 @@ instance Functor (Flip K a) where
   fmap = undefined
 ```
 [Solution file](exercise.files/flipFunctor.hs)
+
+4. For the following data type
+
+```hs
+data EvilGoateeConst a b =
+  GoatyConst b
+```
+It doesn't do anything interesting. If it works, you succeeded.
+[Solution file](exercise.files/goatyConstFunctor.hs)
