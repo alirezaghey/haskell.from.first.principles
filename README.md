@@ -19,7 +19,7 @@
 | 13    | [exercises](chapter13/exercises.md), [resources](chapter13/resources.md)                                          | cabal, stack, module, import, export, do and IO
 | 14 | [exercises](chapter14/exercises.md), [definitions](chapter14/definitions.md), [resources](chapter14/resources.md) | testing, arbitrary, QuickCheck
 | 15 | [exercises](chapter15/exercises.md), [definitions](chapter15/definitions.md), [resources](chapter15/resources.md) | semigroup, monoid, mappend, mempty
-
+| 16 | [exercise](chapter16/exercises.md), [definitions](chapter16/definitions.md), [resources](chapter16/resources.md) | Functor
 
 To install Haskell through stack, run the following command:
 
