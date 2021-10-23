@@ -146,3 +146,24 @@ instance Monoid a
   pure = undefined
   (<*>) = undefined
 ```
+
+## Fixer Upper
+
+Given the function and values provided, use `(<$>)` from `Functor`, `(<*>) and `pure` from the `Applicative` typeclass to fill in missing bits of the broken code to make it work.
+
+```hs
+const <$> Just "Hello" <*> "World"
+```
+**Answer:**
+```hs
+const <$> Just "Hello" <*> pure "World"
+```
+
+```hs
+(,,,) Just 90 <*> Just 10 Just "Tierness" [1,2,3]
+```
+
+**Answer:**
+```hs
+pure (,,,) <*> Just 90 <*> Just 10 <*> Just "Tierness" <*> pure [1,2,3]
+```
