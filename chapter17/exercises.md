@@ -129,3 +129,20 @@ instance Applicative Identity where
   (<*>) = undefined
 ```
 [Solution file](exercise.files/identityApplicative.hs)
+
+## Constant Instance
+
+Write an `Applicative` instance for `Constant`.
+
+newtype Constant a b =
+  Constant {getConstant :: a}
+  deriving (Eq, Ord, Show)
+
+instance Functor (Constant a) where
+  fmap = undefined
+
+instance Monoid a
+    => Applicative (Constant a) where
+  pure = undefined
+  (<*>) = undefined
+```
