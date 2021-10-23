@@ -112,3 +112,20 @@ y = lookup 2 $ zip xs ys
 
 summed :: Maybe Integer
 summed = fmap sum $ (,) <$> x <*> y
+```
+
+## Identity Instance
+
+Write an `Applicative instance for Identity.
+
+```hs
+newtype Identity a = Identity a deriving (Eq, Ord, Show)
+
+instance Functor Identity where
+  fmap = undefined
+
+instance Applicative Identity where
+  pure = undefined
+  (<*>) = undefined
+```
+[Solution file](exercise.files/identityApplicative.hs)
