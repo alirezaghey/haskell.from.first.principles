@@ -130,10 +130,11 @@ instance Applicative Identity where
 ```
 [Solution file](exercise.files/identityApplicative.hs)
 
+
 ## Constant Instance
 
 Write an `Applicative` instance for `Constant`.
-
+```hs
 newtype Constant a b =
   Constant {getConstant :: a}
   deriving (Eq, Ord, Show)
@@ -238,7 +239,8 @@ Use the above and try using `flatmap` and `fmap` without explicitly pattern matc
 λ> flatMap f x
 Cons 1 (Cons 9 (Cons 2
         Cons 9 (Cons 3 (Cons 9 Nil))))
+```
 
 `Applicative` instances, unlike `Functors`, are not guaranteed to have a unique implementation for a given datatype.
-```
+
 [Solution file (can be run as a standalone script)](exercise.files/listApplicative.hs)
