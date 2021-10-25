@@ -244,3 +244,69 @@ Cons 1 (Cons 9 (Cons 2
 `Applicative` instances, unlike `Functors`, are not guaranteed to have a unique implementation for a given datatype.
 
 [Solution file (can be run as a standalone script)](exercise.files/listApplicative.hs)
+
+## ZipList Applicative Exercise
+
+Implement the `ZipList Applicative`. Use the _checkers_ library to validate your `Applicative` instance. We're going to provide the `EqPropr` instance and explain the weirdness in a moment.
+
+```hs
+data List a =
+    Nil
+  | Cons a (List a)
+  deriving (Eq, Show)
+
+take' :: Int -> List a -> List a
+take' = undefined
+
+instance Functor List where
+  fmap = undefined
+
+instance Applicative List where
+  pure = undefined
+  (<*>) = undefined
+
+newtype ZipList' a =
+  ZipList' (List a)
+  deriving (Eq, Show)
+
+instance Eq a => EqProp (ZipList' a) where
+  xs =-= ys = xs' `eq` ys'
+    where xs' = let (ZipList' l) = xs
+                in take' 3000 l
+          ys' = let (ZipList' l) = ys
+                in take' 3000 l
+
+instance Functor ZipList' where
+  fmap f (ZipList' xs) = ZipList' $ fmap f xs
+
+instance Applicative ZipList' where
+  pure = undefined
+  (<*>) = undefined
+```
+
+The idea is to align a list of functions with a list of values and apply the first function to the first value and so on. The instance should work with infinite lists. Some examples:
+
+```
+λ> zl' = ZipList'
+λ> z = zl' [(+9), (*2), (+8)]
+λ> z' = zl' [1..3]
+λ> z <*> z'
+ZipList' [10,4,11]
+λ> z' = zl' (repeat 1)
+λ> z <*> z'
+ZipList' [10,2,9]
+```
+
+Note that the second `z'` was an infinite list. Check `Prelude` for functions that can give you what you need. One starts with the letter `z`, the other with the letter `r`. You’re looking for inspiration from these functions, not to be able to directly
+reuse them as you’re using a custom List type, not the provided `Prelude` list type.
+
+Explaining and justifying the weird `EqProp`:
+
+The good news is it’s `EqProp` that has the weird "check only the first 3,000 values"
+semantics instead of making the `Eq` instance weird. The bad news is this is a byproduct of testing for equality between infinite lists... that is, you can’t. If you use a typical `EqProp` instance, the test for homomorphism in your `Applicative` instance will
+chase the infinite lists forever. Since `QuickCheck` is already an exercise in "good enough" validity checking, we could choose to feel justified in this. If you don’t believe us try running the following in your `REPL`:
+
+```
+repeat 1 == repeat 1
+```
+[Solution file (can be run as a script)](exercise.files/zipListApplicative.hs)
