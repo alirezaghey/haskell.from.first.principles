@@ -414,3 +414,9 @@ data Pair a = Pair a a deriving Show
 ```
 [Solution file (can be run as a script)](exercise.files/pairApplicative.hs)
 
+2. For the following data type
+
+```hs
+data Two a b = Two a b
+```
+[Solution file (can be run as a script)](exercise.files/twoApplicative.hs)
