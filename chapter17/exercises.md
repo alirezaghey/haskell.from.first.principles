@@ -426,3 +426,10 @@ data Two a b = Two a b
 ```hs
 data Three a b c = Three a b c
 ```
+
+4. For the following data type
+
+```hs
+data Three' a b = Three' a b b
+```
+[Solution file (can be run as a script)](exercise.files/threePrimeApplicative.hs)
