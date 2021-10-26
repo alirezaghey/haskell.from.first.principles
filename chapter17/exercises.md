@@ -402,3 +402,15 @@ pure :: a -> ? a
 pure @((->) e) :: a -> (e -> a)
 (<*>) @((->) e) :: (e -> a -> b) -> (e -> a) -> (e -> b)
 ```
+
+## `Applicative` implementation
+
+Write instances for the following datatypes. Use the _checkers_ library to validate the instances.
+
+1. For the following data type
+
+```hs
+data Pair a = Pair a a deriving Show
+```
+[Solution file (can be run as a script)](exercise.files/pairApplicative.hs)
+
