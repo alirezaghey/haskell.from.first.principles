@@ -420,3 +420,9 @@ data Pair a = Pair a a deriving Show
 data Two a b = Two a b
 ```
 [Solution file (can be run as a script)](exercise.files/twoApplicative.hs)
+
+3. For the following data type
+
+```hs
+data Three a b c = Three a b c
+```
