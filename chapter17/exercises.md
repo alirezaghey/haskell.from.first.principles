@@ -440,3 +440,10 @@ data Three' a b = Three' a b b
 data Four a b c d = Four a b c d
 ```
 [Solution file (can be run as a script)](exercise.files/fourApplicative.hs)
+
+6. For the following data type
+
+```hs
+data Four' a b = Four' a a a b
+```
+[Solution file (can be run as script)](exercise.files/fourPrimeApplicative.hs)
