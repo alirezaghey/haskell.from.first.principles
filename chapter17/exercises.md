@@ -330,4 +330,5 @@ instance Functor (Validation e) where
 instance Monoid e => Applicative (Validation e)
   pure = undefined
   (<*>) = undefined
+```
 [Solution file (can be run as a script)](exercise.files/validationApplicative.hs)
