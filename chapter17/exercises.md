@@ -367,8 +367,8 @@ pure :: a -> ? a
 
 **Answer:**
 ```hs
-pure :: a -> IO a
-(<*>) :: IO (a -> b) -> IO a -> IO b
+pure @IO :: a -> IO a
+(<*>) @IO :: IO (a -> b) -> IO a -> IO b
 ```
 3. For the following type:
 
@@ -383,6 +383,6 @@ pure :: a -> ? a
 
 **Answer:**
 ```hs
-pure :: a -> (l, a)
-(<*>) :: (l, a -> b) -> (l, a) -> (l, b)
+pure @((,) l):: a -> (l, a)
+(<*>) @((,) l):: (l, a -> b) -> (l, a) -> (l, b)
 ```
