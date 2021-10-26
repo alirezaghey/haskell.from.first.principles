@@ -20,6 +20,7 @@
 | 14 | [exercises](chapter14/exercises.md), [definitions](chapter14/definitions.md), [resources](chapter14/resources.md) | testing, arbitrary, QuickCheck
 | 15 | [exercises](chapter15/exercises.md), [definitions](chapter15/definitions.md), [resources](chapter15/resources.md) | semigroup, monoid, mappend, mempty
 | 16 | [exercise](chapter16/exercises.md), [definitions](chapter16/definitions.md), [resources](chapter16/resources.md) | Functor
+| 17 | [exercise](chapter17/exercises.md), [definitions](chapter17/definitions.md), [resources](chapter17/resources.md) | Applicative, pure, <*>, liftA, liftA2, liftA3, Monoidal Functors
 
 To install Haskell through stack, run the following command:
 
