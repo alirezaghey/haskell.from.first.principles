@@ -332,3 +332,41 @@ instance Monoid e => Applicative (Validation e)
   (<*>) = undefined
 ```
 [Solution file (can be run as a script)](exercise.files/validationApplicative.hs)
+
+
+# Chapter Exercises
+
+Given a type that has an instance of `Applicative`, specialize the types of the methods. Test your specialization in the `REPL`. One way to do this is to bind `aliases` of the typeclass methods to more concrete types that have the type we told you to fill in.
+
+1. For the followoing type:
+
+```hs
+-- Type
+[]
+
+-- Methods
+pure :: a -> ? a
+(<*>) :: ? (a -> b) -> ? a -> ? b
+```
+**Answer:**
+```hs
+pure @[] :: a -> [a]
+(<*>) @[] :: [(a -> b)] -> [a] -> [b]
+```
+
+2. For the following type:
+
+```hs
+-- Type
+IO
+
+-- Methods
+pure :: a -> ? a
+(<*>) :: ? (a -> b) -> ? a -> ? b
+```
+
+**Answer:**
+```hs
+pure :: a -> IO a
+(<*>) :: IO (a -> b) -> IO a -> IO b
+```
