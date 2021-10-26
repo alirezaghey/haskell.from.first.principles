@@ -386,3 +386,19 @@ pure :: a -> ? a
 pure @((,) l):: a -> (l, a)
 (<*>) @((,) l):: (l, a -> b) -> (l, a) -> (l, b)
 ```
+
+4. For the following type:
+
+```hs
+-- Type
+(->) e
+
+-- Methods
+pure :: a -> ? a
+(<*>) :: ? (a -> b) -> ? a -> ? b
+
+**Answer:**
+```hs
+pure @((->) e) :: a -> (e -> a)
+(<*>) @((->) e) :: (e -> a -> b) -> (e -> a) -> (e -> b)
+```
