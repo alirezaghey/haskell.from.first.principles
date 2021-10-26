@@ -310,3 +310,24 @@ chase the infinite lists forever. Since `QuickCheck` is already an exercise in "
 repeat 1 == repeat 1
 ```
 [Solution file (can be run as a script)](exercise.files/zipListApplicative.hs)
+
+## Variations on Either
+
+`Validation` has the same representation as `Either`, but it can be different. The `Functor` will behave the same, but the `Applicativbe` will be different. Use the _checkers_ library for testing.
+
+```hs
+data Validation e a =
+    Failure e
+  | Success a
+  deriving (Eq, Show)
+
+-- same as Either
+instance Functor (Validation e) where
+  fmap = undefined
+
+
+-- This is different
+instance Monoid e => Applicative (Validation e)
+  pure = undefined
+  (<*>) = undefined
+[Solution file (can be run as a script)](exercise.files/validationApplicative.hs)
