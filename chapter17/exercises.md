@@ -447,3 +447,21 @@ data Four a b c d = Four a b c d
 data Four' a b = Four' a a a b
 ```
 [Solution file (can be run as script)](exercise.files/fourPrimeApplicative.hs)
+
+## Combinations
+
+Remember the vowels and stops exercise in the folds chapter? Write the function to generate the possible combinations of three input lists using `listA3` from `Control.Applicative`.
+
+```hs
+import Control.Applicative (liftA3)
+
+stops :: String
+stops = "pbtdkg"
+
+vowels :: String
+vowels = "aeiou"
+
+combos :: String -> String -> String -> [(Char, Char, Char)]
+combos = undefined
+```
+[Solution file](exercise.files/liftA3.hs)
