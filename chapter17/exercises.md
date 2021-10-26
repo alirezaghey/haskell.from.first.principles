@@ -370,3 +370,19 @@ pure :: a -> ? a
 pure :: a -> IO a
 (<*>) :: IO (a -> b) -> IO a -> IO b
 ```
+3. For the following type:
+
+```hs
+-- Type
+(,) a
+
+-- Methods
+pure :: a -> ? a
+(<*>) :: ? (a -> b) -> ? a -> ? b
+```
+
+**Answer:**
+```hs
+pure :: a -> (l, a)
+(<*>) :: (l, a -> b) -> (l, a) -> (l, b)
+```
