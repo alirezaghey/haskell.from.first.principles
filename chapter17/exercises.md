@@ -1,4 +1,4 @@
-# Solutions to problems of chapter 16
+# Solutions to problems of chapter 17
 
 ## Exercises: Lookups
 
