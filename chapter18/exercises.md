@@ -38,3 +38,16 @@ instance Monad (Sum a) where
   (>>=) = undefined
 ```
 [Solution file](exercise.files/eitherMonad.hs)
+
+# Chapter exercises
+
+## implementing Monad instances
+
+Write `Monad` instances for the following types. Use the `QuickCheck` properties we showed you to validate your instances.
+
+1. For the `Nope` data type.
+
+```hs
+data Nope a = NopeDotJpg
+```
+[Solution file (can be run as a script)](exercise.files/nopeMonad.hs)
