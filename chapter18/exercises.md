@@ -60,3 +60,21 @@ data PhhhbbtttEither b a =
   | Right b
 ```
 [Solution file (can be run as a script)](exercise.files/eitherMonad.hs)
+
+3. Write a `Monad` instance for `Identity`.
+
+```hs
+newtype Identity a = Identity a deriving (Eq, Ord, Show)
+
+instance Functor Identity where
+  fmap = undefined
+
+instance Applicative Identity where
+  pure = undefined
+  (<*>) = undefined
+
+instance Monad Identity where
+  return = pure
+  (>>=) = undefined
+```
+[Solution file (can be run as a script)](exercise.files/identityMonad.hs)
