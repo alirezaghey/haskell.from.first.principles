@@ -51,3 +51,12 @@ Write `Monad` instances for the following types. Use the `QuickCheck` properties
 data Nope a = NopeDotJpg
 ```
 [Solution file (can be run as a script)](exercise.files/nopeMonad.hs)
+
+2. For the `PhhhbbtttEither` data type.
+
+```hs
+data PhhhbbtttEither b a =
+    Left a
+  | Right b
+```
+[Solution file (can be run as a script)](exercise.files/eitherMonad.hs)
