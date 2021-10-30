@@ -78,3 +78,12 @@ instance Monad Identity where
   (>>=) = undefined
 ```
 [Solution file (can be run as a script)](exercise.files/identityMonad.hs)
+
+4. This one should be easier than the `Applicative` instance was. Remember to use the `Functor` that `Monad` requires, then see where things go.
+
+```hs
+data List a =
+    Nil
+  | Const a (List a)
+```
+[Solution file (can be run as a script)](exercise.files/listMonad.hs)
