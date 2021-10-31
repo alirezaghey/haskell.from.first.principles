@@ -87,3 +87,50 @@ data List a =
   | Const a (List a)
 ```
 [Solution file (can be run as a script)](exercise.files/listMonad.hs)
+
+## Function implementation using `Monad` and `Functor` instances
+
+Implement the following functions using the methods provided by `Monad` and `Functor`. Using stuff like identity and composition is fine, but it has to typecheck with types provided.
+
+1. For the following function signature:
+
+```hs
+j :: Monad m => m (m a) -> m a
+```
+Expecting the following behavior:
+```
+λ> j [[1, 2], [], [3]]
+[1,2,3]
+λ> j (Just (Just 1))
+Just 1
+λ> j (Just Nothing)
+Nothing
+λ> j Nothing
+Nothing
+```
+**Answer:**
+```hs
+j :: Monad m => m (m a) -> m a
+j x = x >>= id
+```
+[Solution file](exercise.files/funcImplementations.hs)
+
+2. For the following function signature:
+
+```hs
+l1 :: Monad m => (a -> b) -> m a -> m b
+```
+**Answer:**
+```hs
+{-
+Different ways of implementing l1
+l1 :: Monad m => (a -> b) -> m a -> m b
+l1 f x = x >>= (return . f)
+
+l1 :: Monad m => (a -> b) -> m a -> m b
+l1 f x = x <&> f
+-}
+l1 :: Monad m => (a -> b) -> m a -> m b
+l1 = fmap
+```
+[Solution file](exercise.files/funcImplementations.hs)
