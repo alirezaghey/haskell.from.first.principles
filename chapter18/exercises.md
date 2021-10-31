@@ -146,3 +146,15 @@ l2 :: Monad m => (a -> b -> c) -> m a -> m b -> m c
 l2 = liftA2
 ```
 [Solution file](exercise.files/funcImplementations.hs)
+
+4. For the following function signature:
+
+```hs
+a :: Monad m => m a -> m (a -> b) -> m b
+```
+**Answer:**
+```hs
+a :: Monad m => m a -> m (a -> b) -> m b
+a = flip (<*>)
+```
+[Solution file](exercise.files/funcImplementations.hs)

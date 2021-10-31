@@ -24,3 +24,7 @@ l1 = fmap
 
 l2 :: Monad m => (a -> b -> c) -> m a -> m b -> m c
 l2 = liftA2
+
+
+a :: Monad m => m a -> m (a -> b) -> m b
+a = flip (<*>)
