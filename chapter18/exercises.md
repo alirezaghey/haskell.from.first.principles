@@ -134,3 +134,15 @@ l1 :: Monad m => (a -> b) -> m a -> m b
 l1 = fmap
 ```
 [Solution file](exercise.files/funcImplementations.hs)
+
+3. For the following function signature:
+
+```hs
+l2 :: Monad m => (a -> b -> c) -> m a -> m b -> m c
+```
+**Answer:**
+```hs
+l2 :: Monad m => (a -> b -> c) -> m a -> m b -> m c
+l2 = liftA2
+```
+[Solution file](exercise.files/funcImplementations.hs)
