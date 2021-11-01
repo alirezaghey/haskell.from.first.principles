@@ -33,3 +33,7 @@ a = flip (<*>)
 meh :: Monad m => [a] -> (a -> m b) -> m [b]
 meh [] _ = return []
 meh (a:as) f = f a >>= \b -> meh as f >>= \bs -> return $ b : bs
+
+
+flipType :: Monad m => [m a] -> m [a]
+flipType xs = meh xs id

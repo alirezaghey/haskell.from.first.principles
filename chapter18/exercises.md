@@ -172,3 +172,16 @@ meh [] _ = return []
 meh (a:as) f = f a >>= \b -> meh as f >>= \bs -> return $ b : bs
 ```
 [Solution file](exercise.files/funcImplementations.hs)
+
+6. Hint: reuse `meh`.
+
+```hs
+flipType :: Monad m => [m a] -> m [a]
+```
+
+**Answer:**
+```hs
+flipType :: Monad m => [m a] -> m [a]
+flipType xs = meh xs id
+```
+[Solution file](exercise.files/funcImplementations.hs)
