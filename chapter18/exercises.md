@@ -158,3 +158,17 @@ a :: Monad m => m a -> m (a -> b) -> m b
 a = flip (<*>)
 ```
 [Solution file](exercise.files/funcImplementations.hs)
+
+5. You'll need recursion for this one.
+
+```hs
+meh :: Monad m => [a] -> (a -> m b) -> m [b]
+```
+
+**Answer:**
+```hs
+meh :: Monad m => [a] -> (a -> m b) -> m [b]
+meh [] _ = return []
+meh (a:as) f = f a >>= \b -> meh as f >>= \bs -> return $ b : bs
+```
+[Solution file](exercise.files/funcImplementations.hs)
