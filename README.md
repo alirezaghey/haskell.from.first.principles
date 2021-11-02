@@ -22,8 +22,10 @@
 | 16 | [exercise](chapter16/exercises.md), [definitions](chapter16/definitions.md), [resources](chapter16/resources.md) | Functor, fmap, <$>
 | 17 | [exercise](chapter17/exercises.md), [definitions](chapter17/definitions.md), [resources](chapter17/resources.md) | Applicative, pure, <*>, liftA, liftA2, liftA3, Monoidal Functors
 | 18 | [exercises](chapter18/exercises.md), [definitions](chapter18/definitions.md), [resources](chapter18/resources.md) | Monad, return, do, >>=, =<<, >=>
-To install Haskell through stack, run the following command:
+| 19 | [exercises](chapter19/exercises.md), [resources](chapter19/resources.md) | TODO: Need to implement the exercise specified [here](chapter19/exercises.md).
 
+
+To install Haskell through stack, run the following command:
 `curl -sSL https://get.haskellstack.org/ | sh` or `wget -qO- https://get.haskellstack.org/ | sh`
 
 For further info see: [https://docs.haskellstack.org/en/stable/README/](https://docs.haskellstack.org/en/stable/README/)
