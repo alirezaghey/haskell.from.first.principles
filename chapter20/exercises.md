@@ -15,3 +15,15 @@ sum :: (Foldable t, Num a) => t a -> a
 sum = foldr (+) 0
 ```
 [Solution file](exercise.files/libraryFunctions.hs)
+
+2. The following function:
+
+```hs
+product :: (Foldable t, Num a) => t a -> a
+```
+**Answer:**
+```hs
+product :: (Foldable t, Num a) => t a -> a
+product = foldr (*) 1
+```
+[Solution file](exercise.files/libraryFunctions.hs)
