@@ -114,3 +114,16 @@ fold :: (Foldable t, Monoid m) => t m -> m
 fold :: (Foldable t, Monoid m) => t m -> m
 fold = foldMap id
 ```
+[Solution file](exercise.files/libraryFunctions.hs)
+
+10. Define `foldMap` in terms of `foldr`.
+
+```hs
+foldMap :: (Foldable t, Monoid m) => (a -> m) -> t a -> m
+```
+**Answer:**
+```hs
+foldMap' :: (Foldable t, Monoid m) => (a -> m) -> t a -> m
+foldMap' f = foldr (\x acc -> f x <> acc) mempty
+```
+[Solution file](exercise.files/libraryFunctions.hs)

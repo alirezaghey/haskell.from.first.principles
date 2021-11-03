@@ -58,3 +58,7 @@ toList = foldr (:) []
 -- of a structure using a monoid.
 fold :: (Foldable t, Monoid m) => t m -> m
 fold = foldMap id
+
+
+foldMap' :: (Foldable t, Monoid m) => (a -> m) -> t a -> m
+foldMap' f = foldr (\x acc -> f x <> acc) mempty
