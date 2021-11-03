@@ -76,3 +76,14 @@ null :: (Foldable t) => t a -> Bool
 null = foldr (\_ _ -> False) True
 ```
 [Solution file](exercise.files/libraryFunctions.hs)
+
+7. The following function:
+
+```hs
+length :: (Foldable t) => t a -> Int
+```
+**Answer:**
+```hs
+length :: (Foldable t) => t a -> Int
+length = foldr (\_ x -> x+1) 0
+```

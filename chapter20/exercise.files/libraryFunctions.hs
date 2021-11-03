@@ -42,3 +42,8 @@ minimum = foldr (\x y -> min <$> Just x <*> y) Nothing
 
 null :: (Foldable t) => t a -> Bool
 null = foldr (\_ _ -> False) True
+
+
+
+length :: (Foldable t) => t a -> Int
+length = foldr (\_ x -> x+1) 0
