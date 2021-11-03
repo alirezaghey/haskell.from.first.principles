@@ -1,4 +1,4 @@
-import Data.Monoid (Sum(..), Product(..))
+import Data.Monoid (Sum(..), Product(..), Any(..))
 
 -- using foldr
 sum :: (Foldable t, Num a) => t a -> a
@@ -24,3 +24,12 @@ product2 xs = getProduct $ foldMap Product xs
 -- eta reduce
 product3 :: (Foldable t, Num a) => t a -> a
 product3 = getProduct . foldMap Product
+
+
+-- using foldr
+elem :: (Foldable t, Eq a) => a -> t a -> Bool
+elem x = foldr (\y acc -> y == x) False
+
+-- using foldMap and Any from Data.Monoid
+elem2 :: (Foldable t, Eq a) => a -> t a -> Bool
+elem2 x = getAny . foldMap (\y -> Any (x == y))

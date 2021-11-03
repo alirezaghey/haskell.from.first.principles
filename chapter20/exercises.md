@@ -27,3 +27,15 @@ product :: (Foldable t, Num a) => t a -> a
 product = foldr (*) 1
 ```
 [Solution file](exercise.files/libraryFunctions.hs)
+
+3. The following function:
+
+```hs
+elem :: (Foldable t, Eq a) => a -> t a -> Bool
+```
+**Answer:**
+```hs
+elem :: (Foldable t, Eq a) => a -> t a -> Bool
+elem x = foldr (\y acc -> y == x) False
+```
+[Solution file](exercise.files/libraryFunctions.hs)
