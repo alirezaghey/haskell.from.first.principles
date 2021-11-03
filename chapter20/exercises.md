@@ -101,3 +101,16 @@ toList :: (Foldable t) => t a -> [a]
 toList = foldr (:) []
 ```
 [Solution file](exercise.files/libraryFunctions.hs)
+
+9. The following function:
+
+```hs
+-- Combine the elements
+-- of a structure using a monoid.
+fold :: (Foldable t, Monoid m) => t m -> m
+```
+**Answer:**
+```hs
+fold :: (Foldable t, Monoid m) => t m -> m
+fold = foldMap id
+```

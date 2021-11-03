@@ -52,3 +52,9 @@ length = foldr (\_ x -> x+1) 0
 
 toList :: (Foldable t) => t a -> [a]
 toList = foldr (:) []
+
+
+-- Combine the elements
+-- of a structure using a monoid.
+fold :: (Foldable t, Monoid m) => t m -> m
+fold = foldMap id
