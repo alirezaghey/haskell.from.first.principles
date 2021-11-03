@@ -64,3 +64,15 @@ minimum :: (Foldable t, Ord a) => t a -> Maybe a
 minimum = foldr (\x y -> min <$> Just x <*> y) Nothing
 ```
 [Solution file](exercise.files/libraryFunctions.hs)
+
+6. The following function:
+
+```hs
+null :: (Foldablee t) => t a -> Bool
+```
+**Answer:**
+```hs
+null :: (Foldable t) => t a -> Bool
+null = foldr (\_ _ -> False) True
+```
+[Solution file](exercise.files/libraryFunctions.hs)

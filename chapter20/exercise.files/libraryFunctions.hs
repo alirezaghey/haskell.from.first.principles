@@ -38,3 +38,7 @@ elem2 x = getAny . foldMap (\y -> Any (x == y))
 -- using foldr
 minimum :: (Foldable t, Ord a) => t a -> Maybe a
 minimum = foldr (\x y -> min <$> Just x <*> y) Nothing
+
+
+null :: (Foldable t) => t a -> Bool
+null = foldr (\_ _ -> False) True
