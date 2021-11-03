@@ -145,3 +145,17 @@ instance Foldable (Constant a) where
   foldr f ini (Constant x) = f x ini
 ```
 [Solution file](exercise.files/foldableInstances.hs)
+
+2. For the following data type:
+
+```hs
+data Two a b = Two a b
+```
+**Answer:**
+```hs
+data Two a b = Two a b
+
+instance Foldable (Two a) where
+  foldr f ini (Two _ x) = f x ini
+```
+[Solution file](exercise.files/foldableInstances.hs)
