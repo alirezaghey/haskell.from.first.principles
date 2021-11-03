@@ -52,3 +52,15 @@ minimum :: (Foldable t, Ord a) => t a -> Maybe a
 minimum = foldr (\x y -> min <$> Just x <*> y) Nothing
 ```
 [Solution file](exercise.files/libraryFunctions.hs)
+
+5. The following function:
+
+```hs
+maximum :: (Foldable t, Ord a) => t a -> Maybe a
+```
+**Answer:**
+```hs
+minimum :: (Foldable t, Ord a) => t a -> Maybe a
+minimum = foldr (\x y -> min <$> Just x <*> y) Nothing
+```
+[Solution file](exercise.files/libraryFunctions.hs)

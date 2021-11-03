@@ -1,4 +1,5 @@
 import Data.Monoid (Sum(..), Product(..), Any(..))
+import Data.Semigroup (Min(..))
 
 -- using foldr
 sum :: (Foldable t, Num a) => t a -> a
@@ -34,6 +35,6 @@ elem x = foldr (\y acc -> y == x) False
 elem2 :: (Foldable t, Eq a) => a -> t a -> Bool
 elem2 x = getAny . foldMap (\y -> Any (x == y))
 
-
+-- using foldr
 minimum :: (Foldable t, Ord a) => t a -> Maybe a
 minimum = foldr (\x y -> min <$> Just x <*> y) Nothing
