@@ -39,3 +39,16 @@ elem :: (Foldable t, Eq a) => a -> t a -> Bool
 elem x = foldr (\y acc -> y == x) False
 ```
 [Solution file](exercise.files/libraryFunctions.hs)
+
+
+4. The following function:
+
+```hs
+minimum :: (Foldable t, Ord a) => t a -> Maybe a
+```
+**Answer:**
+```hs
+minimum :: (Foldable t, Ord a) => t a -> Maybe a
+minimum = foldr (\x y -> min <$> Just x <*> y) Nothing
+```
+[Solution file](exercise.files/libraryFunctions.hs)

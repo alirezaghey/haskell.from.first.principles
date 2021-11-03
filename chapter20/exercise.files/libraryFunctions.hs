@@ -33,3 +33,7 @@ elem x = foldr (\y acc -> y == x) False
 -- using foldMap and Any from Data.Monoid
 elem2 :: (Foldable t, Eq a) => a -> t a -> Bool
 elem2 x = getAny . foldMap (\y -> Any (x == y))
+
+
+minimum :: (Foldable t, Ord a) => t a -> Maybe a
+minimum = foldr (\x y -> min <$> Just x <*> y) Nothing
