@@ -127,3 +127,21 @@ foldMap' :: (Foldable t, Monoid m) => (a -> m) -> t a -> m
 foldMap' f = foldr (\x acc -> f x <> acc) mempty
 ```
 [Solution file](exercise.files/libraryFunctions.hs)
+
+# Chapter Exercises
+
+Write `Foldable` instances for the following datatypes.
+
+1. For the following data type:
+
+```hs
+data Constant a b = Constant b
+```
+**Answer:**
+```hs
+data Constant a b = Constant b
+
+instance Foldable (Constant a) where
+  foldr f ini (Constant x) = f x ini
+```
+[Solution file](exercise.files/foldableInstances.hs)
