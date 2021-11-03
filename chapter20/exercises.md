@@ -87,3 +87,17 @@ length :: (Foldable t) => t a -> Int
 length :: (Foldable t) => t a -> Int
 length = foldr (\_ x -> x+1) 0
 ```
+[Solution file](exercise.files/libraryFunctions.hs)
+
+8. The following function:
+
+```hs
+toList :: (Foldable t) => t a -> [a]
+```
+
+**Answer:**
+```hs
+toList :: (Foldable t) => t a -> [a]
+toList = foldr (:) []
+```
+[Solution file](exercise.files/libraryFunctions.hs)

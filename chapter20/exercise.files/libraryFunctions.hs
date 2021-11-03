@@ -47,3 +47,8 @@ null = foldr (\_ _ -> False) True
 
 length :: (Foldable t) => t a -> Int
 length = foldr (\_ x -> x+1) 0
+
+
+
+toList :: (Foldable t) => t a -> [a]
+toList = foldr (:) []
