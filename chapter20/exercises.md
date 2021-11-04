@@ -205,3 +205,22 @@ instance Foldable (Four' a) where
   foldr f ini (Four' _ x y z) = f x $ f y $ f z ini
 ```
 [Solution file](exercise.files/foldableInstances.hs)
+
+Write a filter function for `Foldable` types using `foldMap`.
+```hs
+filterF :: (Applicative f
+          , Foldable t
+          , Monoid (f a))
+        => (a -> Bool) -> t a -> f a
+filterF = undefined
+```
+
+**Answer:**
+```hs
+filterF :: (Applicative f
+          , Foldable t
+          , Monoid (f a))
+        => (a -> Bool) -> t a -> f a
+filterF f = foldMap (\x -> if f x then pure x else mempty)
+```
+[Solution file](exercise.files/foldableInstances.hs)

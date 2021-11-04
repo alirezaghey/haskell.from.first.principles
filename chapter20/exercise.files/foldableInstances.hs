@@ -29,3 +29,12 @@ data Four' a b = Four' a b b b
 
 instance Foldable (Four' a) where
   foldr f ini (Four' _ x y z) = f x $ f y $ f z ini
+
+
+
+--------------------------------------------
+filterF :: (Applicative f
+          , Foldable t
+          , Monoid (f a))
+        => (a -> Bool) -> t a -> f a
+filterF f = foldMap (\x -> if f x then pure x else mempty)
