@@ -175,3 +175,18 @@ instance Foldable (Three a b) where
   foldr f ini (Three _ _ x) = f x ini
 ```
 [Solution file](exercise.files/foldableInstances.hs)
+
+4. For the following data type:
+
+```hs
+data Three' a b = Three' a b b
+```
+
+**Answer:**
+```hs
+data Three' a b = Three' a b b
+
+instance Foldable (Three' a) where
+  foldr f ini (Three' _ x y) = f x $ f y ini
+```
+[Solution file](exercise.files/foldableInstances.hs)

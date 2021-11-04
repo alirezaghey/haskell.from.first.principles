@@ -15,3 +15,10 @@ data Three a b c = Three a b c
 
 instance Foldable (Three a b) where
   foldr f ini (Three _ _ x) = f x ini
+
+
+--------------------------------------------
+data Three' a b = Three' a b b
+
+instance Foldable (Three' a) where
+  foldr f ini (Three' _ x y) = f x $ f y ini
