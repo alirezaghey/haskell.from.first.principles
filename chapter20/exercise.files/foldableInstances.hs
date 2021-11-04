@@ -22,3 +22,10 @@ data Three' a b = Three' a b b
 
 instance Foldable (Three' a) where
   foldr f ini (Three' _ x y) = f x $ f y ini
+  
+
+--------------------------------------------
+data Four' a b = Four' a b b b
+
+instance Foldable (Four' a) where
+  foldr f ini (Four' _ x y z) = f x $ f y $ f z ini
