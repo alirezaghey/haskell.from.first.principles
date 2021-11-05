@@ -22,3 +22,10 @@ instance Traversable Identity where
 newtype Constant a b = Constant {getConstant :: a}
 ```
 [Solution file (can be run as a script)](exercise.files/constantTraversable.hs)
+
+3. `Maybe`
+
+```hs
+data Optional a = Nada | Yep a
+```
+[Solution file (can be run as a script)](exercise.files/optionalTraversable.hs)
