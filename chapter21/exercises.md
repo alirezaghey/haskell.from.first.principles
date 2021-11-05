@@ -29,3 +29,9 @@ newtype Constant a b = Constant {getConstant :: a}
 data Optional a = Nada | Yep a
 ```
 [Solution file (can be run as a script)](exercise.files/optionalTraversable.hs)
+
+4. `List`
+
+```hs
+data List a = Nil | Cons a (List a)
+```
