@@ -59,3 +59,10 @@ When you have more than one value of type _b_, you'll want to use `Monoid` and `
 data Big a b = Big a b b
 ```
 [Solution file (can be run as a script)](exercise.files/bigTraversal.hs)
+
+8. `Bigger`
+
+```hs
+data Bigger a b = Bigger a b b b
+```
+[Solution file (can be run as a script)](exercise.files/biggerTraversable.hs)
