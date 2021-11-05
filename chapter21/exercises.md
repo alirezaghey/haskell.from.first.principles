@@ -66,3 +66,36 @@ data Big a b = Big a b b
 data Bigger a b = Bigger a b b b
 ```
 [Solution file (can be run as a script)](exercise.files/biggerTraversable.hs)
+
+9. `S`
+
+```hs
+{-# LANGUAGE FlexibleContexts #-}
+
+module SkiFree where
+
+import Test.QuickCheck
+import Test.QuickCheck.Checkers
+
+data S n a = S (n a) a deriving (Eq, Show)
+
+instance (Functor n
+        , Arbitrary (n a)
+        , Arbitrary a )
+      => Arbitrary (S n a) where
+  arbitrary = S <$> arbitrary <*> arbitrary
+
+instance (Applicative n
+        , Testable (n Property)
+        , EqProp a)
+      =>  EqProp (S n a) where
+  (S x y) =-= (S p q) =
+      (property $ (=-=) <$> x <*> p)
+    .&. (y =-= q)
+
+instance Traversable n => Traversable (S n) where
+  traverse = undefined
+
+main = sampl' (arbitrary :: Gen (S [] Int))
+```
+[Solution file (can be run as a standalone script)](exercise.files/skiFreeTraversable.hs)
