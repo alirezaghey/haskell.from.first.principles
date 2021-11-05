@@ -1,0 +1,17 @@
+# Solutions to problems of chapter 20
+# Chapter Exercises
+
+## Traversable instances
+
+Write a `Traversable` instance for the datatype provided, filling in any required superclasses. Use `QuickCheck` to validate your instances.
+
+1. `Identity`
+
+Write a `Traversable` instance for `Identity`.
+```hs
+newtype Identity a = Identity a deriving (Eq, Ord, Show)
+
+instance Traversable Identity where
+  traverse = undefined
+```
+[Solution file (can be run as a script)](exercise.files/identityTraversable.hs)
