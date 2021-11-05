@@ -35,3 +35,4 @@ data Optional a = Nada | Yep a
 ```hs
 data List a = Nil | Cons a (List a)
 ```
+[Solution file (can be run as a script)](exercise.files/listTraversal.hs)
