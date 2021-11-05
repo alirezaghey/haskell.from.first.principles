@@ -36,3 +36,11 @@ data Optional a = Nada | Yep a
 data List a = Nil | Cons a (List a)
 ```
 [Solution file (can be run as a script)](exercise.files/listTraversal.hs)
+
+5. `Three`
+
+```hs
+data Three a b c = Three a b c
+```
+[Solution file (can be run as a script)](exercise.files/threeTraversal.hs)
+
