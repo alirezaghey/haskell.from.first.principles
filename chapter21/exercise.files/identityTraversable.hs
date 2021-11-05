@@ -31,5 +31,6 @@ instance (Arbitrary a) => Arbitrary (Identity a) where
 
 main :: IO ()
 main = do
-  quickBatch $ functor (undefined :: Identity  (String, Float, Int)) 
+  quickBatch $ functor (undefined :: Identity  (String, Float, Int))
+  quickBatch $ foldable (undefined :: Identity (Int, Float, String, Int, String))
   quickBatch $ traversable (undefined :: Identity (String, String, String))
