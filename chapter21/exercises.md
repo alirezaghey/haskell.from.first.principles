@@ -50,3 +50,12 @@ data Three a b c = Three a b c
 data Pair a b = Pair a b
 ```
 [Solution file (can be run as a script)](exercise.files/pairTraversable.hs)
+
+7. `Big`
+
+When you have more than one value of type _b_, you'll want to use `Monoid` and `Applicative` for the `Foldable` and `Traversable` instances respectively.
+
+```hs
+data Big a b = Big a b b
+```
+[Solution file (can be run as a script)](exercise.files/bigTraversal.hs)
