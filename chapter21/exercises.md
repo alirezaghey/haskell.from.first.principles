@@ -15,3 +15,10 @@ instance Traversable Identity where
   traverse = undefined
 ```
 [Solution file (can be run as a script)](exercise.files/identityTraversable.hs)
+
+2. `Constant`
+
+```hs
+newtype Constant a b = Constant {getConstant :: a}
+```
+[Solution file (can be run as a script)](exercise.files/constantTraversable.hs)
