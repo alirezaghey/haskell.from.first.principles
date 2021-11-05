@@ -44,3 +44,9 @@ data Three a b c = Three a b c
 ```
 [Solution file (can be run as a script)](exercise.files/threeTraversal.hs)
 
+6. `Pair`
+
+```hs
+data Pair a b = Pair a b
+```
+[Solution file (can be run as a script)](exercise.files/pairTraversable.hs)
