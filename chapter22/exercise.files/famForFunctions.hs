@@ -1,0 +1,23 @@
+import Control.Applicative
+
+boop = (*2)
+doop = (+10)
+
+bip :: Integer -> Integer
+bip = boop . doop
+
+
+bloop :: Integer -> Integer
+bloop = fmap boop doop
+
+bbop :: Integer -> Integer
+bbop = (+) <$> boop <*> doop
+
+duwop :: Integer -> Integer
+duwop = liftA2 (+) boop bip
+
+-- boopDoop :: Integer -> Integer
+boopDoop = do
+  a <- boop
+  b <- bip
+  return (a + b)
