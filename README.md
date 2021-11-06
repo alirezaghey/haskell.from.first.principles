@@ -24,6 +24,7 @@
 | 18 | [exercises](chapter18/exercises.md), [definitions](chapter18/definitions.md), [resources](chapter18/resources.md) | Monad, return, do, >>=, =<<, >=>
 | 19 | [exercises](chapter19/exercises.md), [resources](chapter19/resources.md) | TODO: Need to implement the exercise specified [here](chapter19/exercises.md).
 | 20 | [exercises](chapter20/exercises.md), [resources](chapter20/resources.md) | Foldable, foldMap, foldr, toList, null, length, sum, product, minimum, maximum
+| 21 | [exercises](chapter21/exercises.md), [resources](chapter21/resources.md) | Traversable, sequenceA, traverse |
 
 To install Haskell through stack, run the following command:
 `curl -sSL https://get.haskellstack.org/ | sh` or `wget -qO- https://get.haskellstack.org/ | sh`
