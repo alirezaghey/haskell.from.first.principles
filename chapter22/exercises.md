@@ -61,3 +61,22 @@ tupled :: [Char] -> ([Char], [Char])
 ```
 Write both a definition using the `Applicative` and `Monad` instances for functions.
 [Solution file](exercise.files/famForFuncsExercise.hs)
+
+
+## Exercise: Ask
+
+Implement the following function
+
+```hs
+ask :: Reader a a
+ask = Reader ???
+```
+**Answer:**
+```hs
+newtype Reader r a =
+  Reader {runReader :: r -> a}
+
+ask :: Reader a a
+ask = Reader id
+```
+[Solution file](exercise.files/ask.hs)
