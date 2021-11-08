@@ -115,3 +115,40 @@ asks :: (r -> a) -> Reader r a
 asks = Reader
 ```
 [Solution file](exercise.files/myLiftA2.hs)
+
+3. Implement the `Applicative` for `Reader`.
+
+To write the `Applicative` instance for `Reader`, we'll use an extension called `InstanceSigs`. It's an extension we need in order to assert a type for the typeclass methods. You ordinarily cannot assert type signatures in instances. The compiler already knows the type of the functions, so it's not usually necessary to assert the types in instances anyway. We did this for the sake of clarity, to make the `Reader` type explicit in our signatures.
+
+```hs
+-- you'll need this pgrama
+{-# LANGUAGE instanceSigs #-}
+
+instance Applicative (Reader r) where
+  pure :: a -> Reader r a
+  pure a = Reader $ ???
+
+(<*>) :: Reader r (a -> b)
+      -> Reader r a
+      -> Reader r a
+(Reader rab) <*> (Reader ra) = Reader $ \r -> ???
+```
+
+Some instructions and hints.
+
+  **a.** When writing the `pure` function for `Reader`, remember that what you're trying to construct is a function that takes a value of type _r_, which you know nothing about, and return a value of type _a_. Given that you're not really doing anything with _r_, there's really only one thing you can do.
+  <br>**b.** We got the definition of the apply function started for you, we'll describe what you need to do and you write the code. If you unpack the type of `Reader`'s apply above, you get the following:
+
+  ```hs
+  <*> :: (r -> a -> b)
+      -> (r -> a)
+      -> (r -> b)
+
+-- contrast this with tye type of fmap
+
+fmap :: (a -> b)
+    ->  (r -> a)
+    ->  (r -> b)
+```
+
+So, what's the difference? The difference is that apply, unlike fmap, also takes an argument of type _r_. Make it so.
