@@ -80,3 +80,38 @@ ask :: Reader a a
 ask = Reader id
 ```
 [Solution file](exercise.files/ask.hs)
+
+
+## Reading Comprehension
+
+1. Write `liftA2` yourself.
+
+```hs
+myLiftA2 :: Applicative f =>
+            (a -> b -> c)
+            -> f a -> f b -> f c
+myLiftA2 = undefined
+```
+**Answer:**
+```hs
+myLiftA2 :: Applicative f =>
+            (a -> b -> c) ->
+            f a -> f b -> f c
+myLiftA2 f a b = f <$> a <*> b
+```
+[Solution file](exercise.files/myLiftA2.hs)
+
+2. Write the following function.
+
+```hs
+asks :: (r -> a) -> Reader r a
+asks f = Reader ???
+```
+**Answer:**
+```hs
+newtype Reader r a = Reader {runReader :: r -> a}
+
+asks :: (r -> a) -> Reader r a
+asks = Reader
+```
+[Solution file](exercise.files/myLiftA2.hs)
