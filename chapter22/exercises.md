@@ -179,3 +179,6 @@ instance Monad (Reader r) where
 (Reader ra) >>= aRb = Reader $ \r -> runReader (aRb (ra r)) r
 ```
 [Solution file](exercise.files/reader.hs)
+
+2. Rewrite the monadic `getDogRM` to use your `Reader` datatype.
+[Solution file](exercise.files/dog.hs)
