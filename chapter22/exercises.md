@@ -226,3 +226,26 @@ z' n = undefined
 ```
 [Solution file](exercise.files/readerPractice.hs)
 
+Now we want to add the ability to make a `Maybe (,)` of values using `Applicative`. Have `x1` make a tuple of `xs` and `ys`, and `x2` make a tuple of `ys` and `zs`. Also, write `x3` which takes one input and makes a tuple of the results of two applications of z' from above.
+
+```hs
+x1 :: Maybe (Integer, Integer)
+x1 = undefined
+
+x2 :: Maybe (Integer, Integer)
+x2 = undefined
+
+x3 :: Integer -> (Maybe Integer, Maybe Integer)
+x3 = undefined
+```
+
+Your ouputs from those should look like this:
+```
+λ> x1
+Just (6,9)
+λ> x2
+Nothing
+λ> x3 3
+(Just 9, Just 9)
+```
+[Solution file](exercise.files/readerPractice.hs)

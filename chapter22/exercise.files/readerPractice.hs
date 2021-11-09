@@ -28,3 +28,13 @@ zs = lookup 4 $ zip x y
 -- variable lookup key
 z' :: Integer -> Maybe Integer
 z' n = lookup n $ zip x z
+
+
+x1 :: Maybe (Integer, Integer)
+x1 =  (,) <$> xs <*> ys
+
+x2 :: Maybe (Integer, Integer)
+x2 = (,) <$> ys <*> zs
+
+x3 :: Integer -> (Maybe Integer, Maybe Integer)
+x3  = (,) <$> z' <*> z'
