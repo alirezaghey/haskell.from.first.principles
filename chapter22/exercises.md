@@ -152,3 +152,30 @@ fmap :: (a -> b)
 ```
 
 So, what's the difference? The difference is that apply, unlike fmap, also takes an argument of type _r_. Make it so.
+
+## Reader Monad
+
+1. Implement the `Reader Monad`.
+
+```hs
+{-# LANGUAGE instanceSigs #-}
+
+instance Monad (Reader r) where
+  return = pure
+
+(>>=) :: Reader r a
+      -> (a -> Reader r b)
+      -> Reader r b
+(Reader ra) >>= aRb = Reader $ \r -> ???
+```
+**Answer:**
+```hs
+instance Monad (Reader r) where
+  return = pure
+
+(>>=) :: Reader r a
+      -> (a -> Reader r b)
+      -> Reader r b
+(Reader ra) >>= aRb = Reader $ \r -> runReader (aRb (ra r)) r
+```
+[Solution file](exercise.files/reader.hs)
