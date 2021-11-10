@@ -38,3 +38,12 @@ x2 = (,) <$> ys <*> zs
 
 x3 :: Integer -> (Maybe Integer, Maybe Integer)
 x3  = (,) <$> z' <*> z'
+
+
+summed :: Num c => (c, c) -> c
+summed = uncurry (+)
+
+
+-- use &&, >3, <8
+bolt :: Integer -> Bool
+bolt = (&&) <$> (>3) <*> (<8)

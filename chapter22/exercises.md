@@ -249,3 +249,40 @@ Nothing
 (Just 9, Just 9)
 ```
 [Solution file](exercise.files/readerPractice.hs)
+
+Next, we're going to make some helper functions. Let's use `uncurry` to allow us to add the two values that are inside a tuple:
+
+```hs
+uncurry :: (a -> b -> c) -> (a, b) -> c
+-- that first argument is a function
+-- in this case, we want it to be addition
+-- summed is uncurry with addition as
+-- the first argument
+
+summed :: Num c => (c, c) -> c
+summed = undefined
+```
+
+And now we'll make a function similar to some we've seen before that lifts a boolean function over two partially applied functions:
+
+```hs
+-- use &&, >3, <8
+bolt :: Integer -> Bool
+bolt = undefined
+```
+
+Finally, we'll be using `fromMaybe` in the `main` exercise, so let's look at that:
+```hs
+fromMaybe :: a -> Maybe a -> a
+```
+
+You give it a default value and a `Maybe` value. If the `Maybe` value is a `Just a`, it will return the `a` value. If the value is a `Nothing`, it returns the default value instead:
+
+```
+λ> fromMaybe 0 xs
+6
+λ> fromMaybe 0 zs
+0
+```
+[Solution file](exercise.files/readerPractice.hs)
+
