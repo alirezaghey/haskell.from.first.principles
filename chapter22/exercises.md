@@ -286,3 +286,28 @@ You give it a default value and a `Maybe` value. If the `Maybe` value is a `Just
 ```
 [Solution file](exercise.files/readerPractice.hs)
 
+Now we'll cobble together a `main`, so that in one call we can execute several things at once.
+
+```hs
+main :: IO ()
+main = do
+  print $ sequenceA [Just 3, Just 2, Just 1]
+  print $ sequenceA [x, y]
+  print $ sequenceA [xs, ys]
+  print $ summed <$> ((,) <$> xs <*> ys)
+  print $ fmap summed ((,) <$> xs <*> zs)
+  print $ bolt 7
+  print $ fmap bolt z
+```
+When you run this in GHCi, your reslts should look like this:
+```
+λ> main
+Just [3,2,1]
+[[1,4],[1,5],[1,6],[2,4],[2,5],[2,6],[3,4],[3,5],[3,6]]
+Just [6,9]
+Just 15
+Nothing
+True
+[True, False, False]
+```
+[Solution file](exercise.files/readerPractice.hs)
