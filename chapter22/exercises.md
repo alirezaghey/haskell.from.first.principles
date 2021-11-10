@@ -311,3 +311,35 @@ True
 [True, False, False]
 ```
 [Solution file](exercise.files/readerPractice.hs)
+
+Next, we're going to add one that combines `sequenceA` and `Reader` in somewhat surprising way (add this to `main`):
+
+```hs
+print $ sequenceA [(>3), (<8), even] 7
+```
+The type of `sequenceA` is
+```hs
+sequenceA :: (Applicative f, Traversable t) => t (f a) -> f (t a)
+-- so in this:
+sequenceA [(>3), (<8), even] 7
+-- f ~ (->) a and t ~ []
+```
+
+We have a `Reader` for the `Applicative` (functions) and a traversable for the list. Pretty handy. We're going to call that function `sequA` for the purpose of the following exercises:
+
+```hs
+sequA :: Integral a => a -> [Bool]
+sequA m = sequenceA [(>3), (<8), even] m
+```
+
+And henceforth let
+```hs
+summed <$> ((,) <$> xs <*> ys)
+```
+be known as `s'`.
+
+Within the `main` above, write the following:
+1. fold the boolean conjunction operator over the the list of results of `sequA` (applied to some value).
+2. apply `sequA` to `s'`; you'll need `fromMaybe`.
+3. apply `bolt` to `ys`; you'll need `fromMaybe`.
+[Solution file](exercise.files/readerPractice.hs)

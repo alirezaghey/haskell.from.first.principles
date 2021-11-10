@@ -48,6 +48,13 @@ summed = uncurry (+)
 bolt :: Integer -> Bool
 bolt = (&&) <$> (>3) <*> (<8)
 
+sequA :: Integral a => a -> [Bool]
+sequA m = sequenceA [(>3), (<8), even] m
+
+s' :: Maybe Integer
+s' = summed <$> ((,) <$> xs <*> ys)
+
+
 
 main :: IO ()
 main = do
@@ -58,3 +65,6 @@ main = do
   print $ fmap summed ((,) <$> xs <*> zs)
   print $ bolt 7
   print $ fmap bolt z
+  print $ foldr (&&) True $ sequA 7
+  print $ sequA $ fromMaybe 0 s'
+  print $ bolt $ fromMaybe 0 ys
