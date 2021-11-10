@@ -343,3 +343,7 @@ Within the `main` above, write the following:
 2. apply `sequA` to `s'`; you'll need `fromMaybe`.
 3. apply `bolt` to `ys`; you'll need `fromMaybe`.
 [Solution file](exercise.files/readerPractice.hs)
+
+## Rewriting Shawty
+Remember the URL shortener? Instead of manually passing the database connection `rConn` from `main` to the app function that generates a Scotty app, use `ReaderT` to make the database connection available. We know you haven’t seen the transformer variant yet and we’ll explain them soon, but you should try to do the transformation mechanically. Research as necessary using a search engine. Use this version of the app: [https://github.com/bitemyapp/shawty-prime/blob/master/app/Main.hs](https://github.com/bitemyapp/shawty-prime/blob/master/app/Main.hs)
+[Solution project](projects/shawty-prime)
