@@ -4,6 +4,8 @@ module Main where
 
 import Control.Monad (replicateM)
 import Control.Monad.IO.Class (liftIO)
+import Control.Monad.Trans.Class (lift)
+import Control.Monad.Trans.Reader (ReaderT, ask, runReaderT)
 import qualified Data.ByteString.Char8 as BC
 import Data.Text.Encoding (decodeUtf8, encodeUtf8)
 import qualified Data.Text.Lazy as TL
@@ -62,33 +64,34 @@ shortyFound :: TL.Text -> TL.Text
 shortyFound tbs =
   TL.concat ["<a href=\"", tbs, "\">", tbs, "</a>"]
 
-app :: R.Connection
-    -> ScottyM ()
-app rConn = do
-  get "/" $ do
-    uri <- param "uri"
-    let parsedUri :: Maybe URI
-        parsedUri = parseURI (TL.unpack uri)
-    case parsedUri of
-      Just _  -> do
-        shawty <- liftIO shortyGen
-        let shorty = BC.pack shawty
-            uri' = encodeUtf8 (TL.toStrict uri)
-        resp <- liftIO (saveURI rConn shorty uri')
-        html (shortyCreated resp shawty)
-      Nothing -> text (shortyAintUri uri)
-  get "/:short" $ do
-    short <- param "short"
-    uri <- liftIO (getURI rConn short)
-    case uri of
-      Left reply -> text (TL.pack (show reply))
-      Right mbBS -> case mbBS of
-        Nothing -> text "uri not found"
-        Just bs -> html (shortyFound tbs)
-          where tbs :: TL.Text
-                tbs = TL.fromStrict (decodeUtf8 bs)
+app :: ReaderT R.Connection ScottyM ()
+app = do
+  rConn <- ask
+  lift $ do
+    get "/" $ do
+      uri <- param "uri"
+      let parsedUri :: Maybe URI
+          parsedUri = parseURI (TL.unpack uri)
+      case parsedUri of
+        Just _  -> do
+          shawty <- liftIO shortyGen
+          let shorty = BC.pack shawty
+              uri' = encodeUtf8 (TL.toStrict uri)
+          resp <- liftIO (saveURI rConn shorty uri')
+          html (shortyCreated resp shawty)
+        Nothing -> text (shortyAintUri uri)
+    get "/:short" $ do
+      short <- param "short"
+      uri <- liftIO (getURI rConn short)
+      case uri of
+        Left reply -> text (TL.pack (show reply))
+        Right mbBS -> case mbBS of
+          Nothing -> text "uri not found"
+          Just bs -> html (shortyFound tbs)
+            where tbs :: TL.Text
+                  tbs = TL.fromStrict (decodeUtf8 bs)
 
 main :: IO ()
 main = do
   rConn <- R.connect R.defaultConnectInfo
-  scotty 3000 (app rConn)
+  scotty 3000 (runReaderT app rConn)
