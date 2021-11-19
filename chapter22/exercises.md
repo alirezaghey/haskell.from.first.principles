@@ -1,4 +1,4 @@
-# Solutions to problems of chapter 21
+# Solutions to problems of chapter 22
 
 ## FAM for functions
 
