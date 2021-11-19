@@ -42,6 +42,8 @@ rollsCountLogged n g = go 0 0 g [] where
 
 
 ## Write `State` for yourself
+
+1. State Functor
 Write the `Functor` instance for the following:
 
 ```hs
@@ -63,3 +65,4 @@ instance Functor (Moi s) where
                                    (f y, z)
 ```
 [Solution file](exercise.files/Moi.hs)
+
