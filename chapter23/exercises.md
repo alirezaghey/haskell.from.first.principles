@@ -66,3 +66,32 @@ instance Functor (Moi s) where
 ```
 [Solution file](exercise.files/Moi.hs)
 
+2. State Applicative
+
+Write the `Applicative` instance for `State`.
+```hs
+instance Applicative (Moi s) where
+  pure :: a -> Moi s a
+  pure a = ???
+
+  (<*>) :: Moi s (a -> b)
+        -> Moi s a
+        -> Moi s b
+  (Moid f) <*> (Moi g) = ???
+```
+**Answer:**
+```hs
+instance Applicative (Moi s) where
+  pure :: a -> Moi s a
+  -- pure a = Moi $ \s -> (a, s)
+  -- Using TupleSection (it's the same as above)
+  pure a = Moi (a, )
+  
+  (<*>) :: Moi s (a -> b)
+        -> Moi s a
+        -> Moi s b
+  (Moi f) <*> (Moi g) = Moi $ \s -> let (fun, ns) = f s
+                                        (arg, fs) = g ns
+                                    in  (fun arg, fs)
+```
+[Solution file](exercise.files/Moi.hs)
