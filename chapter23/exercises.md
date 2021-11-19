@@ -122,3 +122,23 @@ instance Monad (Moi s) where
                               in  (b, sg)
 ```
 [Solution file](exercise.files/Moi.hs)
+
+## Fizzbuzz
+
+Rather than changing the underlying data structure, fix our reversing fizzbuzz by changing the code in the following way:
+```hs
+fizzbuzzFromTo :: Integer ->  Integer -> [String]
+fizzBuzzFromTo = undefined
+```
+**Answer:**
+```hs
+fizzbuzzFromTo :: Integer -> Integer -> [String]
+fizzbuzzFromTo from to
+  | from > to = []
+  | from `mod` 15 == 0 = "fizzbuzz" : fizzbuzzFromTo (from+1) to
+  | from `mod` 5 == 0 = "fizz" : fizzbuzzFromTo (from+1) to
+  | from `mod` 3 == 0 = "buzz" : fizzbuzzFromTo (from+1) to
+  | otherwise = show from : fizzbuzzFromTo (from+1) to
+```
+[Solution file](exercise.files/fizzBuzz.hs)
+
