@@ -42,3 +42,12 @@ rollsToGetN n g = go 0 0 g where
     | otherwise =
       let (die, nextGen) = randomR (1, 6) gen
       in go (sum + die) (count + 1) nextGen
+
+rollsCountLogged :: Int -> StdGen -> (Int, [Die])
+rollsCountLogged n g = go 0 0 g [] where
+  go :: Int -> Int -> StdGen -> [Die] -> (Int, [Die])
+  go sum count gen xs 
+    | sum >= n = (count, xs)
+    | otherwise =
+      let (die, nextGen) = randomR (1, 6) gen
+      in go (sum + die) (count + 1) nextGen (intToDie die:xs)
