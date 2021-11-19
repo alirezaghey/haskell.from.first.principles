@@ -95,3 +95,30 @@ instance Applicative (Moi s) where
                                     in  (fun arg, fs)
 ```
 [Solution file](exercise.files/Moi.hs)
+
+3. State Monad
+
+Write the `Monad` instance for `State`.
+```hs
+instance Monad (Moi s) where
+  return = pure
+
+(>>=) :: Moi s a
+      -> (a -> Moi s b)
+      -> Moi s b
+(Moi f) >>= g = ???
+```
+**Answer:**
+```hs
+instance Monad (Moi s) where
+  return :: a -> Moi s a
+  return = pure
+  (>>=) :: Moi s a
+        -> (a -> Moi s b)
+        -> Moi s b
+  (Moi f) >>= g = Moi $ \s -> let (a, sf) = f s
+                                  (Moi h) = g a
+                                  (b, sg) = h sf
+                              in  (b, sg)
+```
+[Solution file](exercise.files/Moi.hs)

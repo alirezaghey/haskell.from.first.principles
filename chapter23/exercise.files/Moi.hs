@@ -21,3 +21,15 @@ instance Applicative (Moi s) where
   (Moi f) <*> (Moi g) = Moi $ \s -> let (fun, ns) = f s
                                         (arg, fs) = g ns
                                     in  (fun arg, fs)
+
+
+instance Monad (Moi s) where
+  return :: a -> Moi s a
+  return = pure
+  (>>=) :: Moi s a
+        -> (a -> Moi s b)
+        -> Moi s b
+  (Moi f) >>= g = Moi $ \s -> let (a, sf) = f s
+                                  (Moi h) = g a
+                                  (b, sg) = h sf
+                              in  (b, sg)
