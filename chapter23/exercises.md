@@ -39,3 +39,27 @@ rollsCountLogged n g = go 0 0 g [] where
       in go (sum + die) (count + 1) nextGen (intToDie die:xs)
 ```
 [Solution file](exercise.files/RandomExample2.hs)
+
+
+## Write `State` for yourself
+Write the `Functor` instance for the following:
+
+```hs
+newtype Moi s a = Moi {runMoi :: s -> (a, s)}
+
+instance Functor (Moi s) where
+  fmap :: (a -> b) -> Moi s a -> Moi s b
+  fmap f (Moi g) = ???
+```
+**Answer:**
+```hs
+{-# LANGUAGE InstanceSigs #-}
+
+newtype Moi s a = Moi {runMoi :: s -> (a, s)}
+
+instance Functor (Moi s) where
+  fmap :: (a -> b) -> Moi s a -> Moi s b
+  fmap f (Moi g) = Moi $ \x -> let (y, z) = g x in
+                                   (f y, z)
+```
+[Solution file](exercise.files/Moi.hs)
