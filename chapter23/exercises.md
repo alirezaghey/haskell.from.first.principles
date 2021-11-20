@@ -142,3 +142,15 @@ fizzbuzzFromTo from to
 ```
 [Solution file](exercise.files/fizzBuzz.hs)
 
+
+# Chapter Exercises
+
+Write the following functions. You'll want to use your own `State` type for which you've defined the `Functor`, `Applicative`, and `Monad`.
+
+1. Construct a `State` where the state is also the value you return.
+
+```hs
+get :: State s s
+get = ???
+```
+[Solution file](../chapter23/exercise.files/MyState.hs)
